@@ -1,0 +1,28 @@
+#allWorksHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.workHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black; 
+    padding: 10px 0px;
+    width: 300px;
+}
+
+.workImg {
+    height: 200px;
+    width: 300px;
+}
+
+.workName {
+    margin: 0px;
+    margin-top: 20px;
+}
