@@ -1,4 +1,15 @@
-#allWorksHolder {
+#objectsMainHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#objectsHolderHeader > h2 {
+    margin-top: 50px;
+}
+
+#objectsHolder {
     display: flex;
     justify-content: center;
     align-items: center;

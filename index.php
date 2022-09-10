@@ -7,9 +7,7 @@
 <body>
 
     <?php
-
         include("connection.php");
-
     ?>
 
     <div id=pageContent>

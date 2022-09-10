@@ -21,10 +21,8 @@
 
             //show data about this architect
             if($query_archi->num_rows > 0) {
-                $row_arch = mysqli_fetch_array($query_archi);
+                return  mysqli_fetch_array($query_archi);
             }
-
-            return $row_arch;
         }
 
         function architect_name() {
