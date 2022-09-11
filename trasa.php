@@ -68,7 +68,7 @@
                     echo "
                         <div class='workHolder'>
                             <img class='workImg' src='img/{$row_works['Media']}/main.jpeg'>
-                            <h4 class='workName'>".$row_works['Nazwa']."</h4>
+                            <h4 class='workName'>{$row_works['Nazwa']}</h4>
                         </div>
                     ";
                 }

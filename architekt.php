@@ -45,10 +45,15 @@
             //show works
             if($query_obiekt->num_rows > 0) {
                 while($row_works = mysqli_fetch_array($query_obiekt)) {
-                    echo "<div class='workHolder'>";
-                    echo "<img class='workImg' src='img/{$row_works['Media']}/main.jpeg'>";
-                    echo "<h4 class='workName'>".$row_works['Nazwa']."</h4>"; 
-                    echo "</div>";
+                    echo "
+                        <div class='workHolder'>
+                            <img class='workImg' src='img/{$row_works['Media']}/main.jpeg'>
+                            <div class='workInfo'>
+                                <p class='objectLocation'><img class='iconLocation' src='img/icon/bookmark.png'> {$row_works['Miejsce']}</p>
+                                <a class='workName' href=index.php?strona=architekt?architekt=1><h4>{$row_works['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
+                            </div>
+                        </div>
+                    ";
                 }
             }
         } 
