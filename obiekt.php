@@ -16,15 +16,43 @@
             $object_id = $_GET['obiekt'];
 
             //select data
-            $sql = "SELECT * FROM Obiekty WHERE Id=$object_id";
+            $sql = "SELECT Obiekty.*, Architekci.*, Trasy.Nazwa AS 'trasa_nazwa' FROM Obiekty INNER JOIN Architekci ON Architekci.Id=Obiekty.Id_architekt INNER JOIN Trasy ON Trasy.Id=Obiekty.Id_trasa WHERE Obiekty.Id=$object_id";
             $query = mysqli_query($con, $sql);
 
             //show all data
             if($query->num_rows > 0) {
                 while($row = mysqli_fetch_array($query)) {
-                    echo "
-                        <div>
+                    //main image
+                    $main_img = "img/{$row['Media']}/main.jpeg";
+
+                    echo "  
+                        <div id='currentObjectInfo'>       
+                            <div id='details'>               
+                                <p id='currentObjectLocation'><img id='iconLocationCurrentObject' src='img/icon/bookmark.png'> {$row['trasa_nazwa']}</p>
+                                
+                                <div id='architect' class='infoDiv'>
+                                    <label>Architekt:</label>
+                                    <h3>{$row['Imie']} {$row['Nazwisko']}</h3>
+                                </div>
+
+                                <div id='years' class='infoDiv'>
+                                    <label>Lata budowy:</label>
+                                    <h3>{$row['Rok_budowy']}</h3>
+                                </div>
+
+                                <div id='place' class='infoDiv'>
+                                    <label>Miejsce:</label>
+                                    <h3>{$row['Miejsce']}</h3>
+                                </div>
+
+                                <div id='category' class='infoDiv'>
+                                    <label>Typ obiektu:</label>
+                                    <h3>{$row['Kategoria']}</h3>
+                                </div>
+                            </div>
                         </div>
+
+                        <div id='mainImage' style='background-image: url($main_img);'></div>
                     ";
                 }
             }
@@ -64,6 +92,9 @@
 
     <div id='currentObejctHolder'>
         <h1>Wypisać dane danego objektu</h1>
+        <div id='objectData'>
+            <?php object_data(); ?>
+        </div>
     </div>
 
     <div id='objectsMainHolder'>

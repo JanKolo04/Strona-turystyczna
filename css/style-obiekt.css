@@ -1,4 +1,84 @@
-/*--OBJECTS--*/
+/*--CURRENT OBJECT--*/
+#currentObejctHolder {
+    width: 100%;
+}
+
+#objectData {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#currentObjectInfo {
+    width: 30%;
+    height: 548px;
+    padding: 25px 85px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 0px;
+    border: 1px solid black;
+    border-left: 15px solid #0000ff;
+    background-color: white;
+}
+
+#currentObjectLocation {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0px;
+}
+
+#details {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.infoDiv {
+    margin-top: 20px;
+}
+
+#currentObjectLocation > img {
+    margin-right: 10px;
+}
+
+#iconLocationCurrentObject {
+    width: 20px;
+    transform: rotate(270deg);   
+}
+
+.infoDiv > h3 {
+    margin: 0px;
+    margin-top: 2px;
+}
+
+#mainImage {
+    width: 70%;
+    height: 598px;
+    border-top: 1px solid black;
+    border-left: 0px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
+
+/*--OTHER OBJECTS--*/
+#objectsMainHolder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 #objectsHolder {
     width: 100%;
     display: flex;

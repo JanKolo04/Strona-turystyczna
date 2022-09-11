@@ -13,7 +13,7 @@
             global $con;
 
             //get all works created by this architect
-            $sql_obiekt = "SELECT * FROM Obiekty ORDER BY (Nazwa) ASC";
+            $sql_obiekt = "SELECT Obiekty.*, Trasy.Nazwa AS 'trasa_nazwa' FROM Obiekty INNER JOIN Trasy ON Trasy.Id=Obiekty.Id_trasa ORDER BY (Obiekty.Nazwa) ASC";
             $query_obiekt = mysqli_query($con, $sql_obiekt);
 
             //show works
@@ -25,7 +25,7 @@
                         <div class='workHolder'>
                             <img class='workImg' src='img/{$row_works['Media']}/main.jpeg'>
                             <div class='workInfo'>
-                                <p class='objectLocation'><img class='iconLocation' src='img/icon/bookmark.png'> {$row_works['Miejsce']}</p>
+                                <p class='objectLocation'><img class='iconLocation' src='img/icon/bookmark.png'> {$row_works['trasa_nazwa']}</p>
                                 <a class='workName' href='$link_to_work'><h4>{$row_works['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
                             </div>
                         </div>
