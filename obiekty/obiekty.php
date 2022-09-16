@@ -20,7 +20,7 @@
             if($query_obiekt->num_rows > 0) {
                 while($row_works = mysqli_fetch_array($query_obiekt)) {
                     //link_to_work
-                    $link_to_work = "index.php?strona=obiekt&obiekt={$row_works['Id']}&trasa={$row_works['Id_trasa']}";
+                    $link_to_work = "index.php?strona=obiekty/obiekt&obiekt={$row_works['Id']}&trasa={$row_works['Id_trasa']}";
                     echo "
                         <div class='workHolder'>
                             <img class='workImg' src='img/{$row_works['Media']}/main.jpeg'>
