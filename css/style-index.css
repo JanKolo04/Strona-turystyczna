@@ -32,13 +32,13 @@ body {
     padding-right: 50px;
 }
 
-#links-holder > a {
+.link {
     margin: 0px 20px 0px 20px;
     text-decoration: none;
     color: white;
 }
 
-#links-holder > a:hover {
+.link:hover {
     -webkit-transition: 1s;
     color: #cccccc;
 }
@@ -50,3 +50,51 @@ body {
     color: black !important;
     background-color: #E2E0DB;
 }
+
+/*---FOOTER---*/
+#footer {
+    margin-top: 20px;
+    width: 100%;
+    height: 250px;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color: black;
+}
+
+#footer > div {
+    width: 33%;
+    height: 250px;
+    padding: 0px 30px;
+}
+
+#footer > * {
+    color: white;
+}
+
+#footer > h2 {
+    height: 0px;
+}
+
+#nav-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+#list {
+    padding: 0px;
+    margin: 0px;
+}
+
+#first-link {
+    margin-top: 0px;
+}
+
+li {
+    margin: 20px 0px 20px 0px;
+    list-style-type: none;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #666666;
+}
+

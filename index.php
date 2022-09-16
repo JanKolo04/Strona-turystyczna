@@ -12,9 +12,9 @@
             <a id='logo' href='index.php?strona=main'><h3>Szlakiem Szczecina</h3></a>
         </div>
         <div id="links-holder">
-            <a href="index.php?strona=trasy/trasy">Trasy</a>
-            <a href="index.php?strona=obiekty/obiekty">Obiekty</a>
-            <a href="index.php?strona=architekci/architekci">Architekci</a>
+            <a class='link' href="index.php?strona=trasy/trasy">Trasy</a>
+            <a class='link' href="index.php?strona=obiekty/obiekty">Obiekty</a>
+            <a class='link' href="index.php?strona=architekci/architekci">Architekci</a>
 
             <a id='account-link' href="index.php?strona=konto">Moje konto</a>
         </div>
@@ -33,6 +33,30 @@
 
             include($strona.'.php');
         ?>
+    </div>
+
+    <div id='footer'>
+        <div id='about-page'>
+            <h2>O nas</h2>
+            <p id='about-us'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac purus in turpis venenatis suscipit. Sed at mauris volutpat nisi mollis varius non eu ex. Nulla nisl urna, eleifend a hendrerit quis, sodales ut massa. Aenean molestie ipsum a velit feugiat, vehicula facilisis quam dignissim. Sed tristique, nisl sodales vestibulum interdum, ipsum nisi sollicitudin nunc, vitae egestas orci odio non quam.</p>
+        </div>
+
+        <div id='nav-menu'>
+            <h2>Menu</h2>
+            <ul id='list'>
+                <li id='first-link'><a class='link list-object' href="index.php?strona=trasy/trasy">Trasy</a></li>
+                <li><a class='link list-object' href="index.php?strona=obiekty/obiekty">Obiekty</a></li>
+                <li><a class='link list-object' href="index.php?strona=architekci/architekci">Architekci</a></li>
+                <li><a class='link list-object' href="index.php?strona=konto">Moje konto</a></li>
+            </ul>
+        </div>
+
+        <div id='contact'>
+            <h2>Kontakt</h2>
+            <p>+48 123 123 123</p>
+            <p>Żołnierska 53, Szczecin</p>
+            <p>biuro@turystyka.pl</p>
+        </div>
     </div>
 
 </body>
