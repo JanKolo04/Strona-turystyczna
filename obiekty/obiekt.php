@@ -26,33 +26,38 @@
                     $main_img = "img/{$row['Media']}/main.jpeg";
 
                     echo "  
-                        <div id='currentObjectInfo'>       
-                            <div id='details'>               
-                                <p id='currentObjectLocation'><img id='iconLocationCurrentObject' src='img/icon/bookmark.png'> {$row['trasa_nazwa']}</p>
-                                
-                                <div id='architect' class='infoDiv'>
-                                    <label>Architekt:</label>
-                                    <h3>{$row['Imie']} {$row['Nazwisko']}</h3>
-                                </div>
+                        <div id='currentObjectName'>
+                            <h1>{$row['Nazwa']}</h1>
+                        </div>
+                        <div id='objectData'>
+                            <div id='currentObjectInfo'>       
+                                <div id='details'>               
+                                    <p id='currentObjectLocation'><img id='iconLocationCurrentObject' src='img/icon/bookmark.png'> {$row['trasa_nazwa']}</p>
+                                    
+                                    <div id='architect' class='infoDiv'>
+                                        <label>Architekt:</label>
+                                        <h3>{$row['Imie']} {$row['Nazwisko']}</h3>
+                                    </div>
 
-                                <div id='years' class='infoDiv'>
-                                    <label>Lata budowy:</label>
-                                    <h3>{$row['Rok_budowy']}</h3>
-                                </div>
+                                    <div id='years' class='infoDiv'>
+                                        <label>Lata budowy:</label>
+                                        <h3>{$row['Rok_budowy']}</h3>
+                                    </div>
 
-                                <div id='place' class='infoDiv'>
-                                    <label>Miejsce:</label>
-                                    <h3>{$row['Miejsce']}</h3>
-                                </div>
+                                    <div id='place' class='infoDiv'>
+                                        <label>Miejsce:</label>
+                                        <h3>{$row['Miejsce']}</h3>
+                                    </div>
 
-                                <div id='category' class='infoDiv'>
-                                    <label>Typ obiektu:</label>
-                                    <h3>{$row['Kategoria']}</h3>
+                                    <div id='category' class='infoDiv'>
+                                        <label>Typ obiektu:</label>
+                                        <h3>{$row['Kategoria']}</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div id='mainImage' style='background-image: url($main_img);'></div>
+                            <div id='mainImage' style='background-image: url($main_img);'></div>
+                        </div>
                     ";
                 }
             }
@@ -75,10 +80,10 @@
             if($query_obiekt->num_rows > 0) {
                 while($row_works = mysqli_fetch_array($query_obiekt)) {
                     //link_to_work
-                    $link_to_work = "index.php?strona=obiekt&obiekt={$row_works['Id']}&trasa={$row_works['Id_trasa']}";
+                    $link_to_work = "index.php?strona=obiekty/obiekt&obiekt={$row_works['Id']}&trasa={$row_works['Id_trasa']}";
                     echo "
                         <div class='workHolder'>
-                            <img class='workImg' src='img/{$row_works['Media']}/main.jpeg'>
+                            <a href='$link_to_work'><img class='workImg' src='img/{$row_works['Media']}/main.jpeg'></a>
                             <div class='workInfo'>
                                 <a class='workName' href='$link_to_work'><h4>{$row_works['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
                             </div>
@@ -91,10 +96,7 @@
     ?>
 
     <div id='currentObejctHolder'>
-        <h1>Wypisać dane danego objektu</h1>
-        <div id='objectData'>
-            <?php object_data(); ?>
-        </div>
+        <?php object_data(); ?>
     </div>
 
     <div id='objectsMainHolder'>

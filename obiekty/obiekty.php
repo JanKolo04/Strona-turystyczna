@@ -23,7 +23,7 @@
                     $link_to_work = "index.php?strona=obiekty/obiekt&obiekt={$row_works['Id']}&trasa={$row_works['Id_trasa']}";
                     echo "
                         <div class='workHolder'>
-                            <img class='workImg' src='img/{$row_works['Media']}/main.jpeg'>
+                            <a href='$link_to_work'><img class='workImg' src='img/{$row_works['Media']}/main.jpeg'></a>
                             <div class='workInfo'>
                                 <p class='objectLocation'><img class='iconLocation' src='img/icon/bookmark.png'> {$row_works['trasa_nazwa']}</p>
                                 <a class='workName' href='$link_to_work'><h4>{$row_works['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>

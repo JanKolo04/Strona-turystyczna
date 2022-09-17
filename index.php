@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style-index.css">
+    <script src="https://kit.fontawesome.com/fdfda35f5c.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -53,9 +54,20 @@
 
         <div id='contact'>
             <h2>Kontakt</h2>
-            <p>+48 123 123 123</p>
-            <p>Żołnierska 53, Szczecin</p>
-            <p>biuro@turystyka.pl</p>
+            <div class='contact-data'>
+                <i class="fa fa-map-marker"></i>
+                <p>+48 123 123 123</p>
+            </div>
+
+            <div class='contact-data'>
+                <i class="fa fa-phone"></i>
+                <p>Żołnierska 53, Szczecin</p>
+            </div>
+
+            <div class='contact-data'>
+                <i class="fa fa-envelope"></i>
+                <p>biuro@turystyka.pl</p>
+            </div>
         </div>
     </div>
 
