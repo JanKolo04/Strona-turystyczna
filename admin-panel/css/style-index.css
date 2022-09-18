@@ -1,0 +1,59 @@
+body {
+    margin: 0px;
+    background-color: #E2E0DB;
+}
+
+#baner {
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: black;
+}
+
+#logo-holder {
+    width: 350px;
+    padding-left: 50px;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 0px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+#logo-admin-panel {
+    font-size: 14px;
+    text-align: center;
+}
+
+#left-menu {
+    width: 300px;
+    height: calc(100vh - 70px);
+    background-color: black;
+}
+
+#left-menu > a {
+    text-decoration: none;
+}
+
+.option {
+    width: 100%;
+    color: white;
+    padding: 15px 0px;
+    background-color: black;
+}
+
+.option:hover {
+    -webkit-transition: 0.5s;
+    background-color: #666666;
+}
+
+.option > p {
+    margin: 0px;
+    margin-left: 50px;
+}
