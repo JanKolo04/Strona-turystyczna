@@ -45,12 +45,14 @@
             //show works
             if($query_obiekt->num_rows > 0) {
                 while($row_works = mysqli_fetch_array($query_obiekt)) {
+                    //link_to_work
+                    $link_to_work = "index.php?strona=obiekty/obiekt&obiekt={$row_works['Id']}&trasa={$row_works['Id_trasa']}";
                     echo "
                         <div class='workHolder'>
-                            <img class='workImg' src='img/{$row_works['Media']}/main.jpeg'>
+                            <a href=$link_to_work><img class='workImg' src='img/{$row_works['Media']}/main.jpeg'></a>
                             <div class='workInfo'>
                                 <p class='objectLocation'><img class='iconLocation' src='img/icon/bookmark.png'> {$row_works['Miejsce']}</p>
-                                <a class='workName' href=index.php?strona=architekt?architekt=1><h4>{$row_works['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
+                                <a class='workName' href=$link_to_work><h4>{$row_works['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
                             </div>
                         </div>
                     ";
