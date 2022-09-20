@@ -21,10 +21,12 @@
                 while($row = mysqli_fetch_array($query)) {
                     echo "
                         <tr>
+                            <td><input type='checkbox'> <button id='delete-user-button'><i id='x-icon' class='fa-solid fa-x'></i>&nbspUsuń</button></td>
                             <td>{$row['id_uzytkownik']}</td>
                             <td>{$row['Imie']}</td>
                             <td>{$row['Nazwisko']}</td>
                             <td>{$row['Email']}</td>
+                            <td><a href='index.php?strona=uzytkownicy/uzytkownik?id={$row['id_uzytkownik']}'>Podgląd</a>
                         </tr>
                     ";
                 }
@@ -34,19 +36,32 @@
             }
         }
 
-    ?>
-    <div id="tableDiv">
-        <table id="table-user">
-            <thead>
-                <th>Id</th>
-                <th>Imie</th>
-                <th>Nazwisko</th>
-                <th>Email</th>
-            </thead>
-            <tbody>
-                <?php show_all_users(); ?>
-            </tbody>
-        </table>
+        function delte_user() {
+            global $con;
+        }
+
+    ?>  
+
+    <div id='tableDiv'>
+        <div id="option-header">
+            <button id='delete-user-button'><i id='x-icon' class="fa-solid fa-x"></i>&nbspUsuń</button>
+        </div>
+
+        <div id="table-overwflow">
+            <table id="table-user">
+                <thead>
+                    <th>
+                    <th>Id</th>
+                    <th>Imie</th>
+                    <th>Nazwisko</th>
+                    <th>Email</th>
+                    <th>Podgląd</th>
+                </thead>
+                <tbody>
+                    <?php show_all_users(); ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </body>

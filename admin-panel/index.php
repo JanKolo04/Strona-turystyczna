@@ -41,7 +41,7 @@
     </div>
 
     <?php
-        include("../connection.php");
+        require_once("../connection.php");
     ?>
 
     <div id=pageContent>
@@ -51,7 +51,7 @@
                 $strona = $_GET['strona'];
             }
 
-            include($strona.'.php');
+            require_once($strona.'.php');
         ?>
     </div>
 
