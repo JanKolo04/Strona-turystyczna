@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style-uzytkownicy.css">
+    <script type="text/javascript" src="js/script-uzytkownicy.js"></script>
 </head>
 <body>
 
@@ -21,7 +22,7 @@
                 while($row = mysqli_fetch_array($query)) {
                     echo "
                         <tr>
-                            <td><input type='checkbox'> <button id='delete-user-button'><i id='x-icon' class='fa-solid fa-x'></i>&nbspUsuń</button></td>
+                            <td><input value='{$row['id_uzytkownik']}' class='check' type='checkbox'> <button value='{$row['id_uzytkownik']}' onclick='delete_user()' class='single-delete-button' id='delete-user-button'><i id='x-icon' class='fa-solid fa-x'></i>&nbspUsuń</button></td>
                             <td>{$row['id_uzytkownik']}</td>
                             <td>{$row['Imie']}</td>
                             <td>{$row['Nazwisko']}</td>
@@ -36,15 +37,11 @@
             }
         }
 
-        function delte_user() {
-            global $con;
-        }
-
     ?>  
 
     <div id='tableDiv'>
         <div id="option-header">
-            <button id='delete-user-button'><i id='x-icon' class="fa-solid fa-x"></i>&nbspUsuń</button>
+            <button onclick='delete_user()' id='delete-user-button'><i id='x-icon' class="fa-solid fa-x"></i>&nbspUsuń</button>
         </div>
 
         <div id="table-overwflow">

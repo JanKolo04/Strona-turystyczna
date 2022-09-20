@@ -24,7 +24,7 @@
 #table-overwflow {
     width: 100%;
     overflow: auto; 
-    height: 400px;
+    max-height: 400px;
     border-radius: 6px;
 }
 
