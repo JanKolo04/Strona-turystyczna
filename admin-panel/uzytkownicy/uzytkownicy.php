@@ -29,7 +29,8 @@
                         <tr>
                             <td>
                                 <input value='{$row['id_uzytkownik']}' class='check' type='checkbox'>
-                                <button value='{$row['id_uzytkownik']}' class='delete-user-button' onclick='delete_user()' type='submit' name='single_delete_button'><i id='x-icon' class='fa-solid fa-x'></i>&nbspUsuń</button></td>
+                                <button value='{$row['id_uzytkownik']}' class='delete-user-button' onclick='delete_user()' type='submit' name='single_delete_button'><i id='x-icon' class='fa-solid fa-x'></i>&nbspUsuń</button>
+                            </td>
                             <td>{$row['id_uzytkownik']}</td>
                             <td>{$row['Imie']}</td>
                             <td>{$row['Nazwisko']}</td>

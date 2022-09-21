@@ -38,27 +38,53 @@ body {
     float: left;
 }
 
-#left-menu > a {
+.links-menu {
     text-decoration: none;
 }
 
 .option {
+    margin-top: 2px;
+    margin-bottom: 2px;
     width: 100%;
     color: white;
-    padding: 15px 0px;
     background-color: black;
 }
 
-.option:hover {
-    -webkit-transition: 0.5s;
+.hover:hover {
     background-color: #666666;
 }
 
-.option > p {
+.hover {
+    padding: 15px 0px;
+}
+
+.main-option {
     margin: 0px;
     margin-left: 50px;
+}
+
+.others-option {
+    display: none;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: white;
+}
+
+.holder-option:hover .others-option {
+    display: block;   
+}
+
+.others-option:hover {
+    background-color: #666666;
+}
+
+.other-option {
+    margin: 0px;
+    margin-left: 80px;
 }
 
 #pageContent {
     width: calc(100% - 300px);
 }
+
