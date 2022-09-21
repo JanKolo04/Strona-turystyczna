@@ -11,7 +11,7 @@
     background-color: white;
 }
 
-#delete-user-button {
+.delete-user-button {
     text-align: center;
     padding: 3px 5px;
     cursor: pointer;

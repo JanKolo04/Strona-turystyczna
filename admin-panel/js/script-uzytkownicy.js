@@ -40,24 +40,4 @@ function delete_user() {
 			}
 		}
 	}
-    else if(document.querySelector(".single-delete-button").click) {
-        //show confirm alert
-		let confirmAlert = confirm("Are you want delete this user?");
-
-        if(confirmAlert == true) {
-            //send value from cehckbox into PHP
-            //in checkbox value be user_id
-            console.log(document.querySelector(".single-delete-button").value);
-            /*
-            $.ajax({
-                url: "../delete_data.php",
-                method: "post",
-                data: {user_id: document.querySelector(".single-delete-button").click.value},
-                success: function() {
-                    return true;
-                }
-            });
-            */
-        }
-    }
 }

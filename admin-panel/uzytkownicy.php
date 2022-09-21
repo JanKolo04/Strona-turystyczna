@@ -9,6 +9,10 @@
 <body>
 
     <?php
+
+        if(isset($_POST['single_delete_button'])) {
+            single_delete_button();
+        }
     
         function show_all_users() {
             global $con;
@@ -19,10 +23,13 @@
             $query = mysqli_query($con, $sql);
 
             if($query->num_rows > 0) {
+                $i=0;
                 while($row = mysqli_fetch_array($query)) {
                     echo "
                         <tr>
-                            <td><input value='{$row['id_uzytkownik']}' class='check' type='checkbox'> <button value='{$row['id_uzytkownik']}' onclick='delete_user()' class='single-delete-button' id='delete-user-button'><i id='x-icon' class='fa-solid fa-x'></i>&nbspUsuń</button></td>
+                            <td>
+                                <input value='{$row['id_uzytkownik']}' class='check' type='checkbox'>
+                                <button value='{$row['id_uzytkownik']}' class='delete-user-button' onclick='delete_user()' type='submit' name='single_delete_button'><i id='x-icon' class='fa-solid fa-x'></i>&nbspUsuń</button></td>
                             <td>{$row['id_uzytkownik']}</td>
                             <td>{$row['Imie']}</td>
                             <td>{$row['Nazwisko']}</td>
@@ -30,11 +37,24 @@
                             <td><a href='index.php?strona=uzytkownicy/uzytkownik?id={$row['id_uzytkownik']}'>Podgląd</a>
                         </tr>
                     ";
+                    $i++;
                 }
             }
             else {
                 echo "<tr><td colspan='4'>Nie ma użytkowników</td></tr>";
             }
+        }
+
+        function single_delete_button() {
+            global $con;
+
+            //value from delte button
+            $user_id = $_POST['single_delete_button'];
+            
+            //delte user sql
+            $sql = "DELETE FROM Uzytkownicy WHERE id_uzytkownik=$user_id";
+            //query
+            $query = mysqli_query($con, $sql);
         }
 
     ?>  
@@ -55,7 +75,9 @@
                     <th>Podgląd</th>
                 </thead>
                 <tbody>
-                    <?php show_all_users(); ?>
+                    <form method="POST">
+                        <?php show_all_users(); ?>
+                    </form>
                 </tbody>
             </table>
         </div>
