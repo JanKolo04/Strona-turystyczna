@@ -36,10 +36,15 @@
 
             if($query_check->num_rows == 0) {
                 //add user
-                $sql_insert = "INSERT INTO uzytkownicy(Imie, Nazwisko, Email, Data_urodzenia) VALUES('{$user_data['Name']}', '{$user_data['Surname']}', '{$user_data['Email']}', '{$user_data['Date_birth']}');";
+                $sql_insert = "INSERT INTO uzytkownicy(Imie, Nazwisko, Email, Data_urodzen) VALUES('{$user_data['Name']}', '{$user_data['Surname']}', '{$user_data['Email']}', '{$user_data['Date_birth']}');";
                 $query_insert = mysqli_query($con, $sql_insert);
 
-                echo "Dodano użytkownika";
+                if(!$query_insert) {
+                    echo "Coś poszło nie tak";
+                }
+                else {
+                    echo "Dodano użytkownika";
+                }
             }
             else {
                 echo "Instnieje użytkownik o tym Emailu";
