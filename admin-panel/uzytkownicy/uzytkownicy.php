@@ -62,7 +62,8 @@
 
     <div id='tableDiv'>
         <div id="option-header">
-            <button onclick='delete_user()' id='delete-user-button'><i id='x-icon' class="fa-solid fa-x"></i>&nbspUsuń</button>
+            <p>Działania masowe: </p>
+            <button onclick='delete_user()' class='delete-user-button'><i id='x-icon' class="fa-solid fa-x"></i>&nbspUsuń</button>
         </div>
 
         <div id="table-overwflow">

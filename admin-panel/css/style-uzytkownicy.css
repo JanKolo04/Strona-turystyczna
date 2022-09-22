@@ -8,7 +8,14 @@
     padding: 10px 10px;
     margin-bottom: 10px;
     border-radius: 6px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     background-color: white;
+}
+
+#option-header > * {
+    margin: 0px 5px 0px 5px;
 }
 
 .delete-user-button {

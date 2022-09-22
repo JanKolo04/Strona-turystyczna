@@ -10,9 +10,6 @@ function delete_user() {
 			checker = true;
 			break;
 		}
-        else {
-
-        }
 	}
 	//if checker equals true do code
 	if(checker == true) {
@@ -39,5 +36,8 @@ function delete_user() {
 				}
 			}
 		}
+	}
+	else {
+		alert("Nie zaznaczyłeś uytkownika do usunięcia");
 	}
 }
