@@ -1,0 +1,87 @@
+#addUserHolder {
+    margin: auto;
+    margin-top: 50px;
+    width: calc(50% - 20px);
+    border-radius: 6px;
+    padding: 20px;
+    background-color: white;
+}
+
+#header-add-user {
+    width: calc(100% - 20px);
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header-add-user > h2 {
+    margin: 0px;
+    color: #bfbfbf;
+    text-align: center;
+}
+
+#form-holder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    flex-direction: column;
+}
+
+#form-add-user {
+    width: 100%;
+    display: flex;
+    flex-direction: column;   
+}
+
+#inputs-holder {
+    width: clac(100% - 20px);
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#inputs-holder > input {
+    -webkit-transition: 0.5s;
+    padding: 0px 5px;
+    font-size: 15px;
+    height: 35px;
+    line-height: 35px;
+    width: 85%;
+    border: none;
+    border-bottom: 1px solid #bfbfbf;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: white;
+    color: black;
+    outline: none;
+    margin: 10px;
+}
+
+#inputs-holder > input:focus {
+    border-bottom: 1px solid black;
+    outline: none;
+}
+
+#errors-holder {
+    display: none;
+    width: calc(100% - 20px);
+    padding: 20px 10px;
+    text-align: center;
+}
+
+#submit-holder {
+    width: 92%;
+    padding: 20px 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#submit-holder > button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
