@@ -14,72 +14,74 @@
         </div>
     </div>
 
-    <div id='left-menu'>
-        <a class='links-menu' href="index.php?strona=main">
-            <div class='option'>
-                <div class='hover' id='main'>
-                    <p class="main-option">Strona główna</p>
-                </div>
-            </div>
-        </a>        
-
-        <div class='holder-option'>
-            <a class='links-menu' href="index.php?strona=uzytkownicy/uzytkownicy">
+    <div id="main">
+        <div id='left-menu'>
+            <a class='links-menu' href="index.php?strona=main">
                 <div class='option'>
-                    <div class='hover' id='uzytkownicy'>
-                        <p class="main-option">Użytkownicy</p>
+                    <div class='hover' id='main'>
+                        <p class="main-option">Strona główna</p>
+                    </div>
+                </div>
+            </a>        
+
+            <div class='holder-option'>
+                <a class='links-menu' href="index.php?strona=uzytkownicy/uzytkownicy">
+                    <div class='option'>
+                        <div class='hover' id='uzytkownicy'>
+                            <p class="main-option">Użytkownicy</p>
+                        </div>
+                    </div>
+                </a>
+                <a class='links-menu' href="index.php?strona=uzytkownicy/dodaj-uzytkownika">
+                    <div class='others-option'>
+                        <div class="hover" id="dodaj-uzytkownika">
+                            <p class="other-option">Dodaj użytkownika</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <a class='links-menu' href="index.php?strona=trasy">
+                <div class='option'>
+                    <div class='hover' id='trasy'>
+                        <p class="main-option" id="trasy">Trasy</p>
                     </div>
                 </div>
             </a>
-            <a class='links-menu' href="index.php?strona=uzytkownicy/dodaj-uzytkownika">
-                <div class='others-option'>
-                    <div class="hover" id="dodaj-uzytkownika">
-                        <p class="other-option">Dodaj użytkownika</p>
+
+            <a class='links-menu' href="index.php?strona=architekci">
+                <div class='option'>
+                    <div class='hover' id='architekci'>
+                        <p class="main-option" id="architekci">Architekci</p>
+                    </div>
+                </div>
+            </a>
+
+            <a class='links-menu' href="index.php?strona=obiekty">
+                <div class='option'>
+                    <div class='hover' id='obiekty'>
+                        <p class="main-option" id="obiekty">Obiekty</p>
                     </div>
                 </div>
             </a>
         </div>
-        
-        <a class='links-menu' href="index.php?strona=trasy">
-            <div class='option'>
-                <div class='hover' id='trasy'>
-                    <p class="main-option" id="trasy">Trasy</p>
-                </div>
-            </div>
-        </a>
 
-        <a class='links-menu' href="index.php?strona=architekci">
-            <div class='option'>
-                <div class='hover' id='architekci'>
-                    <p class="main-option" id="architekci">Architekci</p>
-                </div>
-            </div>
-        </a>
-
-        <a class='links-menu' href="index.php?strona=obiekty">
-            <div class='option'>
-                <div class='hover' id='obiekty'>
-                    <p class="main-option" id="obiekty">Obiekty</p>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <?php
-        require_once("../connection.php");
-    ?>
-
-    <div id=pageContent>
-        <?php 
-            $strona = "main";
-            //if isset variable strona set value from strona to variable strona
-            if(isset($_GET['strona'])) {
-                $strona = $_GET['strona'];
-            }
-
-            //include page 
-            require_once($strona.'.php');
+        <?php
+            require_once("../connection.php");
         ?>
+
+        <div id=pageContent>
+            <?php 
+                $strona = "main";
+                //if isset variable strona set value from strona to variable strona
+                if(isset($_GET['strona'])) {
+                    $strona = $_GET['strona'];
+                }
+
+                //include page 
+                require_once($strona.'.php');
+            ?>
+        </div>
     </div>
 
     <script>

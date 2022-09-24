@@ -13,6 +13,10 @@
         if(isset($_POST['single_delete_button'])) {
             single_delete_button();
         }
+
+        if(isset($_POST['search-button'])) {
+            search_func();           
+        }
     
         function show_all_users() {
             global $con;
@@ -58,18 +62,46 @@
             $query = mysqli_query($con, $sql);
         }
 
+        function search_func() {
+            global $con;
+
+            //get data from input
+            $input_data = $_POST['search-input'];
+
+            //search users in database
+            $sql_search = "SELECT DISTINCT * FROM uzytkownicy WHERE Imie LIKE '%$input_data%' OR Nazwisko LIKE '%$input_data%' OR Email LIKE '%$input_data%';";
+            $query_search = mysqli_query($con, $sql_search);
+
+            //maybe good sql query
+            /*
+            SELECT * FROM Uzytkownicy WHERE Imie IN 
+            (SELECT Imie FROM Uzytkownicy WHERE Imie LIKE '%Szymon%' OR Imie LIKE '%Zimecki%');
+            */
+
+            if($query_search->num_rows > 0) {
+                print_r(mysqli_fetch_array($query_search));
+                echo $sql_search;
+            }
+            else {
+                echo "Error";
+            }
+
+        }
+
     ?>  
 
     <div id="add-user-page">
-        <div id="search-holder">
-            <div id="search-header">
-                <div id="input-holder" class="search-holders">
-                    <input type="text" name="search" id='search-input' placeholder="Wyszukaj osobę...">
+        <form method="POST" style="width: 80%;">
+            <div id="search-holder">
+                <div id="search-header">
+                    <div id="input-holder" class="search-holders">
+                        <input type="text" name="search-input" id='search-input' placeholder="Wyszukaj osobę...">
+                    </div>
+                    <div id="button-search-holder" class="search-holders">
+                        <button id="search-button" name="search-button" type="submit">Szukaj</button>
+                    </div>
                 </div>
-                <div id="button-search-holder" class="search-holders">
-                    <button id="search-button" name="search-button" type="submit">Szukaj</button>
-                </div>
-            </div>
+            </form>
         </div>
 
         <div id='tableDiv'>
