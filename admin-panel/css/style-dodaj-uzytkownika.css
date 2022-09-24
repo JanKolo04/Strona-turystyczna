@@ -66,13 +66,6 @@
     outline: none;
 }
 
-#errors-holder {
-    display: none;
-    width: calc(100% - 20px);
-    padding: 20px 10px;
-    text-align: center;
-}
-
 #submit-holder {
     width: 92%;
     padding: 20px 0px;

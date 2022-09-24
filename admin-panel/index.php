@@ -31,9 +31,9 @@
                     </div>
                 </div>
             </a>
-            <a class='links-menu' href="index.php?strona=uzytkownicy/uzytkownik">
+            <a class='links-menu' href="index.php?strona=uzytkownicy/dodaj-uzytkownika">
                 <div class='others-option'>
-                    <div class="hover" id="uzytkownik">
+                    <div class="hover" id="dodaj-uzytkownika">
                         <p class="other-option">Dodaj użytkownika</p>
                     </div>
                 </div>

@@ -1,6 +1,59 @@
+#add-user-page {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*---SEARCH SECTION---*/
+#search-holder {
+    margin-top: 50px;
+    width: 50%;
+    padding: 10px 0px 10px 0px;
+    margin-bottom: 20px;
+    min-width: 500px;
+}
+
+#search-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-holders {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 5px;
+}
+
+#input-holder {
+    width: calc(80% - 10px);
+    border-radius: 4px;
+}
+
+#search-input {
+    width: 100%;
+    height: 25px;
+    font-size: 16px;
+}
+
+#button-search-holder {
+    width: calc(20% - 10px);
+    justify-content: flex-end;
+}
+
+#search-button {
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/*---TABLE SECTION---*/
 #tableDiv {
     float: left;
     width: 50%;
+    min-width: 500px;
 }
 
 #option-header {
@@ -18,10 +71,17 @@
     margin: 0px 5px 0px 5px;
 }
 
+.manipulation-td {
+    display: flex;
+    flex-direction: row;
+}
+
 .delete-user-button {
     text-align: center;
     padding: 3px 5px;
     cursor: pointer;
+    width: 60px;
+    margin-left: 10px;
 }
 
 #x-icon {

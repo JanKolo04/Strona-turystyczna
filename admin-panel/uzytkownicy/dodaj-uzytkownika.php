@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/style-uzytkownik.css">
+    <link rel="stylesheet" type="text/css" href="css/style-dodaj-uzytkownika.css">
 </head>
 <body>
 
@@ -26,7 +26,9 @@
         }
 
         function add_user() {
-            global $con;
+            global $con, $alert;
+
+            $alert = ""; //alert
 
             //get data
             $user_data = get_data_from_form();
@@ -37,18 +39,18 @@
 
             if($query_check->num_rows == 0) {
                 //add user
-                $sql_insert = "INSERT INTO uzytkownicy(Imie, Nazwisko, Email, Data_urodzen) VALUES('{$user_data['Name']}', '{$user_data['Surname']}', '{$user_data['Email']}', '{$user_data['Date_birth']}');";
+                $sql_insert = "INSERT INTO uzytkownicy(Imie, Nazwisko, Email, Data_urodzenia) VALUES('{$user_data['Name']}', '{$user_data['Surname']}', '{$user_data['Email']}', '{$user_data['Date_birth']}');";
                 $query_insert = mysqli_query($con, $sql_insert);
 
                 if(!$query_insert) {
-                    echo "Coś poszło nie tak";
+                    echo "<script>alert('Coś poszło nie tak');</script>";
                 }
                 else {
-                    echo "Dodano użytkownika";
+                    echo "<script>alert('Dodano uzytkownika');</script>";
                 }
             }
             else {
-                echo "Instnieje użytkownik o tym Emailu";
+                echo "<script>alert('Istnieje uzytkownik o tym Emailu');</script>";
             }
         }
 
@@ -67,14 +69,16 @@
                     <input type="text" name="birth_date" placeholder="yyyy-mm-dd..." pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))" required>
                 </div>
 
-                <div id="errors-holder"></div>
-
                 <div id="submit-holder">
                     <button type="submit" name="add_user">Dodaj</button>
                 </div>
             </form>
         </div>
     </div>
+
+    <script>
+
+    </script>
 
 </body>
 </html>

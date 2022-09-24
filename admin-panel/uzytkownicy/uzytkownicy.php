@@ -27,7 +27,7 @@
                 while($row = mysqli_fetch_array($query)) {
                     echo "
                         <tr>
-                            <td>
+                            <td class='manipulation-td'>
                                 <input value='{$row['id_uzytkownik']}' class='check' type='checkbox'>
                                 <button value='{$row['id_uzytkownik']}' class='delete-user-button' onclick='delete_user()' type='submit' name='single_delete_button'><i id='x-icon' class='fa-solid fa-x'></i>&nbspUsuń</button>
                             </td>
@@ -60,28 +60,41 @@
 
     ?>  
 
-    <div id='tableDiv'>
-        <div id="option-header">
-            <p>Działania masowe: </p>
-            <button onclick='delete_user()' class='delete-user-button'><i id='x-icon' class="fa-solid fa-x"></i>&nbspUsuń</button>
+    <div id="add-user-page">
+        <div id="search-holder">
+            <div id="search-header">
+                <div id="input-holder" class="search-holders">
+                    <input type="text" name="search" id='search-input' placeholder="Wyszukaj osobę...">
+                </div>
+                <div id="button-search-holder" class="search-holders">
+                    <button id="search-button" name="search-button" type="submit">Szukaj</button>
+                </div>
+            </div>
         </div>
 
-        <div id="table-overwflow">
-            <table id="table-user">
-                <thead>
-                    <th>
-                    <th>Id</th>
-                    <th>Imie</th>
-                    <th>Nazwisko</th>
-                    <th>Email</th>
-                    <th>Podgląd</th>
-                </thead>
-                <tbody>
-                    <form method="POST">
-                        <?php show_all_users(); ?>
-                    </form>
-                </tbody>
-            </table>
+        <div id='tableDiv'>
+            <div id="option-header">
+                <p>Działania masowe: </p>
+                <button onclick='delete_user()' class='delete-user-button'><i id='x-icon' class="fa-solid fa-x"></i>&nbspUsuń</button>
+            </div>
+
+            <div id="table-overwflow">
+                <table id="table-user">
+                    <thead>
+                        <th>
+                        <th>Id</th>
+                        <th>Imie</th>
+                        <th>Nazwisko</th>
+                        <th>Email</th>
+                        <th>Podgląd</th>
+                    </thead>
+                    <tbody>
+                        <form method="POST">
+                            <?php show_all_users(); ?>
+                        </form>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
