@@ -91,7 +91,7 @@
     ?>  
 
     <div id="add-user-page">
-        <form method="POST" style="width: 80%;">
+        <form method="POST" id="search-form">
             <div id="search-holder">
                 <div id="search-header">
                     <div id="input-holder" class="search-holders">

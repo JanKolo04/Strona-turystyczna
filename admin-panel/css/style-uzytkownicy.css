@@ -6,6 +6,12 @@
 }
 
 /*---SEARCH SECTION---*/
+#search-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 #search-holder {
     margin-top: 50px;
     width: 50%;
