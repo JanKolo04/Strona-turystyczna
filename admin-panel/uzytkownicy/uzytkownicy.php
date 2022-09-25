@@ -13,10 +13,6 @@
         if(isset($_POST['single_delete_button'])) {
             single_delete_button();
         }
-
-        if(isset($_POST['search-button'])) {
-            search_func();           
-        }
     
         function show_all_users() {
             global $con;
@@ -63,11 +59,10 @@
         }
 
 
-        function create_search_func() {
+        function search_func() {
             //get data from input
-            //$input_data = $_POST['search-input'];
+            $input_data = $_POST['search-input'];
 
-            $input_data = "Szymon Zimecki";
             //split input
             $split_data = explode(" ", $input_data);
 
@@ -106,38 +101,6 @@
 
         }
 
-        create_search_func();
-
-        function search_func() {
-            global $con;
-
-            //get data from input
-            $input_data = $_POST['search-input'];
-
-            //search users in database
-            $sql_search = "SELECT DISTINCT * FROM uzytkownicy WHERE Imie LIKE '%$input_data%' OR Nazwisko LIKE '%$input_data%' OR Email LIKE '%$input_data%';";
-            $query_search = mysqli_query($con, $sql_search);
-
-            //maybe good sql query
-            /*
-            finished function to search but I have to do this better
-            SELECT * FROM Uzytkownicy WHERE Imie IN (select Imie from Uzytkownicy where Imie like '%Szymon%' or Imie like '%Zimecki%');
-
-
-            OR Nazwisko IN (select Nazwisko from Uzytkownicy where Nazwisko like '%Szymon%' or Nazwisko like '%Zimecki%')
-            OR Email IN (select Email from Uzytkownicy where Email like '%Szymon%' or Email like '%Zimecki%');
-
-            */
-
-            if($query_search->num_rows > 0) {
-                print_r(mysqli_fetch_array($query_search));
-                echo $sql_search;
-            }
-            else {
-                echo "Error";
-            }
-
-        }
 
     ?>  
 
@@ -173,7 +136,19 @@
                     </thead>
                     <tbody>
                         <form method="POST">
-                            <?php show_all_users(); ?>
+                            <?php 
+                                if(isset($_POST['search-button'])) {
+                                    if(strlen($_POST['search-input']) > 0) {
+                                        search_func();
+                                    }
+                                    else {
+                                        show_all_users();
+                                    }
+                                }
+                                else {
+                                    show_all_users();
+                                }
+                            ?>
                         </form>
                     </tbody>
                 </table>
