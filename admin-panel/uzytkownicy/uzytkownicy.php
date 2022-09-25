@@ -62,6 +62,52 @@
             $query = mysqli_query($con, $sql);
         }
 
+
+        function create_search_func() {
+            //get data from input
+            //$input_data = $_POST['search-input'];
+
+            $input_data = "Szymon Zimecki";
+            //split input
+            $split_data = explode(" ", $input_data);
+
+            //column to search in uzytkownicy table
+            $columns_array = ["Imie", "Nazwisko", "Email"];
+            //set search variable with primary syntax
+            $search_sql = "SELECT * FROM Uzytkownicy WHERE ";
+            /*
+                first loop is to go for all columns from columns_array
+                second loop is to go for all split data from input
+            */
+            for($i=0; $i<sizeof($columns_array); $i++) {
+                //if its first column don't add OR before column
+                if($i == 0) { 
+                    $search_sql .= "$columns_array[$i] IN";
+                }
+                else {
+                    $search_sql .= " OR $columns_array[$i] IN";
+                }
+
+                //set primary search in
+                $search_sql .= " (select $columns_array[$i] from Uzytkownicy where";
+                for($y=0; $y<sizeof($split_data); $y++) {
+                    //if data from explode isn't last add OR after like
+                    if($y < sizeof($split_data) - 1) {
+                        $search_sql .= " $columns_array[$i] like '%{$split_data[$y]}%' or";
+                    }
+                    else {
+                        $search_sql .= " $columns_array[$i] like '%{$split_data[$y]}%') ";
+                    }
+                }
+            }
+            $search_sql .= ';';
+            echo "SELECT * FROM Uzytkownicy WHERE Imie IN (select Imie from Uzytkownicy where Imie like '%Szymon%' or Imie like '%Zimecki%');</br>";
+            echo $search_sql;
+
+        }
+
+        create_search_func();
+
         function search_func() {
             global $con;
 
@@ -74,8 +120,13 @@
 
             //maybe good sql query
             /*
-            SELECT * FROM Uzytkownicy WHERE Imie IN 
-            (SELECT Imie FROM Uzytkownicy WHERE Imie LIKE '%Szymon%' OR Imie LIKE '%Zimecki%');
+            finished function to search but I have to do this better
+            SELECT * FROM Uzytkownicy WHERE Imie IN (select Imie from Uzytkownicy where Imie like '%Szymon%' or Imie like '%Zimecki%');
+
+
+            OR Nazwisko IN (select Nazwisko from Uzytkownicy where Nazwisko like '%Szymon%' or Nazwisko like '%Zimecki%')
+            OR Email IN (select Email from Uzytkownicy where Email like '%Szymon%' or Email like '%Zimecki%');
+
             */
 
             if($query_search->num_rows > 0) {
