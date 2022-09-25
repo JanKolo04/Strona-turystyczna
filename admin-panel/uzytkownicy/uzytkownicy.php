@@ -10,39 +10,42 @@
 
     <?php
 
+        //global varibale 
+        
+        $array_data = [];
+
         if(isset($_POST['single_delete_button'])) {
             single_delete_button();
         }
-    
+
         function show_all_users() {
             global $con;
             
+            $array_data = [];
+
             //find all users
             $sql = "SELECT * FROM uzytkownicy";
             //query
             $query = mysqli_query($con, $sql);
 
+            //check if query is bigger than 0
             if($query->num_rows > 0) {
-                $i=0;
+                $i=0; //counter
+                //loop to add data into array
                 while($row = mysqli_fetch_array($query)) {
-                    echo "
-                        <tr>
-                            <td class='manipulation-td'>
-                                <input value='{$row['id_uzytkownik']}' class='check' type='checkbox'>
-                                <button value='{$row['id_uzytkownik']}' class='delete-user-button' onclick='delete_user()' type='submit' name='single_delete_button'><i id='x-icon' class='fa-solid fa-x'></i>&nbspUsuń</button>
-                            </td>
-                            <td>{$row['id_uzytkownik']}</td>
-                            <td>{$row['Imie']}</td>
-                            <td>{$row['Nazwisko']}</td>
-                            <td>{$row['Email']}</td>
-                            <td><a href='index.php?strona=uzytkownicy/uzytkownik?id={$row['id_uzytkownik']}'>Podgląd</a>
-                        </tr>
-                    ";
+                    $array_data[$i] = [
+                        "id_uzytkownik"=>$row['id_uzytkownik'],
+                        "Imie"=>$row['Imie'],
+                        "Nazwisko"=>$row['Nazwisko'],
+                        "Email"=>$row['Email']
+                    ];
                     $i++;
                 }
+                //print data
+                print_data($array_data);
             }
             else {
-                echo "<tr><td colspan='4'>Nie ma użytkowników</td></tr>";
+                echo "<tr><td colspan='6'>Nie ma użytkowników</td></tr>";
             }
         }
 
@@ -60,6 +63,9 @@
 
 
         function search_func() {
+            global $con;
+            $array_data = [];
+
             //get data from input
             $input_data = $_POST['search-input'];
 
@@ -96,10 +102,50 @@
                 }
             }
             $search_sql .= ';';
-            echo "SELECT * FROM Uzytkownicy WHERE Imie IN (select Imie from Uzytkownicy where Imie like '%Szymon%' or Imie like '%Zimecki%');</br>";
-            echo $search_sql;
+            //query
+            $query = mysqli_query($con, $search_sql);
+
+            //check if query is bigger than 0
+            if($query->num_rows > 0) {
+                $i=0; //counter
+                //loop to add data into array
+                while($row = mysqli_fetch_array($query)) {
+                    $array_data[$i] = [
+                        "id_uzytkownik"=>$row['id_uzytkownik'],
+                        "Imie"=>$row['Imie'],
+                        "Nazwisko"=>$row['Nazwisko'],
+                        "Email"=>$row['Email']
+                    ];
+                    $i++;
+                }
+                //print data
+                print_data($array_data);
+            }
+            else {
+                echo "<tr><td colspan='6'>Brak wyników wyszukiwania</td></tr>";
+            }
 
         }
+
+        function print_data($array) {
+
+            for($i=0; $i<sizeof($array); $i++) {
+                echo "
+                    <tr>
+                        <td class='manipulation-td'>
+                            <input value='{$array[$i]['id_uzytkownik']}' class='check' type='checkbox'>
+                            <button value='{$array[$i]['id_uzytkownik']}' class='delete-user-button' onclick='delete_user()' type='submit' name='single_delete_button'><i id='x-icon' class='fa-solid fa-x'></i>&nbspUsuń</button>
+                        </td>
+                        <td>{$array[$i]['id_uzytkownik']}</td>
+                        <td>{$array[$i]['Imie']}</td>
+                        <td>{$array[$i]['Nazwisko']}</td>
+                        <td>{$array[$i]['Email']}</td>
+                        <td><a href='index.php?strona=uzytkownicy/uzytkownik?id={$array[$i]['id_uzytkownik']}'>Podgląd</a>
+                    </tr>
+                ";
+            }
+        }
+
 
 
     ?>  

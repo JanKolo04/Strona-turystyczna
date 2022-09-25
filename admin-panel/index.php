@@ -18,7 +18,7 @@
         <div id='left-menu'>
             <a class='links-menu' href="index.php?strona=main">
                 <div class='option'>
-                    <div class='hover' id='main'>
+                    <div class='hover' id='strona-glowna'>
                         <p class="main-option">Strona główna</p>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
             //if page is main change color for main id object
             else {
                 //chnage color of menu option 
-                document.querySelector("#main").style = "background-color: #666666;";
+                document.querySelector("#strona-glowna").style = "background-color: #666666;";
             }
         }
 
