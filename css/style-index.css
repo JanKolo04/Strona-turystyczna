@@ -1,15 +1,20 @@
-body {
+html, body {
+    height: 100%;
     margin: 0px;
     background-color: #E2E0DB;
 }
 
 #baner {
+    position: fixed;
+    top: 0px;
+    left: 0px;
     height: 70px;
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: row;
     background-color: black;
+    z-index: 1;
 }
 
 #logo-holder {
@@ -52,6 +57,11 @@ body {
     background-color: #E2E0DB;
 }
 
+
+#pageContent {
+    min-height: 630px;
+}
+
 /*---FOOTER---*/
 #footer {
     width: 100%;
@@ -78,6 +88,10 @@ body {
     height: 0px;
 }
 
+#about-us {
+    font-size: clamp(15px, 50%, 16px);
+}
+
 #nav-menu {
     display: flex;
     flex-direction: column;
@@ -86,6 +100,7 @@ body {
 #list {
     padding: 0px;
     margin: 0px;
+    width: 80%;
 }
 
 #first-link {
@@ -97,6 +112,10 @@ li {
     list-style-type: none;
     padding-bottom: 5px;
     border-bottom: 1px solid #666666;
+}
+
+#contact {
+    width: 20% !important;
 }
 
 .contact-data {
