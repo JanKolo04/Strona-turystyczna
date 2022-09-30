@@ -7,6 +7,13 @@
 </head>
 <body>
 
+    <?php
+    
+        function get_all_data() {
+            global $con;
+        }
+    
+    ?>
 
 </body>
 </html>
