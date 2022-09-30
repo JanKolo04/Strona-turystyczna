@@ -9,7 +9,7 @@
 
     <?php
 
-        require_once("../../connection.php");
+        require_once("../connection.php");
 
         function save_move_on_page() {
             global $con;
@@ -31,8 +31,6 @@
                 $query_set = mysqli_query($con, $set_sql);
             }
         }
-
-        save_move_on_page();
 
     ?>
 
