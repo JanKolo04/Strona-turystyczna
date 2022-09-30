@@ -1,0 +1,40 @@
+/*---chart---*/
+#chartdata {
+    margin: 20px;
+    width: 700px;
+    padding: 0px 40px 20px 40px;
+    border-radius: 6px;
+    border: 1px solid #dadce0;
+    background-color: white;
+}
+
+#chart-header {
+    padding: 0px 30px;
+}
+
+.option-chart {
+    width: 85px;
+}
+
+.border-top {
+    height: 4px;
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: blue;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.option-chart > label {
+    font-size: 15px;
+    color: #5f6368;
+}
+
+.option-chart > span {
+    font-size: 28px;
+}
+
+
+#myChart {
+    margin-top: 20px;
+}
