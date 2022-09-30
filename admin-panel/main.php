@@ -20,7 +20,6 @@
 
         <canvas id="myChart"></canvas>
     </div>
-    
 
     <?php
     
