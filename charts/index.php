@@ -24,7 +24,7 @@
             $check_query = mysqli_query($con, $check_sql);
 
             if($check_query->num_rows == 0) {
-                //set user day row
+                //set user day row if dosen't exist
                 $set_sql = "INSERT INTO Move(id_user, Date) VALUES($id_user, '$current_date');";
                 $query_set = mysqli_query($con, $set_sql);
             }
