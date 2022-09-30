@@ -9,12 +9,10 @@
 
     <?php
 
-        require_once("../connection.php");
-
         function save_move_on_page() {
             global $con;
             //user id
-            $id_user = 4;
+            $id_user = 1;
 
             //get current date
             $mydate=getdate(date("U"));
