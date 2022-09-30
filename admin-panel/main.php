@@ -62,7 +62,6 @@
     ?>
 
     <script>
-        
 
         //arrays with data
         var users = <?php echo json_encode($array_data['users']); ?>;
