@@ -62,7 +62,14 @@
     ?>
 
     <script>
+<<<<<<< HEAD
 
+=======
+        
+            //arrays with data
+            var users = <?php echo json_encode($array_data['users']); ?>;
+            var dates = <?php echo json_encode($array_data['dates']); ?>;
+>>>>>>> 88dc991 (some)
 
         //arrays with data
         var users = <?php echo json_encode($array_data['users']); ?>;
