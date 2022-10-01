@@ -13,7 +13,7 @@
         <div id="chart-header">
             <div class="option-chart">
                 <div class="border-top"></div>
-                <label for="users-count">Uzytkownicy</label></br>
+                <label for="users-count">Ilość wejść</label></br>
                 <span id="users-count"></span>
             </div>
         </div>
@@ -62,14 +62,6 @@
     ?>
 
     <script>
-<<<<<<< HEAD
-
-=======
-        
-            //arrays with data
-            var users = <?php echo json_encode($array_data['users']); ?>;
-            var dates = <?php echo json_encode($array_data['dates']); ?>;
->>>>>>> 88dc991 (some)
 
         //arrays with data
         var users = <?php echo json_encode($array_data['users']); ?>;
