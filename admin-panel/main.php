@@ -20,7 +20,6 @@
 
         <canvas id="myChart"></canvas>
     </div>
-    
 
     <?php
     
@@ -63,49 +62,49 @@
     ?>
 
     <script>
-        
 
-            //arrays with data
-            var users = <?php echo json_encode($array_data['users']); ?>;
-            var dates = <?php echo json_encode($array_data['dates']); ?>;
 
-            //max users
-            let max_users = Math.max.apply(Math, users)+5;
+        //arrays with data
+        var users = <?php echo json_encode($array_data['users']); ?>;
+        var dates = <?php echo json_encode($array_data['dates']); ?>;
 
-            //sum all users
-            let sum = users.reduce((partialSum, a) => partialSum + a, 0);
-            //set max users count in label
-            document.querySelector("#users-count").innerHTML = sum;
+        //max users
+        let max_users = Math.max.apply(Math, users)+5;
 
-            let chart = document.querySelector("#myChart");
+        //sum all users
+        let sum = users.reduce((partialSum, a) => partialSum + a, 0);
+        //set max users count in label
+        document.querySelector("#users-count").innerHTML = sum;
 
-            //configure chart
-            new Chart(chart, {
-                type: "line",
-                data: {
-                    labels: dates,
-                    datasets: [{
-                    fill: false,
-                    lineTension: 0,
-                    backgroundColor: "rgba(0,0,255,1.0)",
-                    borderColor: "rgba(0,0,255,0.1)",
-                    data: users,
-                    label: "Ilość",
-                    }]
+        let chart = document.querySelector("#myChart");
+
+        //configure chart
+        new Chart(chart, {
+            type: "line",
+            data: {
+                labels: dates,
+                datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: "rgba(0,0,255,1.0)",
+                borderColor: "rgba(0,0,255,0.1)",
+                data: users,
+                label: "Ilość",
+                }]
+            },
+            options: {
+                /*
+                title: {
+                    display: true,
+                    text: 'Ilość wejść na strone'
                 },
-                options: {
-                    /*
-                    title: {
-                        display: true,
-                        text: 'Ilość wejść na strone'
-                    },
-                    */
-                    legend: {display: false},
-                    scales: {
-                        yAxes: [{ticks: {min: 0, max:max_users}}]
-                    }
+                */
+                legend: {display: false},
+                scales: {
+                    yAxes: [{ticks: {min: 0, max:max_users}}]
                 }
-            });
+            }
+        });
     
     </script>
 
