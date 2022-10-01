@@ -13,7 +13,10 @@
         <div id="chart-header">
             <div class="option-chart">
                 <div class="border-top"></div>
+                
+                <label for="users-count">Ilość uzytkowników</label></br>
                 <label for="users-count">Ilość wejść</label></br>
+
                 <span id="users-count"></span>
             </div>
         </div>
