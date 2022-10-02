@@ -10,7 +10,7 @@
     <?php
 
         function object_data() {
-            global $con;
+            global $con, $source_photos, $file_count;
 
             //object id
             $object_id = $_GET['obiekt'];
@@ -22,8 +22,12 @@
             //show all data
             if($query->num_rows > 0) {
                 while($row = mysqli_fetch_array($query)) {
-                    //main image
-                    $main_img = "img/{$row['Media']}/main.jpeg";
+                    //source to photos
+                    $source_photos = "img/".$row['Media']."/";
+                    $main_file = $source_photos."main\ 1.jpeg";
+
+                    $iterator = new FilesystemIterator($source_photos, FilesystemIterator::SKIP_DOTS);
+                    $file_count = iterator_count($iterator);
 
                     echo "  
                         <div id='currentObjectName'>
@@ -56,7 +60,14 @@
                                 </div>
                             </div>
 
-                            <div id='mainImage' style='background-image: url($main_img);'></div>
+                            <div id='gallery' style='background-image: url($main_file);'>
+                                <div id='navigation-menu-gallery'>
+                                    <div id='space'>
+                                        <button id='previous-button'>←</button>
+                                        <button id='next-button'>→</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     ";
                 }
@@ -107,6 +118,66 @@
             <?php show_close_objects(); ?>
         </div>
     </div>
+
+    <script>
+
+        function change_photo() {
+            //button
+            let button_prev = document.querySelector("#previous-button");
+            let button_next = document.querySelector("#next-button");
+            
+            //soruce of object media 
+            let source_photos = <?php echo json_encode($source_photos); ?>;
+
+            //main file name
+            let file_name = "main";
+            //div in wihich we will seting new photo
+            let backGorund = document.querySelector("#gallery");
+
+            //len of all photos
+            let len = <?php echo json_encode($file_count); ?>;
+
+            let i = 1; //iteration
+            //function for previous button
+            button_prev.onclick = function() {
+                //photo name
+                let photo = "";
+                if(i == 1) {
+                    photo = file_name+" "+len+".jpeg";
+                    i = len;
+                }
+                else {
+                    photo = file_name+" "+(i-1)+".jpeg";
+                    i--;
+                }
+                //set new photo
+                backGorund.style = "background-image: url('img/"+photo+"')";
+            }
+
+            //function for next button
+            button_next.onclick = function() {
+                //photo name
+                let photo = "";
+                if(i == len) {
+                    photo = file_name+" "+1+".jpeg";
+                    i = 1;
+                }
+                else {
+                    photo = file_name+" "+(i+1)+".jpeg";
+                    i++;
+                }
+                //set new photo
+                backGorund.style = "background-image: url('"+source_photos+photo+"')";
+            }
+
+        }
+        window.onload = function() {
+            change_photo();
+        }
+        
+
+    </script>
+
 
 </body>
 </html>
