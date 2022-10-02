@@ -151,7 +151,7 @@
                     i--;
                 }
                 //set new photo
-                backGorund.style = "background-image: url('img/"+photo+"')";
+                backGorund.style = "background-image: url('"+source_photos+photo+"')";
             }
 
             //function for next button
