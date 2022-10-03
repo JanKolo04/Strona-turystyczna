@@ -25,8 +25,12 @@
 
             if($check_query->num_rows == 0) {
                 //set user day row if dosen't exist
-                $set_sql = "INSERT INTO Move(id_user, Date) VALUES($id_user, '$current_date');";
+                $set_sql = "INSERT INTO Move(id_user, Count_visit, Date) VALUES($id_user, 1, '$current_date');";
                 $query_set = mysqli_query($con, $set_sql);
+            }
+            else {
+                $update_sql = "UPDATE Move SET Count_visit=Count_visit+1 WHERE id_user=$id_user AND Date='$current_date'";
+                $update_query = mysqli_query($con, $update_sql);
             }
         }
 

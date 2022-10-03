@@ -37,17 +37,34 @@
             $from_date = date_sub($date_create,date_interval_create_from_date_string("6 days"))->format('Y-m-d');
 
             //seatrch moves
-            $sql_all = "SELECT COUNT(id_user) AS 'count_users', Date FROM Move WHERE Date BETWEEN '$from_date' AND '$current_date' GROUP BY Date";
+            $sql_all = "SELECT Count_visit, Date FROM Move WHERE Date BETWEEN '$from_date' AND '$current_date' GROUP BY Date";
             $query_all = mysqli_query($con, $sql_all);
+
+            //get all dates between current and 6 day ago
+            $period = new DatePeriod(
+                new DateTime($from_date),
+                new DateInterval('P1D'),
+                new DateTime(date('Y-m-d', strtotime($current_date . ' +1 day')))
+            );
 
             //insert data into arrays
             $users = [];
             $dates = [];
             $i=0; //counter
-            while($row = mysqli_fetch_array($query_all)) {
-                $users[$i] = intval($row['count_users']);
-                $dates[$i] = $row['Date'];
+            foreach($period as $key => $value) {
+                $users[$i] = 0;
+                $dates[$i] = $value->format('Y-m-d');
                 $i++;
+            }
+
+            //check which dates is same and update data
+            while($row = mysqli_fetch_array($query_all)) {
+                for($i=0; $i<sizeof($dates); $i++) {
+                    if($dates[$i] == $row['Date']) {
+                        $users[$i] = intval($row['Count_visit']);
+                        $dates[$i] = $row['Date'];
+                    }
+                }
             }
 
             //combain all arrays
