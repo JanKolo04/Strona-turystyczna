@@ -58,7 +58,11 @@
     margin-top: 2px;
 }
 
-#mainImage {
+/*---GALLERY--*/
+#gallery {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     width: 70%;
     height: 598px;
     border-top: 1px solid black;
@@ -67,6 +71,26 @@
     border-right: 1px solid black;
     background-repeat: no-repeat;
     background-position: center; 
+}
+
+#navigation-menu-gallery {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#space {
+    display: inline-block;
+}
+
+#space > button {
+    margin-right: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+#space > button:last-child {
+    margin-right: 40px;
 }
 
 
