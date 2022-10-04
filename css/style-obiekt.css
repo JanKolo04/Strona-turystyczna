@@ -84,7 +84,7 @@
     display: inline-block;
 }
 
-#space > button {
+.gallery-button {
     margin-right: 1px;
     margin-bottom: 20px;
     cursor: pointer;
@@ -95,29 +95,67 @@
     background-color: white;
 }
 
-#space > button:hover {
+.gallery-button:hover {
     -webkit-transition: 0.5s;
     transform: scale(0.9);
     background-color: rgb(74,234,220);
 }
 
-#space > button:last-child {
+#sapce > button:last-child {
     margin-right: 80px;
 }
 
-#previous-button {
+.previous-button {
     background-image: url("../img/icon/left-arrow.png");
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-#next-button {
+.next-button {
     background-image: url("../img/icon/right-arrow.png");
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: center;
 }
+
+/*--maxview-gallery--*/
+#maxview-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#maxview-header {
+    width: 100%;
+    padding: 20px 0px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#close-maxview {
+    margin-right: 100px; 
+}
+
+#maxview-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+#max-view-photo-holder {
+    height: 800px;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+
 
 /*--OTHER OBJECTS--*/
 #objectsMainHolder {
