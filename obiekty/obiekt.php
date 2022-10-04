@@ -9,6 +9,7 @@
 
     <?php
 
+
         function object_data() {
             global $con, $source_photos, $file_count;
 
@@ -63,8 +64,8 @@
                             <div id='gallery' style='background-image: url($main_file);'>
                                 <div id='navigation-menu-gallery'>
                                     <div id='space'>
-                                        <button id='previous-button'>←</button>
-                                        <button id='next-button'>→</button>
+                                        <button onclick='change_photo()' class='gallery-button previous-button' id='previous-button'></button>
+                                        <button class='gallery-button next-button' id='next-button'></button>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +95,7 @@
                     $link_to_work = "index.php?strona=obiekty/obiekt&obiekt={$row_works['Id']}&trasa={$row_works['Id_trasa']}";
                     echo "
                         <div class='workHolder'>
-                            <a href='$link_to_work'><img class='workImg' src='img/{$row_works['Media']}/main.jpeg'></a>
+                            <a href='$link_to_work'><img class='workImg' src='img/{$row_works['Media']}/main 1.jpeg'></a>
                             <div class='workInfo'>
                                 <a class='workName' href='$link_to_work'><h4>{$row_works['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
                             </div>
@@ -105,6 +106,25 @@
         }
 
     ?>
+
+    <div id="maxview-gallery">
+        <div id="maxview-header">
+            <button id="close-maxview">X</button>
+        </div>
+
+        <div id="maxview-content">
+            <div>
+                <button class='gallery-button previous-button' id="previous-button-maxview"></button>
+            </div>
+
+            <div id="max-view-photo-holder" style="background-image: url('img/kosciol_mariacki/main 1.jpeg');">
+            </div>
+
+            <div>
+                <button class='gallery-button next-button' id="next-button-maxview"></button>
+            </div>
+        </div>
+    </div>
 
     <div id='currentObejctHolder'>
         <?php object_data(); ?>
@@ -123,16 +143,33 @@
 
         function change_photo() {
             //button
-            let button_prev = document.querySelector("#previous-button");
-            let button_next = document.querySelector("#next-button");
-            
+            let button_prev = "";
+            let button_next = "";
+            //div in wihich we will seting new photo
+            let backGround = "";
+
+            //max view window
+            let maxsize_window = document.querySelector("#maxview-gallery");
+
+            //if maxview window display is none get default navigation gallery button
+            //but if isn't none get buttons from maxview window
+            if(window.getComputedStyle(maxsize_window).display == "none") {
+                button_prev = document.querySelector("#previous-button");
+                button_next = document.querySelector("#next-button");
+                //select gallery background
+                backGround = document.querySelector("#gallery");
+            }
+            else {
+                button_prev = document.querySelector("#previous-button-maxview");
+                button_next = document.querySelector("#next-button-maxview");
+                //select gallery background
+                backGround = document.querySelector("#max-view-photo-holder");
+            }
             //soruce of object media 
             let source_photos = <?php echo json_encode($source_photos); ?>;
 
             //main file name
             let file_name = "main";
-            //div in wihich we will seting new photo
-            let backGorund = document.querySelector("#gallery");
 
             //len of all photos
             let len = <?php echo json_encode($file_count); ?>;
@@ -151,7 +188,7 @@
                     i--;
                 }
                 //set new photo
-                backGorund.style = "background-image: url('"+source_photos+photo+"')";
+                backGround.style = "background-image: url('"+source_photos+photo+"')";
             }
 
             //function for next button
@@ -167,10 +204,11 @@
                     i++;
                 }
                 //set new photo
-                backGorund.style = "background-image: url('"+source_photos+photo+"')";
+                backGround.style = "background-image: url('"+source_photos+photo+"')";
             }
 
         }
+
         window.onload = function() {
             change_photo();
         }
