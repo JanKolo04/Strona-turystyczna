@@ -62,7 +62,6 @@
                 for($i=0; $i<sizeof($dates); $i++) {
                     if($dates[$i] == $row['Date']) {
                         $users[$i] = intval($row['Count_visit']);
-                        $dates[$i] = $row['Date'];
                     }
                 }
             }
@@ -72,7 +71,6 @@
                 "users"=>$users, 
                 "dates"=>$dates
             ];
-            return $array_data;
         }
 
         get_all_data();
