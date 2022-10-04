@@ -12,7 +12,7 @@
 }
 
 #currentObjectInfo {
-    width: 30%;
+    width: calc(50% - 15px - 20px);
     height: 548px;
     padding: 25px 85px;
     display: flex;
@@ -63,7 +63,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    width: 70%;
+    width: calc(50% + 15px + 20px);
     height: 598px;
     border-top: 1px solid black;
     border-left: 0px;
@@ -71,6 +71,7 @@
     border-right: 1px solid black;
     background-repeat: no-repeat;
     background-position: center; 
+    background-size: 100% 598px;
 }
 
 #navigation-menu-gallery {
@@ -84,15 +85,39 @@
 }
 
 #space > button {
-    margin-right: 10px;
+    margin-right: 1px;
     margin-bottom: 20px;
     cursor: pointer;
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    border: none;
+    background-color: white;
+}
+
+#space > button:hover {
+    -webkit-transition: 0.5s;
+    transform: scale(0.9);
+    background-color: rgb(74,234,220);
 }
 
 #space > button:last-child {
-    margin-right: 40px;
+    margin-right: 80px;
 }
 
+#previous-button {
+    background-image: url("../img/icon/left-arrow.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#next-button {
+    background-image: url("../img/icon/right-arrow.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 /*--OTHER OBJECTS--*/
 #objectsMainHolder {
@@ -101,6 +126,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 20px 0px;
 }
 
 #objectsHolder {

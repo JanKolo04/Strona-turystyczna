@@ -63,8 +63,8 @@
                             <div id='gallery' style='background-image: url($main_file);'>
                                 <div id='navigation-menu-gallery'>
                                     <div id='space'>
-                                        <button id='previous-button'>←</button>
-                                        <button id='next-button'>→</button>
+                                        <button id='previous-button'></button>
+                                        <button id='next-button'></button>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                     $link_to_work = "index.php?strona=obiekty/obiekt&obiekt={$row_works['Id']}&trasa={$row_works['Id_trasa']}";
                     echo "
                         <div class='workHolder'>
-                            <a href='$link_to_work'><img class='workImg' src='img/{$row_works['Media']}/main.jpeg'></a>
+                            <a href='$link_to_work'><img class='workImg' src='img/{$row_works['Media']}/main 1.jpeg'></a>
                             <div class='workInfo'>
                                 <a class='workName' href='$link_to_work'><h4>{$row_works['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
                             </div>
