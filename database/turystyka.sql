@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Czas generowania: 19 Wrz 2022, 20:51
+-- Czas generowania: 04 Paź 2022, 19:49
 -- Wersja serwera: 10.4.21-MariaDB
 -- Wersja PHP: 8.0.19
 
@@ -43,6 +43,28 @@ INSERT INTO `Architekci` (`Id`, `Imie`, `Nazwisko`) VALUES
 (3, 'Michał', 'Śmieszniak'),
 (4, 'Wiktor', 'Kusztykiewicz'),
 (5, 'Szymon', 'Zimecki');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `Move`
+--
+
+CREATE TABLE `Move` (
+  `id_move` int(255) NOT NULL,
+  `id_user` int(255) NOT NULL,
+  `Count_visit` int(255) DEFAULT NULL,
+  `Date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `Move`
+--
+
+INSERT INTO `Move` (`id_move`, `id_user`, `Count_visit`, `Date`) VALUES
+(12, 2, 2, '2022-09-28'),
+(13, 4, 3, '2022-10-01'),
+(16, 1, 9, '2022-10-03');
 
 -- --------------------------------------------------------
 
@@ -108,19 +130,19 @@ CREATE TABLE `Uzytkownicy` (
   `Imie` varchar(255) DEFAULT NULL,
   `Nazwisko` varchar(255) DEFAULT NULL,
   `Email` text DEFAULT NULL,
-  `Data_urodzin` date DEFAULT NULL
+  `Data_urodzenia` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `Uzytkownicy`
 --
 
-INSERT INTO `Uzytkownicy` (`id_uzytkownik`, `Imie`, `Nazwisko`, `Email`, `Data_urodzin`) VALUES
+INSERT INTO `Uzytkownicy` (`id_uzytkownik`, `Imie`, `Nazwisko`, `Email`, `Data_urodzenia`) VALUES
 (1, 'Jan', 'Kołodziej', 'jankolodziej99@gmail.com', '2004-08-03'),
 (2, 'Dominik', 'Szerniewicz', 'dszerniewicz24@gmail.com', '2003-03-24'),
 (3, 'Szymon', 'Zimecki', 'szimecki20@gmail.com', '2003-02-20'),
 (4, 'Wiktor', 'Kusztykiewicz', 'wkusztykiewicz20@gmail.com', '2003-04-20'),
-(5, 'Michał', 'Śmieszniak', 'msmieszniak12@gmail.com', '2003-06-12');
+(6, 'Ola', 'Kelner', 'ola2406@op.pl', '2003-06-24');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -131,6 +153,12 @@ INSERT INTO `Uzytkownicy` (`id_uzytkownik`, `Imie`, `Nazwisko`, `Email`, `Data_u
 --
 ALTER TABLE `Architekci`
   ADD PRIMARY KEY (`Id`);
+
+--
+-- Indeksy dla tabeli `Move`
+--
+ALTER TABLE `Move`
+  ADD PRIMARY KEY (`id_move`);
 
 --
 -- Indeksy dla tabeli `Obiekty`
@@ -163,6 +191,12 @@ ALTER TABLE `Architekci`
   MODIFY `Id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT dla tabeli `Move`
+--
+ALTER TABLE `Move`
+  MODIFY `id_move` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT dla tabeli `Obiekty`
 --
 ALTER TABLE `Obiekty`
@@ -178,7 +212,7 @@ ALTER TABLE `Trasy`
 -- AUTO_INCREMENT dla tabeli `Uzytkownicy`
 --
 ALTER TABLE `Uzytkownicy`
-  MODIFY `id_uzytkownik` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_uzytkownik` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Ograniczenia dla zrzutów tabel
