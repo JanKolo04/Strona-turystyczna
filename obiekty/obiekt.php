@@ -29,7 +29,7 @@
 
                     $iterator = new FilesystemIterator($source_photos, FilesystemIterator::SKIP_DOTS);
                     $file_count = iterator_count($iterator);
-
+                    $flex = "flex";
                     echo "  
                         <div id='currentObjectName'>
                             <h1>{$row['Nazwa']}</h1>
@@ -64,7 +64,7 @@
                             <div id='gallery' style='background-image: url($main_file);'>
                                 <div id='navigation-menu-gallery'>
                                     <div id='maxview-button-holder'>
-                                        <button onclick='open_maxview();' class='gallery-button' id='open-maxview'></button>
+                                        <button onclick='open_close_maxview(this)' class='gallery-button' id='open-maxview' value='flex'></button>
                                     </div>
                                     <div id='navigation-buttons-holder'>
                                         <div id='space'>
@@ -114,18 +114,18 @@
 
     <div id="maxview-gallery">
         <div id="maxview-header">
-            <button id="close-maxview">X</button>
+            <button onclick="open_close_maxview(this);" id="close-maxview" class="gallery-button" value='none'></button>
         </div>
 
         <div id="maxview-content">
-            <div>
+            <div class="navigation-button-holder-maxsize">
                 <button class='gallery-button previous-button' id="previous-button-maxview"></button>
             </div>
 
             <div id="max-view-photo-holder" style="background-image: url('img/kosciol_mariacki/main 1.jpeg');">
             </div>
 
-            <div>
+            <div class="navigation-button-holder-maxsize">
                 <button class='gallery-button next-button' id="next-button-maxview"></button>
             </div>
         </div>
@@ -146,44 +146,32 @@
 
     <script>
 
-        function open_maxview() {
+        function open_close_maxview(element) {
             //get maxview gallery
             let maxview = document.querySelector('#maxview-gallery');
+            //action on maxview
+            console.log(element.value);
+            maxview.style.display = element.value;
 
-            //if gallery isn't open change display into flex
-            //else hidde gallery
-            if(window.getComputedStyle(maxview).display == "none") {
-                maxview.style.display = "flex";
+            if(element.value == "flex") {
+                document.querySelector('#currentObejctHolder').style.display = "none";
+                document.querySelector('#objectsMainHolder').style.display = "none";
+                document.querySelector('#baner').style.display = "none";
+                document.querySelector('#footer').style.display = "none";
+                document.querySelector('#margin-top-div').style.display = "none";
+                document.querySelector('#maxview-gallery').animationName = "animation-maxview";
             }
             else {
-                maxview.style.display = "none";
+                document.querySelector('#currentObejctHolder').style.display = "block";
+                document.querySelector('#objectsMainHolder').style.display = "flex";
+                document.querySelector('#baner').style.display = "flex";
+                document.querySelector('#footer').style.display = "flex";
+                document.querySelector('#margin-top-div').style.display = "block";
+                document.querySelector('#maxview-gallery').animationName = "";
             }
         }
 
-        function change_photo() {
-            //button
-            let button_prev = "";
-            let button_next = "";
-            //div in wihich we will seting new photo
-            let backGround = "";
-
-            //max view window
-            let maxsize_window = document.querySelector("#maxview-gallery");
-
-            //if maxview window display is none get default navigation gallery button
-            //but if isn't none get buttons from maxview window
-            if(window.getComputedStyle(maxsize_window).display == "none") {
-                button_prev = document.querySelector("#previous-button");
-                button_next = document.querySelector("#next-button");
-                //select gallery background
-                backGround = document.querySelector("#gallery");
-            }
-            else {
-                button_prev = document.querySelector("#previous-button-maxview");
-                button_next = document.querySelector("#next-button-maxview");
-                //select gallery background
-                backGround = document.querySelector("#max-view-photo-holder");
-            }
+        function change_photo(button_prev, button_next, backGround) {
             //soruce of object media 
             let source_photos = <?php echo json_encode($source_photos); ?>;
 
@@ -225,13 +213,23 @@
                 //set new photo
                 backGround.style = "background-image: url('"+source_photos+photo+"')";
             }
-
-        }
-
-        window.onload = function() {
-            change_photo();
         }
         
+        window.onload = function() {
+            //default change photo
+            let button_prev_def = document.querySelector("#previous-button");
+            let button_next_def = document.querySelector("#next-button");
+            let backGround_def = document.querySelector("#gallery");
+
+            change_photo(button_prev_def, button_next_def, backGround_def);
+
+            //maxview photo
+            let button_prev_max = document.querySelector("#previous-button-maxview");
+            let button_next_max = document.querySelector("#next-button-maxview");
+            let backGround_max = document.querySelector("#max-view-photo-holder");
+
+            change_photo(button_prev_max, button_next_max, backGround_max);
+        }
 
     </script>
 

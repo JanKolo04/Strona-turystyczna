@@ -20,7 +20,7 @@
             <a id='account-link' href="index.php?strona=konto">Moje konto</a>
         </div>
     </div>
-    <div style="height: 70px; width: 100%;"></div>
+    <div id="margin-top-div" style="height: 70px; width: 100%;"></div>
 
     <?php
         include("connection.php");
