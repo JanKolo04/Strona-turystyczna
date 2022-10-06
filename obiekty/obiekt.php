@@ -63,9 +63,14 @@
 
                             <div id='gallery' style='background-image: url($main_file);'>
                                 <div id='navigation-menu-gallery'>
-                                    <div id='space'>
-                                        <button onclick='change_photo()' class='gallery-button previous-button' id='previous-button'></button>
-                                        <button class='gallery-button next-button' id='next-button'></button>
+                                    <div id='maxview-button-holder'>
+                                        <button onclick='open_maxview();' class='gallery-button' id='open-maxview'></button>
+                                    </div>
+                                    <div id='navigation-buttons-holder'>
+                                        <div id='space'>
+                                            <button onclick='change_photo()' class='gallery-button previous-button' id='previous-button'></button>
+                                            <button class='gallery-button next-button' id='next-button' style='margin-right: 40px;'></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -140,6 +145,20 @@
     </div>
 
     <script>
+
+        function open_maxview() {
+            //get maxview gallery
+            let maxview = document.querySelector('#maxview-gallery');
+
+            //if gallery isn't open change display into flex
+            //else hidde gallery
+            if(window.getComputedStyle(maxview).display == "none") {
+                maxview.style.display = "flex";
+            }
+            else {
+                maxview.style.display = "none";
+            }
+        }
 
         function change_photo() {
             //button
