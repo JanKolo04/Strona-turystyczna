@@ -1,0 +1,5 @@
+Zdjęcie obiektu na stronie obiekt.php:
+912x600 px
+
+Zdjęcie obiektu na stronie obiekty.php:
+300x200 px

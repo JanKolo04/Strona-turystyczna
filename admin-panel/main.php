@@ -12,10 +12,44 @@
     <div id="chartdata">
         <div id="chart-header">
             <div class="option-chart">
-                <div class="border-top"></div>
-                
-                <label for="users-count">Ilość wejść</label></br>
-                <span id="users-count"></span>
+                <div id="users-count-holder">
+                    <div class="border-top"></div>
+                    
+                    <label for="users-count">Ilość wejść</label></br>
+                    <span id="users-count"></span>
+                </div>
+
+                <div id="select-chart">
+                    <details class="custom-select">
+                        <summary class="radios">
+                            <input type="radio" name="item" id="item1" title="7 dni" checked>
+                            <input type="radio" name="item" id="item2" title="14 dni">
+                            <input type="radio" name="item" id="item3" title="1 miesiąc">
+                            <input type="radio" name="item" id="item4" title="Pół roku">
+                            <input type="radio" name="item" id="item5" title="Rok">
+                        </summary>
+                        <ul class="list">
+                            <li>
+                                <label class="label-select" for="item1">
+                                    7 dni
+                                    <span class="span-select"></span>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="label-select" for="item2">14 dni</label>
+                            </li>
+                            <li>
+                                <label class="label-select" for="item3">1 miesiąc</label>
+                            </li>
+                            <li>
+                                <label class="label-select" for="item4">Pół roku</label>
+                            </li>
+                            <li>
+                                <label class="label-select" for="item5">Rok</label>
+                            </li>
+                        </ul>
+                    </details>
+                </div>
             </div>
         </div>
 
