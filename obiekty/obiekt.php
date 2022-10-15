@@ -122,8 +122,7 @@
                 <button class='gallery-button previous-button' id="previous-button-maxview"></button>
             </div>
 
-            <div id="max-view-photo-holder" style="background-image: url('img/kosciol_mariacki/main 1.jpeg');">
-            </div>
+            <div id="max-view-photo-holder" style="background-image: url('img/kosciol_mariacki/main 1.jpeg');"></div>
 
             <div class="navigation-button-holder-maxsize">
                 <button class='gallery-button next-button' id="next-button-maxview"></button>
