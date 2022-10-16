@@ -17,14 +17,14 @@
             $object_id = $_GET['obiekt'];
 
             //select data
-            $sql = "SELECT Obiekty.*, Architekci.*, Trasy.Nazwa AS 'trasa_nazwa' FROM Obiekty INNER JOIN Architekci ON Architekci.Id=Obiekty.Id_architekt INNER JOIN Trasy ON Trasy.Id=Obiekty.Id_trasa WHERE Obiekty.Id=$object_id";
+            $sql = "SELECT Obiekty.*, Obiekty.Media AS 'media_obiekt', Architekci.*, Trasy.Nazwa AS 'trasa_nazwa' FROM Obiekty INNER JOIN Architekci ON Architekci.Id=Obiekty.Id_architekt INNER JOIN Trasy ON Trasy.Id=Obiekty.Id_trasa WHERE Obiekty.Id=$object_id";
             $query = mysqli_query($con, $sql);
 
             //show all data
             if($query->num_rows > 0) {
                 while($row = mysqli_fetch_array($query)) {
                     //source to photos
-                    $source_photos = "img/".$row['Media']."/";
+                    $source_photos = "img/".$row['media_obiekt']."/";
                     $main_file = $source_photos."main\ 1.jpeg";
 
                     $iterator = new FilesystemIterator($source_photos, FilesystemIterator::SKIP_DOTS);
