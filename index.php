@@ -17,7 +17,7 @@
             <a class='link' href="index.php?strona=obiekty/obiekty">Obiekty</a>
             <a class='link' href="index.php?strona=architekci/architekci">Architekci</a>
 
-            <a id='account-link' href="index.php?strona=konto">Moje konto</a>
+            <a id='account-link' href="index.php?strona=konto/konto">Moje konto</a>
         </div>
     </div>
     <div id="margin-top-div" style="height: 70px; width: 100%;"></div>
