@@ -30,8 +30,8 @@
             
             <div id="menu">
                 <div id="a-holder">
-                    <a href="index.php?strona=konto/konto&category=your-data">Twoje dane</a>
-                    <a href="index.php?strona=konto/konto&category=favorite">Ulubione</a>
+                    <a id="your-data" href="index.php?strona=konto/konto&category=your-data">Twoje dane</a>
+                    <a id="favorite" href="index.php?strona=konto/konto&category=favorite">Ulubione</a>
                     <a id="history-of-purchased-trips" href="index.php?strona=konto/konto&category=history-of-purchased-trips">Historia kupionych wycieczek</a>
                 </div>
             </div>
@@ -51,7 +51,7 @@
             let page = <?php echo json_encode($category_account); ?>;
 
             //change color
-            document.querySelector("#"+page).style = "color: black;";
+            document.querySelector("#"+page).style = "color: black; font-weight: bold;";
 
             
         }

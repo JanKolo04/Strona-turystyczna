@@ -1,6 +1,12 @@
+@font-face {
+    font-family: RobotoFonts;
+    src: url("../fonts/Roboto-Regular.ttf");
+  }
+
 html, body {
     height: 100%;
     margin: 0px;
+    font-family: RobotoFonts;
     background-color: #E2E0DB;
 }
 
@@ -37,6 +43,10 @@ html, body {
     padding-right: 50px;
 }
 
+#links-holder > a:nth-last-child(2) {
+    margin-right: 40px;
+}
+
 .link {
     margin: 0px 20px 0px 20px;
     text-decoration: none;
@@ -44,7 +54,6 @@ html, body {
 }
 
 .link:hover {
-    -webkit-transition: 1s;
     color: #cccccc;
 }
 
@@ -103,15 +112,19 @@ html, body {
     width: 80%;
 }
 
-#first-link {
-    margin-top: 0px;
-}
-
 li {
     margin: 20px 0px 20px 0px;
     list-style-type: none;
     padding-bottom: 5px;
     border-bottom: 1px solid #666666;
+}
+
+li:nth-child(1) {
+    margin-top: 0px;
+}
+
+.footer-menu-ele {
+    margin-left: 20px;
 }
 
 #contact {

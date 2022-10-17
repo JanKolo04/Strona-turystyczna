@@ -23,16 +23,18 @@
     align-items: center;
 }
 
+
+#avatar, #avatar-photo {
+    width: 120px;
+    height: 120px;
+}
+
 #avatar {
-    width: 140px;
-    height: 140px;
     border-radius: 50%;
     box-shadow: 5px 1px 8px #888888;
 }
 
 #avatar-photo {
-    width: 140px;
-    height: 140px;
     border-radius: 50%;
 }
 
@@ -46,7 +48,6 @@
 #name-surname > p {
     margin: 0px;
     margin-left: 20px;
-    margin-top: 10px;
 }
 
 #menu {
@@ -66,13 +67,7 @@
 }
 
 #a-holder > a:hover {
-    -webkit-transition: 0.5s;
     color: black;
-}
-
-#a-holder > a:nth-child(1) {
-    color: black;
-    font-weight: bold;
 }
 
 #a-holder > a:nth-child(1) {

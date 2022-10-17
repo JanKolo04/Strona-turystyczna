@@ -46,10 +46,10 @@
         <div id='nav-menu'>
             <h2>Menu</h2>
             <ul id='list'>
-                <li id='first-link'><a class='link list-object' href="index.php?strona=trasy/trasy">Trasy</a></li>
-                <li><a class='link list-object' href="index.php?strona=obiekty/obiekty">Obiekty</a></li>
-                <li><a class='link list-object' href="index.php?strona=architekci/architekci">Architekci</a></li>
-                <li><a class='link list-object' href="index.php?strona=konto">Moje konto</a></li>
+                <li><a class='link footer-menu-ele' href="index.php?strona=trasy/trasy">Trasy</a></li>
+                <li><a class='link footer-menu-ele' href="index.php?strona=obiekty/obiekty">Obiekty</a></li>
+                <li><a class='link footer-menu-ele' href="index.php?strona=architekci/architekci">Architekci</a></li>
+                <li><a class='link footer-menu-ele' href="index.php?strona=konto/konto">Moje konto</a></li>
             </ul>
         </div>
 
