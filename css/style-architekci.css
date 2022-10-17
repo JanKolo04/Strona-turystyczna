@@ -1,0 +1,65 @@
+/*--architects--*/
+#architectsMainHolder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.architectHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+    border-top: 1px solid black;
+    padding: 15px 0px;
+    width: 300px;
+}
+
+.architectHolder:hover {
+    margin: 20px 0px 19px 0px;
+    border: 1px solid black;
+    width: 338px;
+    background-color: white;
+}
+
+.archInfo {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.archImg {
+    height: 200px;
+    width: 300px;
+    cursor: pointer;
+}
+
+.archImg:hover {
+    opacity: 50%;
+}
+
+.archName {
+    margin: 0px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.archName:hover {
+    opacity: 50%;
+}
+
+.iconReadMore {
+    width: 20px;
+    margin-left: 5px;
+}

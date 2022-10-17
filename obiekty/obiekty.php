@@ -35,6 +35,7 @@
         }
     
     ?>
+    
     <h1>Obiekty</h1>
     <div id='objectsMainHolder'>
         <?php show_all_objects(); ?>

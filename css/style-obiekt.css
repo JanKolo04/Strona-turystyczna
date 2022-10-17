@@ -12,7 +12,7 @@
 }
 
 #currentObjectInfo {
-    width: calc(50% - 15px - 20px);
+    width: calc(50% - 15px - 85px - 85px);
     height: 548px;
     padding: 25px 85px;
     display: flex;
@@ -71,21 +71,41 @@
     border-right: 1px solid black;
     background-repeat: no-repeat;
     background-position: center; 
-    background-size: 100% 598px;
 }
 
 #navigation-menu-gallery {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    flex-direction: row;
+}
+
+#maxview-button-holder {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+}
+
+#open-maxview {
+    background-image: url("../img/icon/full-size.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#navigation-buttons-holder {
+    width: calc(100% - 150px);
 }
 
 #space {
-    display: inline-block;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    width: 100%;
 }
 
 .gallery-button {
-    margin-right: 1px;
+    margin-right: 5px;
     margin-bottom: 20px;
     cursor: pointer;
     height: 30px;
@@ -121,21 +141,42 @@
 
 /*--maxview-gallery--*/
 #maxview-gallery {
-    display: flex;
+    padding: 40px 0px 87px;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    animation: animation-maxview 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
 }
+
+@keyframes animation-maxview {
+    0% {opacity: 0; background-color: black;}
+    100% { opacity: 1; background-color: black;}
+}
+
 
 #maxview-header {
     width: 100%;
-    padding: 20px 0px;
+    padding: 0px 0px 30px;
     display: flex;
     justify-content: flex-end;
 }
 
+.navigation-button-holder-maxsize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+}
+
 #close-maxview {
-    margin-right: 100px; 
+    margin-right: 100px;
+    background-image: url("../img/icon/close.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #maxview-content {
@@ -147,7 +188,7 @@
 }
 
 #max-view-photo-holder {
-    height: 800px;
+    height: 730px;
     width: 70%;
     display: flex;
     justify-content: center;
