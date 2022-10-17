@@ -41,26 +41,26 @@
                 </a>
             </div>
             
-            <a class='links-menu' href="index.php?strona=trasy">
+            <a class='links-menu' href="index.php?strona=trasy/trasy">
                 <div class='option'>
                     <div class='hover' id='trasy'>
-                        <p class="main-option" id="trasy">Trasy</p>
+                        <p class="main-option">Trasy</p>
                     </div>
                 </div>
             </a>
 
-            <a class='links-menu' href="index.php?strona=architekci">
+            <a class='links-menu' href="index.php?strona=architekci/architekci">
                 <div class='option'>
                     <div class='hover' id='architekci'>
-                        <p class="main-option" id="architekci">Architekci</p>
+                        <p class="main-option">Architekci</p>
                     </div>
                 </div>
             </a>
 
-            <a class='links-menu' href="index.php?strona=obiekty">
+            <a class='links-menu' href="index.php?strona=obiekty/obiekty">
                 <div class='option'>
                     <div class='hover' id='obiekty'>
-                        <p class="main-option" id="obiekty">Obiekty</p>
+                        <p class="main-option">Obiekty</p>
                     </div>
                 </div>
             </a>
@@ -94,16 +94,19 @@
             let split_page = page.split("/");
 
             //if page ins't main chnage color from $_GET page
-            if(page != "main") {
+            if(page != "main" && (split_page[0] == "uzytkownicy")) {
                 //chnage color of menu option 
                 document.querySelector("#"+split_page[1]).style = "background-color: #666666;";
                 //set display block for others option if you have open parent tab
                 document.querySelector(".others-option").style = "display: block;";
             }
+            else if(page == "main") {
+                document.querySelector("#strona-glowna").style = "background-color: #666666;";
+            }
             //if page is main change color for main id object
             else {
                 //chnage color of menu option 
-                document.querySelector("#strona-glowna").style = "background-color: #666666;";
+                document.querySelector("#"+split_page[0]).style = "background-color: #666666;";
             }
         }
 
