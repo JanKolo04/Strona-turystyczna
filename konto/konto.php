@@ -32,7 +32,7 @@
                 <div id="a-holder">
                     <a href="index.php?strona=konto/konto&category=your-data">Twoje dane</a>
                     <a href="index.php?strona=konto/konto&category=favorite">Ulubione</a>
-                    <a href="index.php?strona=konto/konto&category=history-of-purchased-trips">Historia kupionych wycieczek</a>
+                    <a id="history-of-purchased-trips" href="index.php?strona=konto/konto&category=history-of-purchased-trips">Historia kupionych wycieczek</a>
                 </div>
             </div>
         </div>
@@ -43,6 +43,24 @@
 
         </div>
     </div>
+
+    <script>
+
+        function change_menu_option_color() {
+            //get page from PHP
+            let page = <?php echo json_encode($category_account); ?>;
+
+            //change color
+            document.querySelector("#"+page).style = "color: black;";
+
+            
+        }
+
+        window.onload = function() {
+            change_menu_option_color();
+        }
+
+    </script>
 
 </body>
 </html>
