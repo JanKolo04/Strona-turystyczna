@@ -74,16 +74,17 @@
     margin-top: 20px;
 }
 
+/*----RIGHT SIDE----*/
 #right-side {
     width: calc(100% - 300px);
     padding: 40px 0px 0px 80px;
 }
-
+/*
 #right-side > div {
     width: 100%;
     height: calc(100% - 20px);
 }
-
+*/
 /*---BASIC-DATA---*/
 #basic-data {
     margin-left: 10px;
