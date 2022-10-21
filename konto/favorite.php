@@ -29,7 +29,7 @@
 			$objects_array = [];
 			if($query->num_rows > 0 && $query !== false) {
 				while($row = mysqli_fetch_array($query)) {
-					echo $row['Nazwa'];
+					echo "<a href='index.php?strona=obiekty/obiekt&obiekt={$row['Id']}&trasa={$row['Id_trasa']}'>{$row['Nazwa']}</a>";
 				}
 			}
 			else {
@@ -54,7 +54,7 @@
 			$routes_array = [];
 			if($query->num_rows > 0 && $query !== false) {
 				while($row = mysqli_fetch_array($query)) {
-					echo $row['Nazwa'];
+					echo "<a href='index.php?strona=trasy/trasa&trasa={$row['Id']}'>{$row['Nazwa']}</a>";
 				}
 			}
 			else {
