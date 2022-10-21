@@ -23,7 +23,6 @@
     align-items: center;
 }
 
-
 #avatar, #avatar-photo {
     width: 120px;
     height: 120px;
@@ -72,6 +71,14 @@
 
 #a-holder > a:nth-child(1) {
     margin-top: 20px;
+}
+
+#favorite {
+    margin: 5px 0px 5px 20px;
+}
+
+#trasy, #obiekty {
+    margin-left: 35px !important;
 }
 
 /*----RIGHT SIDE----*/
