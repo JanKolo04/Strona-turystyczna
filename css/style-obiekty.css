@@ -59,6 +59,18 @@
     transform: rotate(270deg);
 }
 
+.workNameFavoriteHolder {
+    width: 100%;
+    display: flex;
+    flex-direction: row;  
+}
+
+.workNameHolder {
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: flex-start;
+}
+
 .workName {
     margin: 0px;
     cursor: pointer;
@@ -72,6 +84,25 @@
 
 .workName:hover {
     opacity: 50%;
+}
+
+.favoriteButtonHolder {
+    width: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.favorite-button {
+    border: none;
+    height: 30px;
+    width: 30px;
+    background-image: url("../img/icon/out-favorite.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .iconReadMore {
