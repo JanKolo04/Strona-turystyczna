@@ -8,6 +8,14 @@
     flex-wrap: wrap;
 }
 
+#objectsMainHolder > form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;   
+}
+
 .workHolder {
     display: flex;
     justify-content: center;

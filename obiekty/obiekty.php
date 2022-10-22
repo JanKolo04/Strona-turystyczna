@@ -33,7 +33,7 @@
                                     </div>
 
                                     <div class='favoriteButtonHolder'>
-                                        <button class='favorite-button'></button>
+                                        <button type='submit' name='favortie-button' class='favorite-button'></button>
                                     </div>
                                 </div>
                             </div>
@@ -43,11 +43,33 @@
             }
         }
     
+
+        class Favorite {
+            public $user_id;
+
+            function insert_into_favorite($object_id) {
+                global $con;
+
+                //insert object into favortie
+                $sql = "INSERT INTO ulubione(Id_uzytkownika, Id_trasy, Id_obiektu) VALUES($user_id, NULL, $object_id);";
+                $query = mysqli_query($con, $sql);
+            }
+
+            function delete_from_favorite($object_id) {
+                global $con;
+
+                //delete object from favortie
+                $sql = "DELETE FROM ulubione WHERE Id_uzytkownika=$user_id AND Id_obiektu=$object_id";
+                $query = mysqli_query($con, $sql);
+            }
+        }
     ?>
     
     <h1>Obiekty</h1>
     <div id='objectsMainHolder'>
-        <?php show_all_objects(); ?>
+        <form method="POST">
+            <?php show_all_objects(); ?>
+        </form>
     </div>
 
 </body>
