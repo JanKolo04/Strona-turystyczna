@@ -10,6 +10,15 @@
 
     <?php
 
+        //check which button to update favorite
+        $favorite = new Favorite();
+        if(isset($_POST['favorite-button'])) {
+            $favorite->insert_into_favorite(3, $_POST['favorite-button']);
+        }
+        else if(isset($_POST['unfavorite-button'])) {
+            $favorite->delete_from_favorite(3, $_POST['unfavorite-button']);
+        }
+
         class GetObjects {
             public $id_user;
             public $all_objects;
@@ -23,6 +32,7 @@
                 $query_fav = $con->query($sql_fav);
 
                 $array = [];
+                //if count results is bigger than 0 append data into array
                 if($query_fav->num_rows > 0) {
                     $i=0;
                     while($row = mysqli_fetch_array($query_fav)) {
@@ -30,8 +40,8 @@
                             "Id"=>$row['Id'],
                             "Id_object"=>$row['Id_obiektu']
                         ];
+                        $i++;
                     }
-                    $i++;
                 }
 
                 //all objects from fav
@@ -65,6 +75,7 @@
                                 $fav_button_name = "unfavorite-button";
                                 $value = $id_array_objects_fav[$i]['Id'];
                                 $background = "in-favorite.png";
+                                break;
                             }
                         }
                         //link_to_work
@@ -97,8 +108,9 @@
 
         class Favorite {
             public $user_id;
+            public $object_id;
 
-            function insert_into_favorite($object_id) {
+            function insert_into_favorite($user_id, $object_id) {
                 global $con;
 
                 //insert object into favortie
@@ -106,11 +118,11 @@
                 $query = mysqli_query($con, $sql);
             }
 
-            function delete_from_favorite($object_id) {
+            function delete_from_favorite($user_id, $object_id) {
                 global $con;
 
                 //delete object from favortie
-                $sql = "DELETE FROM ulubione WHERE Id_uzytkownika=$user_id AND Id_obiektu=$object_id";
+                $sql = "DELETE FROM ulubione WHERE Id_uzytkownika=$user_id AND Id=$object_id";
                 $query = mysqli_query($con, $sql);
             }
         }
