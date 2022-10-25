@@ -8,7 +8,7 @@
 
     <?php
     
-        require_once("chart/index.php");
+        require_once("charts/index.php");
 
         //run funciton with saveing move
         save_move_on_page();
