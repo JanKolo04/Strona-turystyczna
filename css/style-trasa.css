@@ -19,26 +19,29 @@
 
 .workHolder {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 20px;
     border-top: 1px solid black;
-    border-bottom: 1px solid black; 
-    padding: 10px 0px;
+    padding: 15px 20px;
     width: 300px;
+    transition: 0.5s background-color, 0.5s width;
 }
 
 .workHolder:hover {
-    -webkit-transition: 0.5s;
-    margin: 0px;
-    width: 338px;
+    margin: 20px 19px 19px 19px;
     border: 1px solid black;
+    background-color: white;
 }
 
 .workImg {
     height: 200px;
     width: 300px;
+    cursor: pointer;
+}
+
+.workImg:hover {
+    opacity: 50%;
 }
 
 .workName {

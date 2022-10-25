@@ -67,7 +67,7 @@
                 while($row_works = mysqli_fetch_array($query_obiekt)) {
                     echo "
                         <div class='workHolder'>
-                            <img class='workImg' src='img/{$row_works['Media']}/main.jpeg'>
+                            <img class='workImg' src='img/{$row_works['Media']}/main 1.jpeg'>
                             <h4 class='workName'>{$row_works['Nazwa']}</h4>
                         </div>
                     ";

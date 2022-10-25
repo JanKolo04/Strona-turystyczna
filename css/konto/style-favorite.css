@@ -11,13 +11,13 @@
 
 .workHolder {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     margin: 20px 20px;
     border-top: 1px solid black;
     padding: 15px 10px;
     width: 200px !important;
+    height: 250px;
 }
 
 .workHolder:hover {
