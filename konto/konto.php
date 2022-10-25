@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/style-my-account.css">
+	<link rel="stylesheet" type="text/css" href="css/konto/style-my-account.css">
 </head>
 <body>
 
@@ -31,7 +31,11 @@
             <div id="menu">
                 <div id="a-holder">
                     <a id="your-data" href="index.php?strona=konto/konto&category=your-data">Twoje dane</a>
-                    <a id="favorite" href="index.php?strona=konto/konto&category=favorite">Ulubione</a>
+                    
+                    <p id="favorite">Ulubione</p>
+                    <a id="obiekty" href="index.php?strona=konto/konto&category=obiekty">Obiekty</a>
+                    <a id="trasy" href="index.php?strona=konto/konto&category=trasy">Trasy</a>
+
                     <a id="history-of-purchased-trips" href="index.php?strona=konto/konto&category=history-of-purchased-trips">Historia kupionych wycieczek</a>
                 </div>
             </div>
@@ -52,8 +56,7 @@
 
             //change color
             document.querySelector("#"+page).style = "color: black; font-weight: bold;";
-
-            
+        
         }
 
         window.onload = function() {

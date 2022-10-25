@@ -23,7 +23,6 @@
     align-items: center;
 }
 
-
 #avatar, #avatar-photo {
     width: 120px;
     height: 120px;
@@ -74,16 +73,25 @@
     margin-top: 20px;
 }
 
+#favorite {
+    margin: 5px 0px 5px 20px;
+}
+
+#trasy, #obiekty {
+    margin-left: 35px !important;
+}
+
+/*----RIGHT SIDE----*/
 #right-side {
     width: calc(100% - 300px);
     padding: 40px 0px 0px 80px;
 }
-
+/*
 #right-side > div {
     width: 100%;
     height: calc(100% - 20px);
 }
-
+*/
 /*---BASIC-DATA---*/
 #basic-data {
     margin-left: 10px;

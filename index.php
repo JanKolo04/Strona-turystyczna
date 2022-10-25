@@ -28,6 +28,8 @@
 
     <div id=pageContent>
         <?php 
+            session_start();
+
             $strona = "main";
             if(isset($_GET['strona'])) {
                 $strona = $_GET['strona'];
