@@ -1,34 +1,33 @@
-/*--OBJECTS--*/
-#allWorksHolder {
+#objectsMainHolder {
     width: 100%;
+    height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow: auto;
 }
 
 .workHolder {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 20px;
+    margin: 20px 20px;
     border-top: 1px solid black;
-    padding: 15px 20px;
-    width: 300px;
-    height: 300px;
-    transition: 0.5s background-color, 0.5s width;
+    padding: 15px 10px;
+    width: 200px !important;
+    height: 250px;
 }
 
 .workHolder:hover {
-    margin: 20px 19px 19px 19px;
+    margin: 20px 19px 19px;
     border: 1px solid black;
     background-color: white;
 }
 
 .workInfo {
-    width: 300px;
+    width: 200px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -36,8 +35,7 @@
 }
 
 .workImg {
-    height: 200px;
-    width: 300px;
+    width: 200px;
     cursor: pointer;
 }
 
@@ -45,8 +43,7 @@
     opacity: 50%;
 }
 
-.objectLocation {
-    text-align: center;
+.otherdata {
     display: flex;
     justify-content: center;
     align-items: center;
