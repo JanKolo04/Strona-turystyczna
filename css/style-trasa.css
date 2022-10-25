@@ -11,6 +11,11 @@
     flex-direction: row;
 }
 
+#objectsHolder > form {
+    display: flex;
+    flex-direction: row;
+}
+
 .workHolder {
     display: flex;
     align-items: center;

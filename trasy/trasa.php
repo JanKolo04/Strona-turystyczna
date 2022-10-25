@@ -10,45 +10,56 @@
 
     <?php
 
-        function get_route_data() {
-            global $con;
+        //check which button to update favorite
+        $favorite = new Favorite();
+        if(isset($_POST['favorite-button'])) {
+            $favorite->insert_into_favorite(3, $_POST['favorite-button']);
+        }
+        else if(isset($_POST['unfavorite-button'])) {
+            $favorite->delete_from_favorite(3, $_POST['unfavorite-button']);
+        }
 
-            //route id
-            $route_id = $_GET['trasa'];
+        class Route {
+            function get_route_data() {
+                global $con;
 
-            //get all data
-            $sql = "SELECT * FROM Trasy WHERE Id=$route_id";
-            $query = mysqli_query($con, $sql);
+                //route id
+                $route_id = $_GET['trasa'];
 
-            //if route with this ID exist return all data
-            if($query->num_rows > 0) {
-                return mysqli_fetch_array($query);
+                //get all data
+                $sql = "SELECT * FROM Trasy WHERE Id=$route_id";
+                $query = mysqli_query($con, $sql);
+
+                //if route with this ID exist return all data
+                if($query->num_rows > 0) {
+                    return mysqli_fetch_array($query);
+                }
             }
-        }
 
-        function route_name() {
-            $row = get_route_data();
-            echo $row['Nazwa'];
-        }
+            function route_name() {
+                $row = $this->get_route_data();
+                echo $row['Nazwa'];
+            }
 
-        function show_route_information() {
-            //row
-            $row = get_route_data();
+            function show_route_information() {
+                //row
+                $row = $this->get_route_data();
 
-            echo "
-                <div id='routeName'>
-                    <h2>{$row['Nazwa']}</h2>
-                </div>
-                <div id='shortDescription'>
-                    <p>{$row['Opis']}</p>
-                </div>
-                <div id='buttonInfoHolder'>
-                    <button id='routeButton' onclick='show_route_info();'>Informacje o trasie</button>
-                </div>
-                <div style='display: none;' id='infoHolder'>
-                    <p>{$row['Informacje']}</p>
-                </div>
-            ";
+                echo "
+                    <div id='routeName'>
+                        <h2>{$row['Nazwa']}</h2>
+                    </div>
+                    <div id='shortDescription'>
+                        <p>{$row['Opis']}</p>
+                    </div>
+                    <div id='buttonInfoHolder'>
+                        <button id='routeButton' onclick='show_route_info();'>Informacje o trasie</button>
+                    </div>
+                    <div style='display: none;' id='infoHolder'>
+                        <p>{$row['Informacje']}</p>
+                    </div>
+                ";
+            }
         }
 
         class GetCloseObjects {
@@ -139,12 +150,34 @@
                 }
             }
         }
+
+        class Favorite {
+            public $user_id;
+            public $object_id;
+
+            function insert_into_favorite($user_id, $object_id) {
+                global $con;
+
+                //insert object into favortie
+                $sql = "INSERT INTO ulubione(Id_uzytkownika, Id_trasy, Id_obiektu) VALUES($user_id, NULL, $object_id);";
+                $query = mysqli_query($con, $sql);
+            }
+
+            function delete_from_favorite($user_id, $object_id) {
+                global $con;
+
+                //delete object from favortie
+                $sql = "DELETE FROM ulubione WHERE Id_uzytkownika=$user_id AND Id=$object_id";
+                $query = mysqli_query($con, $sql);
+            }
+        }
     ?>
 
-    <title>Trasa <?php route_name(); ?></title>
+    <title>Trasa <?php $route = new Route(); $route->route_name(); ?>
+    </title>
 
     <div id='routeInfoHolder'>
-        <?php show_route_information(); ?>
+        <?php $route->show_route_information(); ?>
     </div>
 
     <div id='objectsMainHolder'>
@@ -152,10 +185,12 @@
             <h2>Obiekty na tej trasie</h2>
         </div>
         <div id='objectsHolder'>
-            <?php 
-                $close_obejcts = new GetCloseObjects();
-                $close_obejcts->check_data_and_print();
-            ?>
+            <form method="POST">
+                <?php 
+                    $close_obejcts = new GetCloseObjects();
+                    $close_obejcts->check_data_and_print();
+                ?>
+            </form>
         </div>
     </div>
 
