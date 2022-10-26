@@ -11,78 +11,65 @@
     <h3>Polubione obiekty</h3>
 
 	<?php
+
+		include("get_objects/index.php");
 	
-		class get_all_favorite_data {
-			public $id_user;
-
-			function check_media($media) {
-				//when media dosent exist return no-photo.png
-				$img = $media.'/main 1.jpeg';
-				if($img == "/main 1.jpeg") {
-					$img = "brak-zdjecia-architekta.png";
-				}
-
-				return $img;
-			}
-
-
-			function get_all_objects($id_user) {
+		class get_all_favorite_objects {
+			function get_all_objects_from_fav($id_user) {
 				global $con;
-
-				//get all objects where id_uzytkownik equals $id_user
-				$sql = "SELECT obiekty.* FROM ulubione INNER JOIN obiekty ON obiekty.Id=ulubione.Id_obiektu WHERE ulubione.id_uzytkownika=$id_user;";
-				$query = mysqli_query($con, $sql);
-
-				//insert data into array objects
-				$objects_array = [];
-				$i=0; //iteration
-				if($query->num_rows > 0 && $query !== false) {
-					while($row = mysqli_fetch_array($query)) {
-						//append data
-						$objects_array[$i] = [
-							"id"=>$row['Id'],
-							"name"=>$row['Nazwa'],
-							"place"=>$row['Miejsce'],
-							"link"=>"index.php?strona=obiekty/obiekt&obiekt={$row['Id']}&trasa={$row['Id_trasa']}'",
-							"media"=>$this->check_media($row['Media'])
+	
+				//get all objects from favorite where id_user is user id
+				$sql_fav = "SELECT Id_obiektu FROM ulubione WHERE Id_uzytkownika=$id_user";
+				$query_fav = $con->query($sql_fav);
+	
+				$array = [];
+				//if count results is bigger than 0 append data into array
+				if($query_fav->num_rows > 0) {
+					$i=0;
+					while($row = $query_fav->fetch_array(MYSQLI_ASSOC)) {
+						$array[$i] = [
+							"Id"=>$row['Id_obiektu']
 						];
 						$i++;
 					}
 				}
-				else {
-					echo "Brak zapisanych obiektów";
+	
+				//all objects from fav
+				//reverse array to get from newest objects to oldest
+				return array_reverse($array);
+			}
+
+			function print_objects() {
+				global $con;
+				//object
+				$objects = new GetObjects();
+
+				//array with favorite objects id
+				$favorite_objects_id = $this->get_all_objects_from_fav(3);
+				//send argument to metod in class in favortie.php
+				for($i=0; $i<sizeof($favorite_objects_id); $i++) {
+					//sql function
+					$sql = "SELECT Obiekty.*, Trasy.Nazwa AS 'trasa_nazwa' FROM Obiekty INNER JOIN Trasy ON Trasy.Id=Obiekty.Id_trasa WHERE Obiekty.Id={$favorite_objects_id[$i]['Id']}";
+
+					$objects->check_data_and_print($sql);
 				}
-
-				return $objects_array;
 			}
+
 		}
-
-		$id_user = 3;
-
-		$favorite_data = new get_all_favorite_data();
-
-		//send user id from SESSION
-		$obejcts = $favorite_data->get_all_objects($id_user);
-
-		function print_favorite_data($data_array) {
-			for($i=0; $i<sizeof($data_array); $i++) {
-				echo "
-					<div class='workHolder'>
-						<a href='{$data_array[$i]['link']}'><img class='workImg' src='img/{$data_array[$i]['media']}'></a>
-						<div class='workInfo'>
-							<p class='otherdata'><img class='iconLocation' src='img/icon/bookmark.png'> {$data_array[$i]['place']}</p>
-							<a class='workName' href='{$data_array[$i]['link']}'><h4>{$data_array[$i]['name']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
-						</div>
-					</div>	
-				";
-			}
-		}
-
-		echo "<div id='objectsMainHolder'>";
-		print_favorite_data($obejcts);
-		echo "</div>";
 	
 	?>
+
+	<div id="objectsMainHolder">
+		<form method="POST">
+			<?php 
+				//sql function
+				//$sql = "SELECT Obiekty.*, Trasy.* FROM Ulubione INNER JOIN Trasy ON Trasy.Id=Obiekty.id_trasa INNER JOIN Obiekty ON Obiekty.Id=Ulubione.Id_obiektu WHERE Ulubione.id_uzytkownika=3;";
+
+				$objects = new get_all_favorite_objects();
+				$objects->print_objects();
+			?>
+		</form>
+	</div>
 
 </body>
 </html>
