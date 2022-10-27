@@ -54,12 +54,14 @@
         </div>
 
         <div id="inputs-holder">
-            <?php
-                //create object
-                $user = new user_data();
-                $get_user_data = $user->get_data(3);
-                $user->print_data($get_user_data);
-            ?>
+            <form method="POST">
+                <?php
+                    //create object
+                    $user = new user_data();
+                    $get_user_data = $user->get_data(3);
+                    $user->print_data($get_user_data);
+                ?>
+            </form>
         </div>
     </div>
 
