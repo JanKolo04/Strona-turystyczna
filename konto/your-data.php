@@ -9,15 +9,29 @@
 <body>
 
     <?php
-    
+        //user_data object
+        $user = new user_data();
+        //var with user data array
+        $get_user_data = $user->get_data_from_db(3);
+
+        //if user click submit update data
+        if(isset($_POST['update-user-data'])) {
+            $user->update_data();
+            header('Location: index.php?strona=konto/konto');
+        }
+
         class user_data {
-            function get_data($user_id) {
+            public $user_id;
+
+            function get_data_from_db($id_user) {
                 global $con;
 
-                //get all user data
-                $sql = "SELECT * FROM Uzytkownicy WHERE id_uzytkownik=$user_id";
-                $query = $con->query($sql);
+                $this->user_id = $id_user;
 
+                //get all user data
+                $sql = "SELECT * FROM Uzytkownicy WHERE id_uzytkownik={$this->user_id}";
+                $query = $con->query($sql);
+    
                 //if row in query is more than 0 return array with data from query
                 if($query->num_rows > 0) {
                     $row = $query->fetch_array(MYSQLI_ASSOC);
@@ -25,24 +39,12 @@
                 }
             }
 
-            function print_data($array) {
-                echo "
-                    <input class='input' type='text' name='name' value='{$array['Imie']}'>
-                    <input class='input' type='text' name='surname' value='{$array['Nazwisko']}'>
-                    <input class='input' type='email' name='email' value='{$array['Email']}'>
-                    <input class='input' id='password' type='password' name='password' value='{$array['Haslo']}'>
+            function update_data() {
+                global $con;
 
-                    <div id='other-data-holder'>
-                        <div id='show-password-holder'>
-                            <label for='show-password'>Pokaz hasło</label>
-                            <input id='show-password' type='checkbox' value='show' onclick='show_password(this)'>
-                        </div>
-
-                        <div id='submit-button-holder'>
-                            <button type='submit' name='update-user-data'>Zatwierdź</button>
-                        </div>
-                    </div>
-                ";
+                //update data
+                $sql = "UPDATE Uzytkownicy SET Imie='{$_POST['name']}', Nazwisko='{$_POST['surname']}', Haslo='{$_POST['password']}', Email='{$_POST['email']}' WHERE id_uzytkownik={$this->user_id}";
+                $query = $con->query($sql);
             }
         }
     
@@ -55,12 +57,21 @@
 
         <div id="inputs-holder">
             <form method="POST">
-                <?php
-                    //create object
-                    $user = new user_data();
-                    $get_user_data = $user->get_data(3);
-                    $user->print_data($get_user_data);
-                ?>
+                <input class="input" type="text" name="name" value="<?php echo $get_user_data["Imie"] ?>">  
+                <input class="input" type="text" name="surname" value="<?php echo $get_user_data["Nazwisko"] ?>">
+                <input class="input" type="email" name="email" value="<?php echo $get_user_data["Email"] ?>">
+                <input class="input" id="password" type="password" name="password" value="<?php echo $get_user_data["Haslo"] ?>">
+
+                <div id="other-data-holder">
+                    <div id="show-password-holder">
+                        <label for="show-password">Pokaz hasło</label>
+                        <input id="show-password" type="checkbox" value="show" onclick="show_password(this)">
+                    </div>
+
+                    <div id="submit-button-holder">
+                        <button type="submit" name="update-user-data">Zatwierdź</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
