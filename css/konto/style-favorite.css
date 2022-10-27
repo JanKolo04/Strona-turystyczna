@@ -9,21 +9,31 @@
     overflow: auto;
 }
 
+#objectsMainHolder > form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;   
+}
+
 .workHolder {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 20px 20px;
+    margin: 20px;
     border-top: 1px solid black;
-    padding: 15px 10px;
-    width: 200px !important;
+    padding: 15px 20px;
+    width: 200px;
     height: 250px;
+    transition: 0.5s background-color, 0.5s width;
 }
 
 .workHolder:hover {
-    margin: 20px 19px 19px;
+    margin: 20px 19px 19px 19px;
     border: 1px solid black;
-    background-color: white;
+    background-color: #E2E0DB;
+    box-shadow: 10px 10px 5px #d9d9d9;
 }
 
 .workInfo {
@@ -43,7 +53,8 @@
     opacity: 50%;
 }
 
-.otherdata {
+.objectLocation {
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,6 +65,18 @@
     margin-right: 10px;
     width: 15px;
     transform: rotate(270deg);
+}
+
+.workNameFavoriteHolder {
+    width: 100%;
+    display: flex;
+    flex-direction: row;  
+}
+
+.workNameHolder {
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: flex-start;
 }
 
 .workName {
@@ -69,6 +92,24 @@
 
 .workName:hover {
     opacity: 50%;
+}
+
+.favoriteButtonHolder {
+    width: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.favorite-button {
+    border: none;
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .iconReadMore {
