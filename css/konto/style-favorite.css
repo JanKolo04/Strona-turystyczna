@@ -33,6 +33,7 @@
     margin: 20px 19px 19px 19px;
     border: 1px solid black;
     background-color: #E2E0DB;
+    box-shadow: 10px 10px 5px #d9d9d9;
 }
 
 .workInfo {
