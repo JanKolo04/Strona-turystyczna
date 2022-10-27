@@ -3,22 +3,36 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style-login.css">
 	<title>Zaloguj się - Szlakiem Szczecina</title>
 </head>
 <body>
 
-    <form method="POST">
-        <label for="input:[type=text]">Login</label>
-        <input type="text" name="login"></br>
-
-        <label for="input:[type=password]">Password</label>
-        <input type="password" name="password"></br>
-        
-        <label for="input:[type=checkbox]">Cookie</label>
-        <input type="checkbox" name="cookie"></br>
-
-        <button type="submit" name="submit">Sign in</button>
-    </form>
+    <div id="content-holder">
+        <div id="img-holder"></div>
+        <div id="other-content-holder">
+            <div id="header">
+                <h1>Logowanie</h1>
+                <p>Wpisz swój login i hasło</p>
+            </div>
+            <div id="login-data-holder">
+                <form method="POST">
+                    <div id="inputs-holder">
+                        <input type="text" name="login" placeholder="Login" class="input">
+                        <input type="password" name="password" placeholder="Hasło" class="input">
+                    </div>
+                    <div id="other-data-holder">
+                        <div id="button-holder">
+                            <button type="submit">Zatwierdź</button>
+                        </div>
+                        <div id="register-link-holder">
+                            <p>Jeśli nie masz konta to? <a id="registrer-link" href="index.php?strona=rejstracja">Kliknij tutaj</a></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <?php
 
