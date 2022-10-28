@@ -62,69 +62,81 @@
         }
 
 
-        function search_func() {
-            global $con;
-            $array_data = [];
+        class search {
+            public $columns;
+            public $split_input_data;
+            public $search_sql;
 
-            //get data from input
-            $input_data = $_POST['search-input'];
+            function get_primary_data() {
+                global $con;
+                //get data from input
+                $input_data = $_POST['search-input'];
 
-            //split input
-            $split_data = explode(" ", $input_data);
+                //split input
+                $this->split_input_data = explode(" ", $input_data);
 
-            //column to search in uzytkownicy table
-            $columns_array = ["Imie", "Nazwisko", "Email"];
-            //set search variable with primary syntax
-            $search_sql = "SELECT * FROM Uzytkownicy WHERE ";
-            /*
-                first loop is to go for all columns from columns_array
-                second loop is to go for all split data from input
-            */
-            for($i=0; $i<sizeof($columns_array); $i++) {
-                //if its first column don't add OR before column
-                if($i == 0) { 
-                    $search_sql .= "$columns_array[$i] IN";
-                }
-                else {
-                    $search_sql .= " OR $columns_array[$i] IN";
-                }
+                //column to search in uzytkownicy table
+                $this->columns = ["Imie", "Nazwisko", "Email"];
+                //set search variable with primary syntax
+                $this->search_sql = "SELECT * FROM Uzytkownicy WHERE ";
+            }
 
-                //set primary search in
-                $search_sql .= " (select $columns_array[$i] from Uzytkownicy where";
-                for($y=0; $y<sizeof($split_data); $y++) {
-                    //if data from explode isn't last add OR after like
-                    if($y < sizeof($split_data) - 1) {
-                        $search_sql .= " $columns_array[$i] like '%{$split_data[$y]}%' or";
+            function setup_primary_data() {
+                //first loop is to go for all columns from columns_array
+                for($i=0; $i<sizeof($this->columns); $i++) {
+                    //if its first column don't add OR before column
+                    if($i == 0) { 
+                        $this->search_sql .= "{$this->columns[$i]} IN";
                     }
                     else {
-                        $search_sql .= " $columns_array[$i] like '%{$split_data[$y]}%') ";
+                        $this->search_sql .= " OR {$this->columns[$i]} IN";
+                    }
+
+                    //run next for loop
+                    $this->insert_like_function($i);
+                }
+                $this->search_sql .= ";";
+            }
+
+            function insert_like_function($i) {
+                $this->search_sql .= " (select {$this->columns[$i]} from Uzytkownicy where";
+                for($y=0; $y<sizeof($this->split_input_data); $y++) {
+                    //if data from explode isn't last add OR after like
+                    if($y < sizeof($this->split_input_data) - 1) {
+                        $this->search_sql .= " {$this->columns[$i]} like '%{$this->split_input_data[$y]}%' or";
+                    }
+                    else {
+                        $this->search_sql .= " {$this->columns[$i]} like '%{$this->split_input_data[$y]}%') ";
                     }
                 }
             }
-            $search_sql .= ';';
-            //query
-            $query = mysqli_query($con, $search_sql);
 
-            //check if query is bigger than 0
-            if($query->num_rows > 0) {
-                $i=0; //counter
-                //loop to add data into array
-                while($row = mysqli_fetch_array($query)) {
-                    $array_data[$i] = [
-                        "id_uzytkownik"=>$row['id_uzytkownik'],
-                        "Imie"=>$row['Imie'],
-                        "Nazwisko"=>$row['Nazwisko'],
-                        "Email"=>$row['Email']
-                    ];
-                    $i++;
+            function return_whole_data() {
+                global $con;
+                //query
+                $query = $con->query($this->search_sql);
+
+                $array_data = [];
+                //check if query is bigger than 0
+                if($query->num_rows > 0) {
+                    $i=0; //counter
+                    //loop to add data into array
+                    while($row = $query->fetch_array(MYSQLI_ASSOC)) {
+                        $array_data[$i] = [
+                            "id_uzytkownik"=>$row['id_uzytkownik'],
+                            "Imie"=>$row['Imie'],
+                            "Nazwisko"=>$row['Nazwisko'],
+                            "Email"=>$row['Email']
+                        ];
+                        $i++;
+                    }
+                    //print data
+                    print_data($array_data);
                 }
-                //print data
-                print_data($array_data);
+                else {
+                    echo "<tr><td colspan='6'>Brak wyników wyszukiwania</td></tr>";
+                }
             }
-            else {
-                echo "<tr><td colspan='6'>Brak wyników wyszukiwania</td></tr>";
-            }
-
         }
 
         function print_data($array) {
@@ -182,10 +194,15 @@
                     </thead>
                     <tbody>
                         <form method="POST">
-                            <?php 
+                            <?php
+                                //search class
+                                $search_obj = new search();
                                 if(isset($_POST['search-button'])) {
                                     if(strlen($_POST['search-input']) > 0) {
-                                        search_func();
+                                        //start whole methods
+                                        $search_obj->get_primary_data();
+                                        $search_obj->setup_primary_data();
+                                        $search_obj->return_whole_data();
                                     }
                                     else {
                                         show_all_users();
