@@ -25,7 +25,7 @@
                     //if media is null add grey bacground into archImg
                     $img = $row_arch['Media'].'/main 1.jpeg';
                     if($img == "/main 1.jpeg") {
-                        $img = "brak-zdjecia-architekta.png";
+                        $img = "brak-zdjecia.png";
                     }
 
                     echo "
