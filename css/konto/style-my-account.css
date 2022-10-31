@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: row;
     height: 500px;
-    width: 50%;
+    width: 60%;
     margin-top: 80px;
     border-radius: 6px;
     padding: 20px;
@@ -22,7 +22,6 @@
     display: flex;
     align-items: center;
 }
-
 
 #avatar, #avatar-photo {
     width: 120px;
@@ -74,21 +73,70 @@
     margin-top: 20px;
 }
 
+#favorite {
+    margin: 5px 0px 5px 20px;
+}
+
+#trasy, #obiekty {
+    margin-left: 35px !important;
+}
+
+/*----RIGHT SIDE----*/
 #right-side {
     width: calc(100% - 300px);
     padding: 40px 0px 0px 80px;
 }
 
-#right-side > div {
+#inputs-holder {
     width: 100%;
-    height: calc(100% - 20px);
+    display: flex;
+    padding-left: 10px;
+    flex-direction: column;
 }
 
-/*---BASIC-DATA---*/
-#basic-data {
-    margin-left: 10px;
+.input {
+    width: 50%;
+    margin: 10px 0px 10px 0px;
+    height: 30px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    border-bottom: 1px solid #bfbfbf;
 }
 
-#change-password {
-    margin-left: 10px;
+.input:focus {
+    -webkit-transition: 0.5s;
+    border-bottom: 1px solid black;
+}
+
+#other-data-holder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 20px;
+}
+
+#other-data-holder > div {
+    display: flex;
+    align-items: center;
+    width: 25%;
+}
+
+#show-password-holder {
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+#show-password-holder > label {
+    font-size: 15px;
+    color: #bfbfbf;
+}
+
+#submit-button-holder {
+    justify-content: flex-end;
+}
+
+#submit-button-holder > button {
+    cursor: pointer;
+    padding: 4px 6px;
 }

@@ -6,42 +6,112 @@
     flex-direction: column;
 }
 
-#objectsHolderHeader > h2 {
-    margin-top: 50px;
+#objectsHolder {
+    display: flex;
+    flex-direction: row;
 }
 
-#objectsHolder {
+#objectsHolder > form {
+    display: flex;
+    flex-direction: row;
+}
+
+.workHolder {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+    border-top: 1px solid black;
+    padding: 15px 20px;
+    width: 300px;
+    transition: 0.5s background-color, 0.5s width;
+}
+
+.workHolder:hover {
+    margin: 20px 19px 19px 19px;
+    border: 1px solid black;
+    background-color: white;
+    box-shadow: 10px 10px 5px #d9d9d9;
+}
+
+.workInfo {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.workImg {
+    height: 200px;
+    width: 300px;
+    cursor: pointer;
+}
+
+.workImg:hover {
+    opacity: 50%;
+}
+
+.objectLocation {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+.iconLocation {
+    margin-right: 10px;
+    width: 15px;
+    transform: rotate(270deg);
+}
+
+.workNameFavoriteHolder {
+    width: 100%;
+    display: flex;
+    flex-direction: row;  
+}
+
+.workNameHolder {
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.workName {
+    margin: 0px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
 }
 
-.workHolder {
+.workName:hover {
+    opacity: 50%;
+}
+
+.favoriteButtonHolder {
+    width: 40px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin: 20px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black; 
-    padding: 10px 0px;
-    width: 300px;
 }
 
-.workHolder:hover {
-    -webkit-transition: 0.5s;
-    margin: 0px;
-    width: 338px;
-    border: 1px solid black;
+.favorite-button {
+    border: none;
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 1;
 }
 
-.workImg {
-    height: 200px;
-    width: 300px;
-}
-
-.workName {
-    margin: 0px;
-    margin-top: 20px;
+.iconReadMore {
+    width: 20px;
+    margin-left: 5px;
 }

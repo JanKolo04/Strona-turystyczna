@@ -11,7 +11,7 @@
 
 
         function object_data() {
-            global $con, $source_photos, $file_count;
+            global $con, $source_photos, $file_count, $main_file;
 
             //object id
             $object_id = $_GET['obiekt'];
@@ -122,7 +122,7 @@
                 <button class='gallery-button previous-button' id="previous-button-maxview"></button>
             </div>
 
-            <div id="max-view-photo-holder" style="background-image: url('img/kosciol_mariacki/main 1.jpeg');"></div>
+            <div id="max-view-photo-holder"></div>
 
             <div class="navigation-button-holder-maxsize">
                 <button class='gallery-button next-button' id="next-button-maxview"></button>
@@ -148,8 +148,13 @@
         function open_close_maxview(element) {
             //get maxview gallery
             let maxview = document.querySelector('#maxview-gallery');
+
+            //start photo
+            let start_photo = <?php echo json_encode($main_file); ?>;
+            //set start photo for maxview
+            document.querySelector("#max-view-photo-holder").style = "background-image: url('"+start_photo+"');";
+
             //action on maxview
-            console.log(element.value);
             maxview.style.display = element.value;
 
             if(element.value == "flex") {
