@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style-main.css">
+    <link rel="stylesheet" type="text/css" href="css/style-obiekty.css">
     <title>Strona główna</title>
 </head>
 <body>
 
     <?php
-    
+
+        include("get_objects_routes/index.php");
         require_once("chart/index.php");
 
         //run funciton with saveing move
@@ -63,6 +65,26 @@
             </div>
         </div>
     </div>
+
+
+    <div class="best">
+        <div class="best-header">
+            <h2>Najpopularniejsze obiekty</h2>
+            <p>Są to najpopulatnriejsze obiekty które są odwiedzane i polubione przez naszych uytkowników</p>
+        </div>
+
+        <div class="data-best">
+            <?php
+                //sql function
+                $sql = "SELECT Obiekty.*, Trasy.Nazwa AS 'trasa_nazwa' FROM Obiekty INNER JOIN Trasy ON Trasy.Id=Obiekty.Id_trasa ORDER BY (Obiekty.Ilosc_wejsc) DESC LIMIT 3";
+
+                $print_objects = new GetObjects();
+                $print_objects->check_data_and_print($sql);
+            ?>
+        </div>
+    </div>
+    
+    <!----DODAC OBIEKTY----->
 
 </body>
 </html>

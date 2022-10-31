@@ -48,7 +48,7 @@
     height: 120px;
     border-radius: 50%;
     background-position: center;
-    background-size: 70%;
+    background-size: 60%;
     background-repeat: no-repeat;
 }
 
@@ -73,4 +73,40 @@
 .text > p {
     text-align: center;
     width: 80%;
+}
+
+/*---POPULAR OBJECTS---*/
+.best {
+    margin: auto;
+    width: 80%;
+    padding: 40px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-top: 1px solid #b3b3b3;
+}
+
+.data-best {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.best-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.best-header > p {
+    width: 80%;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
