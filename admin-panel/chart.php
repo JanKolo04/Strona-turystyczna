@@ -24,7 +24,7 @@
                     <details class="custom-select">
                         <summary class="radios">
                             <input type="radio" name="item" id="item1" title="7 dni" onclick="chart();" checked value="1,7">
-                            <input type="radio" name="item" id="item2" title="14 dni" onclick="chart();" value="2,14">
+                            <input type="radio" name="item" id="item2" title="14 dni" onclick="chart();" value="7,14">
                             <input type="radio" name="item" id="item3" title="1 miesiąc" onclick="chart();" value="6,30">
                         </summary>
                         <ul class="list">
@@ -105,6 +105,12 @@
     ?>
 
     <script>
+
+        function get_value_from_select() {  
+            let select_value = document.querySelector("input[type=radio]:checked").value;
+            console.log(select_value);
+        }
+
 
         function chart() {
             //arrays with data
