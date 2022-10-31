@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <?php include("get_objects/index.php"); ?>
+    <?php include("get_objects_routes/index.php"); ?>
     
     <h1>Obiekty</h1>
     <div id='objectsMainHolder'>
