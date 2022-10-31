@@ -10,43 +10,8 @@
 
     <?php
 
-        //global varibale 
-        
-        $array_data = [];
-
         if(isset($_POST['single_delete_button'])) {
             single_delete_button();
-        }
-
-        function show_all_users() {
-            global $con;
-            
-            $array_data = [];
-
-            //find all users
-            $sql = "SELECT * FROM uzytkownicy";
-            //query
-            $query = mysqli_query($con, $sql);
-
-            //check if query is bigger than 0
-            if($query->num_rows > 0) {
-                $i=0; //counter
-                //loop to add data into array
-                while($row = mysqli_fetch_array($query)) {
-                    $array_data[$i] = [
-                        "id_uzytkownik"=>$row['id_uzytkownik'],
-                        "Imie"=>$row['Imie'],
-                        "Nazwisko"=>$row['Nazwisko'],
-                        "Email"=>$row['Email']
-                    ];
-                    $i++;
-                }
-                //print data
-                print_data($array_data);
-            }
-            else {
-                echo "<tr><td colspan='6'>Nie ma użytkowników</td></tr>";
-            }
         }
 
         function single_delete_button() {
@@ -62,87 +27,83 @@
         }
 
 
-        function search_func() {
-            global $con;
-            $array_data = [];
+        class search {
+            public $columns;
+            public $split_input_data;
+            public $search_sql;
 
-            //get data from input
-            $input_data = $_POST['search-input'];
+            function get_primary_data() {
+                global $con;
+                //get data from input
+                $input_data = $_POST['search-input'];
 
-            //split input
-            $split_data = explode(" ", $input_data);
+                //split input
+                $this->split_input_data = explode(" ", $input_data);
 
-            //column to search in uzytkownicy table
-            $columns_array = ["Imie", "Nazwisko", "Email"];
-            //set search variable with primary syntax
-            $search_sql = "SELECT * FROM Uzytkownicy WHERE ";
-            /*
-                first loop is to go for all columns from columns_array
-                second loop is to go for all split data from input
-            */
-            for($i=0; $i<sizeof($columns_array); $i++) {
-                //if its first column don't add OR before column
-                if($i == 0) { 
-                    $search_sql .= "$columns_array[$i] IN";
-                }
-                else {
-                    $search_sql .= " OR $columns_array[$i] IN";
-                }
+                //column to search in uzytkownicy table
+                $this->columns = ["Imie", "Nazwisko", "Email"];
+                //set search variable with primary syntax
+                $this->search_sql = "SELECT * FROM Uzytkownicy WHERE ";
+            }
 
-                //set primary search in
-                $search_sql .= " (select $columns_array[$i] from Uzytkownicy where";
-                for($y=0; $y<sizeof($split_data); $y++) {
-                    //if data from explode isn't last add OR after like
-                    if($y < sizeof($split_data) - 1) {
-                        $search_sql .= " $columns_array[$i] like '%{$split_data[$y]}%' or";
+            function setup_primary_data() {
+                //get all data
+                $this->get_primary_data();
+
+                //first loop is to go for all columns from columns_array
+                for($i=0; $i<sizeof($this->columns); $i++) {
+                    //if its first column don't add OR before column
+                    if($i == 0) { 
+                        $this->search_sql .= "{$this->columns[$i]} IN";
                     }
                     else {
-                        $search_sql .= " $columns_array[$i] like '%{$split_data[$y]}%') ";
+                        $this->search_sql .= " OR {$this->columns[$i]} IN";
+                    }
+
+                    //run next for loop
+                    $this->insert_like_function($i);
+                }
+                $this->search_sql .= ";";
+
+                return $this->search_sql;
+            }
+
+            function insert_like_function($i) {
+                $this->search_sql .= " (select {$this->columns[$i]} from Uzytkownicy where";
+                for($y=0; $y<sizeof($this->split_input_data); $y++) {
+                    //if data from explode isn't last add OR after like
+                    if($y < sizeof($this->split_input_data) - 1) {
+                        $this->search_sql .= " {$this->columns[$i]} like '%{$this->split_input_data[$y]}%' or";
+                    }
+                    else {
+                        $this->search_sql .= " {$this->columns[$i]} like '%{$this->split_input_data[$y]}%') ";
                     }
                 }
             }
-            $search_sql .= ';';
-            //query
-            $query = mysqli_query($con, $search_sql);
-
-            //check if query is bigger than 0
-            if($query->num_rows > 0) {
-                $i=0; //counter
-                //loop to add data into array
-                while($row = mysqli_fetch_array($query)) {
-                    $array_data[$i] = [
-                        "id_uzytkownik"=>$row['id_uzytkownik'],
-                        "Imie"=>$row['Imie'],
-                        "Nazwisko"=>$row['Nazwisko'],
-                        "Email"=>$row['Email']
-                    ];
-                    $i++;
-                }
-                //print data
-                print_data($array_data);
-            }
-            else {
-                echo "<tr><td colspan='6'>Brak wyników wyszukiwania</td></tr>";
-            }
-
         }
 
-        function print_data($array) {
+        function print_data($sql) {
+            global $con;
+            //query
+            $query = $con->query($sql);
 
-            for($i=0; $i<sizeof($array); $i++) {
-                echo "
-                    <tr>
-                        <td class='manipulation-td'>
-                            <input value='{$array[$i]['id_uzytkownik']}' class='check' type='checkbox'>
-                            <button value='{$array[$i]['id_uzytkownik']}' class='delete-user-button' onclick='delete_user()' type='submit' name='single_delete_button'><i id='x-icon' class='fa-solid fa-x'></i>&nbspUsuń</button>
-                        </td>
-                        <td>{$array[$i]['id_uzytkownik']}</td>
-                        <td>{$array[$i]['Imie']}</td>
-                        <td>{$array[$i]['Nazwisko']}</td>
-                        <td>{$array[$i]['Email']}</td>
-                        <td><a href='index.php?strona=uzytkownicy/uzytkownik?id={$array[$i]['id_uzytkownik']}'>Podgląd</a>
-                    </tr>
-                ";
+            if($query->num_rows > 0) {
+                $i=0; //counter
+                while($row = $query->fetch_array(MYSQLI_ASSOC)) {
+                    echo "
+                        <tr>
+                            <td class='manipulation-td'>
+                                <input value='{$row['id_uzytkownik']}' class='check' type='checkbox'>
+                                <button value='{$row['id_uzytkownik']}' class='delete-user-button' onclick='delete_user()' type='submit' name='single_delete_button'><i id='x-icon' class='fa-solid fa-x'></i>&nbspUsuń</button>
+                            </td>
+                            <td>{$row['id_uzytkownik']}</td>
+                            <td>{$row['Imie']}</td>
+                            <td>{$row['Nazwisko']}</td>
+                            <td>{$row['Email']}</td>
+                            <td><a href='index.php?strona=uzytkownicy/uzytkownik?id={$row['id_uzytkownik']}'>Podgląd</a>
+                        </tr>
+                    ";
+                }
             }
         }
 
@@ -182,17 +143,23 @@
                     </thead>
                     <tbody>
                         <form method="POST">
-                            <?php 
+                            <?php
+                                //variable with function which show all users
+                                $sql_all_users = "SELECT * FROM Uzytkownicy";
+
+                                //search class
+                                $search_obj = new search();
                                 if(isset($_POST['search-button'])) {
                                     if(strlen($_POST['search-input']) > 0) {
-                                        search_func();
+                                        //print whole search data
+                                        print_data($search_obj->setup_primary_data());
                                     }
                                     else {
-                                        show_all_users();
+                                        print_data($sql_all_users);
                                     }
                                 }
                                 else {
-                                    show_all_users();
+                                    print_data($sql_all_users);
                                 }
                             ?>
                         </form>
