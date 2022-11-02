@@ -1,5 +1,5 @@
 #content-holder {
-    width: 500px;
+    width: 900px;
     height: 500px;
     display: flex;
     flex-direction: row;
@@ -10,8 +10,19 @@
     background-color: white;
 }
 
+#img-holder {
+    width: 60%;
+    height: 500px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    background-image: url("../img/photo-login.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #other-content-holder {
-    width: 100%;
+    width: 40%;
     height: 500px;
     padding: 0px 20px;
     display: flex;
