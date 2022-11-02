@@ -7,6 +7,30 @@
 </head>
 <body>
 
+    <div id="content-holder">
+        <div id="other-content-holder">
+            <div id="header">
+                <h1>Dodawanie użytkownika</h1>
+                <p>Stwórz konto dla użytkownika</p>
+            </div>
+            <div id="login-data-holder">
+                <form method="POST">
+                    <div id="inputs-holder">
+                        <input type="text" name="name" placeholder="Imie" class="input">
+                        <input type="text" name="surname" placeholder="Nazwisko" class="input">
+                        <input type="text" name="email" placeholder="Emial" class="input">
+                        <input type="password" name="password" placeholder="Hasło" class="input">
+                    </div>
+                    <div id="other-data-holder">
+                        <div id="button-holder">
+                            <button type="submit" name="submit">Zatwierdź</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <?php
 
         if(isset($_POST['add_user'])) {
@@ -55,30 +79,6 @@
         }
 
     ?>
-
-    <div id="addUserHolder">
-        <div id='header-add-user'>
-            <h2>Dodaj uytkownika</h2>
-        </div>
-        <div id="form-holder">
-            <form method="POST" id="form-add-user">
-                <div id="inputs-holder">
-                    <input type="text" name="name" placeholder="Imie..." required>
-                    <input type="text" name="surname" placeholder="Nazwisko..." required>
-                    <input type="email" name="email" placeholder="Email..." required>
-                    <input type="text" name="birth_date" placeholder="yyyy-mm-dd..." pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))" required>
-                </div>
-
-                <div id="submit-holder">
-                    <button type="submit" name="add_user">Dodaj</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script>
-
-    </script>
 
 </body>
 </html>

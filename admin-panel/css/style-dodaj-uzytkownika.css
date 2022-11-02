@@ -1,80 +1,79 @@
-#addUserHolder {
-    margin: auto;
-    margin-top: 50px;
-    width: calc(50% - 20px);
+#content-holder {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 10px 10px 5px #bfbfbf;
     border-radius: 6px;
-    padding: 20px;
+    margin: auto;
+    margin-top: 100px;
     background-color: white;
 }
 
-#header-add-user {
-    width: calc(100% - 20px);
-    padding: 20px 10px;
+#other-content-holder {
+    width: 100%;
+    height: 500px;
+    padding: 0px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-#header-add-user > h2 {
-    margin: 0px;
-    color: #bfbfbf;
+#header {
+    width: 100%;
     text-align: center;
+    padding-bottom: 40px;
 }
 
-#form-holder {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-    flex-direction: column;
+#header > h1 {
+    margin-top: 0px;
+    margin-bottom: 15px;
 }
 
-#form-add-user {
-    width: 100%;
-    display: flex;
-    flex-direction: column;   
-}
-
-#inputs-holder {
-    width: clac(100% - 20px);
-    padding: 20px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#inputs-holder > input {
-    -webkit-transition: 0.5s;
-    padding: 0px 5px;
+#header > p {
+    margin-top: 0px;
     font-size: 15px;
-    height: 35px;
-    line-height: 35px;
-    width: 85%;
-    border: none;
-    border-bottom: 1px solid #bfbfbf;
-    white-space: nowrap;
-    overflow: hidden;
-    background-color: white;
-    color: black;
-    outline: none;
-    margin: 10px;
 }
 
-#inputs-holder > input:focus {
-    border-bottom: 1px solid black;
-    outline: none;
+#login-data-holder {
+    width: 100%;
 }
 
-#submit-holder {
-    width: 92%;
-    padding: 20px 0px;
+#inputs-holder, #other-data-holder {
+    width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-#submit-holder > button {
-    padding: 5px 10px;
+.input {
+    width: 80%;
+    margin: 10px 0px 10px 0px;
+    height: 30px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.input:focus {
+    -webkit-transition: 0.5s;
+    border-bottom: 1px solid black;
+}
+
+#other-data-holder {
+    padding-top: 20px;
+}
+
+#button-holder {
+    padding: 10px 0px 20px;
+}
+
+#button-holder > button {
+    padding: 5px 15px;
+    font-weight: bold;
     cursor: pointer;
+    width: 120px;
 }
