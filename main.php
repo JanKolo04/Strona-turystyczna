@@ -10,12 +10,8 @@
 <body>
 
     <?php
-<<<<<<< HEAD
     
-=======
-
         include("get_objects_routes/index.php");
->>>>>>> main
         require_once("chart/index.php");
 
         //run funciton with saveing move
