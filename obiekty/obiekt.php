@@ -9,6 +9,7 @@
 
     <?php
 
+        include("get_objects_routes/index.php");
 
         function object_data() {
             global $con, $source_photos, $file_count, $main_file;
@@ -80,36 +81,6 @@
             }
         }
 
-        //show objects which you can see on route
-        function show_close_objects() {
-            global $con;
-
-            //get architect ID
-            $route_id = $_GET['trasa'];
-            //obejct Id
-            $object_id = $_GET['obiekt'];
-
-            //get all works created by this architect
-            $sql_obiekt = "SELECT * FROM Obiekty WHERE Id_trasa=$route_id AND Id != $object_id";
-            $query_obiekt = mysqli_query($con, $sql_obiekt);
-
-            //show works
-            if($query_obiekt->num_rows > 0) {
-                while($row_works = mysqli_fetch_array($query_obiekt)) {
-                    //link_to_work
-                    $link_to_work = "index.php?strona=obiekty/obiekt&obiekt={$row_works['Id']}&trasa={$row_works['Id_trasa']}";
-                    echo "
-                        <div class='workHolder'>
-                            <a href='$link_to_work'><img class='workImg' src='img/{$row_works['Media']}/main 1.jpeg'></a>
-                            <div class='workInfo'>
-                                <a class='workName' href='$link_to_work'><h4>{$row_works['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
-                            </div>
-                        </div>
-                    ";
-                }
-            }
-        }
-
     ?>
 
     <div id="maxview-gallery">
@@ -139,7 +110,15 @@
             <h2>Inne obiekty na tej trasie</h2>
         </div>
         <div id='objectsHolder'>
-            <?php show_close_objects(); ?>
+            <form method="POST">
+                <?php 
+                    //sql function
+                    $sql = "SELECT Obiekty.*, Trasy.Nazwa AS 'trasa_nazwa' FROM Obiekty INNER JOIN Trasy ON Trasy.Id=Obiekty.Id_trasa WHERE Trasy.Id={$_GET['trasa']} AND Obiekty.Id!={$_GET['obiekt']} ORDER BY (Obiekty.Nazwa) ASC";
+
+                    $print_objects = new GetObjects();
+                    $print_objects->check_data_and_print($sql);
+                ?>
+            </form>
         </div>
     </div>
 
