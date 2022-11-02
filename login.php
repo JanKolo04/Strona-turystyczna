@@ -23,7 +23,7 @@
                     </div>
                     <div id="other-data-holder">
                         <div id="button-holder">
-                            <button type="submit">Zatwierdź</button>
+                            <button type="submit" name="submit">Zatwierdź</button>
                         </div>
                         <div id="register-link-holder">
                             <p>Jeśli nie masz konta to? <a id="registrer-link" href="index.php?strona=rejstracja">Kliknij tutaj</a></p>
