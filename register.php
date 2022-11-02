@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/style-dodaj-uzytkownika.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style-register.css">
+	<title>Zarejestruj się - Szlakiem Szczecina</title>
 </head>
 <body>
 
     <div id="content-holder">
+        <div id="img-holder"></div>
         <div id="other-content-holder">
             <div id="header">
-                <h1>Dodawanie użytkownika</h1>
-                <p>Stwórz konto dla użytkownika</p>
+                <h1>Rejstracja</h1>
+                <p>Stwórz konto aby mieć więcej mozliwości</p>
             </div>
             <div id="login-data-holder">
                 <form method="POST">
@@ -33,7 +35,7 @@
 
     <?php
 
-        if(isset($_POST['add_user'])) {
+        if(isset($_POST['submit'])) {
             add_user();
         }
 
@@ -43,16 +45,14 @@
                 "Name"=>$_POST['name'],
                 "Surname"=>$_POST['surname'],
                 "Email"=>$_POST['email'],
-                "Date_birth"=>$_POST['birth_date']
+                "Password"=>$_POST['password']
             ];
 
             return $new_user_array; //return array
         }
 
         function add_user() {
-            global $con, $alert;
-
-            $alert = ""; //alert
+            global $con;
 
             //get data
             $user_data = get_data_from_form();
@@ -63,21 +63,16 @@
 
             if($query_check->num_rows == 0) {
                 //add user
-                $sql_insert = "INSERT INTO uzytkownicy(Imie, Nazwisko, Email, Data_urodzenia) VALUES('{$user_data['Name']}', '{$user_data['Surname']}', '{$user_data['Email']}', '{$user_data['Date_birth']}');";
+                $sql_insert = "INSERT INTO uzytkownicy(Imie, Nazwisko, Email, Haslo) VALUES('{$user_data['Name']}', '{$user_data['Surname']}', '{$user_data['Email']}', '{$user_data['Password']}');";
                 $query_insert = mysqli_query($con, $sql_insert);
-
-                if(!$query_insert) {
-                    echo "<script>alert('Coś poszło nie tak');</script>";
-                }
-                else {
-                    echo "<script>alert('Dodano uzytkownika');</script>";
-                }
+                //move into login page
+                header("Location: index.php?storna=login");
             }
             else {
                 echo "<script>alert('Istnieje uzytkownik o tym Emailu');</script>";
             }
         }
-
+    
     ?>
 
 </body>
