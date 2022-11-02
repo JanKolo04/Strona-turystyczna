@@ -16,7 +16,7 @@
     border-top: 1px solid black;
     padding: 15px 20px;
     width: 300px;
-    height: 300px;
+    height: 270px;
     transition: 0.5s background-color, 0.5s width;
 }
 
