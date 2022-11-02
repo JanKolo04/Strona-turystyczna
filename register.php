@@ -12,8 +12,8 @@
         <div id="img-holder"></div>
         <div id="other-content-holder">
             <div id="header">
-                <h1>Logowanie</h1>
-                <p>Wpisz swój login i hasło</p>
+                <h1>Rejstracja</h1>
+                <p>Stwórz konto aby mieć więcej mozliwości</p>
             </div>
             <div id="login-data-holder">
                 <form method="POST">
@@ -26,9 +26,6 @@
                     <div id="other-data-holder">
                         <div id="button-holder">
                             <button type="submit">Zatwierdź</button>
-                        </div>
-                        <div id="register-link-holder">
-                            <p>Jeśli nie masz konta to? <a id="registrer-link" href="index.php?strona=rejstracja">Kliknij tutaj</a></p>
                         </div>
                     </div>
                 </form>
