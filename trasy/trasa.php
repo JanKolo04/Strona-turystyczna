@@ -10,7 +10,7 @@
 
     <?php
 
-        include("get_objects/index.php");
+        include("get_objects_routes/index.php");
 
         class Route {
             function get_route_data() {
