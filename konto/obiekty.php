@@ -12,7 +12,7 @@
 
 	<?php
 
-		include("get_objects/index.php");
+		include("get_objects_routes/index.php");
 	
 		class get_all_favorite_objects {
 			function get_all_objects_from_fav($id_user) {
