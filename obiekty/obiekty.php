@@ -21,6 +21,7 @@
                 header("Location: index.php?strona=login");
             }
         }
+        
     
     ?>
     
