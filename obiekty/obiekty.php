@@ -8,7 +8,22 @@
 </head>
 <body>
 
-    <?php include("get_objects_routes/index.php"); ?>
+    <?php 
+    
+        include("get_objects_routes/index.php"); 
+
+        if(isset($_POST['favorite-button'])) {
+            check_if_login();
+        }
+
+        function check_if_login() {
+            if(!isset($_SESSION['user_id'])) {
+                header("Location: index.php?strona=login");
+            }
+        }
+    
+    ?>
+    
     
     <h1>Obiekty</h1>
     <div id='objectsMainHolder'>
