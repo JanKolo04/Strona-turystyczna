@@ -35,7 +35,7 @@
 				}
 	
 				//all objects from fav
-				//reverse array to get from newest objects to oldest
+				//reverse array to get from newst
 				return array_reverse($array);
 			}
 
