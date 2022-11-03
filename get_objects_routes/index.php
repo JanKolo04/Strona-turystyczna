@@ -2,10 +2,10 @@
 
     //check which button to update favorite
     $favorite = new Favorite();
-    if(isset($_POST['favorite-button'])) {
+    if(isset($_POST['favorite-button']) && isset($_SESSION['user_id'])) {
         $favorite->insert_into_favorite(3, $_POST['favorite-button']);
     }
-    else if(isset($_POST['unfavorite-button'])) {
+    else if(isset($_POST['unfavorite-button']) && isset($_SESSION['user_id'])) {
         $favorite->delete_from_favorite(3, $_POST['unfavorite-button']);
     }
 
