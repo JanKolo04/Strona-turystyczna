@@ -74,7 +74,7 @@
 
                     //if media is null set no photo img
                     $img = "../img/brak-zdjecia.png";
-                    if($row['Media'] != NULL) {
+                    if($row['Media'].'/main 1.jpeg' != "/main 1.jpeg") {
                         $img = '../img'.$row['Media'].'/main 1.jpeg';
                     }
                     
