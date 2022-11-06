@@ -8,6 +8,14 @@
     flex-wrap: wrap;
 }
 
+#routesMainHolder > form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;   
+}
+
 .routesHolder {
     display: flex;
     align-items: center;
@@ -25,15 +33,6 @@
     background-color: white;
     box-shadow: 10px 10px 5px #d9d9d9;
 }
-
-.routesInfo {
-    width: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-}
-
 .routesImg {
     height: 200px;
     width: 300px;
@@ -42,6 +41,18 @@
 
 .routesImg:hover {
     opacity: 50%;
+}
+
+.routesInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: row; 
+}
+
+.routesNameHolder {
+    width: calc(100% - 40px);
+    display: flex;
+    justify-content: flex-start;
 }
 
 .routesName {
@@ -57,6 +68,24 @@
 
 .routesName:hover {
     opacity: 50%;
+}
+
+.favoriteButtonHolder {
+    width: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.favorite-button {
+    border: none;
+    height: 30px;
+    width: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .iconReadMore {
