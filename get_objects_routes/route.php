@@ -18,7 +18,7 @@
             global $con;
 
             //get all routes from favorite where id_user is user id
-            $sql_fav = "SELECT Id, Id_trasy FROM ulubione WHERE Id_uzytkownika=$id_user";
+            $sql_fav = "SELECT Id, Id_trasy FROM ulubione WHERE Id_uzytkownika=$id_user AND Id_trasy!=NULL";
             $query_fav = $con->query($sql_fav);
 
             $array = [];
@@ -74,7 +74,7 @@
 
                     //if media is null set no photo img
                     $img = "../img/brak-zdjecia.png";
-                    if($row['Media'] != NULL) {
+                    if($row['Media'].'/main 1.jpeg' != "/main 1.jpeg") {
                         $img = '../img'.$row['Media'].'/main 1.jpeg';
                     }
                     
