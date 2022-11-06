@@ -6,10 +6,6 @@
         $favorite->insert_into_favorite(3, $_POST['favorite-button']);
     }
     else if(isset($_POST['unfavorite-button'])) {
-    if(isset($_POST['favorite-button']) && isset($_SESSION['user_id'])) {
-        $favorite->insert_into_favorite(3, $_POST['favorite-button']);
-    }
-    else if(isset($_POST['unfavorite-button']) && isset($_SESSION['user_id'])) {
         $favorite->delete_from_favorite(3, $_POST['unfavorite-button']);
     }
 
@@ -103,23 +99,12 @@
         public $user_id;
         public $object_id;
 
-        function fav_count($operator, $object_id) {
-            global $con;
-
-            //update favorite count column
-            $sql_update = "UPDATE Obiekty SET Ilosc_ulu=Ilosc_ulu{$operator}1 WHERE Id=$object_id";
-            $query_ulu = $con->query($sql_update);
-        }
-
         function insert_into_favorite($user_id, $object_id) {
             global $con;
 
             //insert object into favortie
-            $sql_insert = "INSERT INTO ulubione(Id_uzytkownika, Id_trasy, Id_obiektu) VALUES($user_id, NULL, $object_id);";
-            $query_insert = $con->query($sql_insert);
-        
-            //update fav count column
-            $this->fav_count('+', $object_id);
+            $sql = "INSERT INTO ulubione(Id_uzytkownika, Id_trasy, Id_obiektu) VALUES($user_id, NULL, $object_id);";
+            $query = $con->query($sql);
         }
 
         function delete_from_favorite($user_id, $object_id) {
@@ -128,9 +113,6 @@
             //delete object from favortie
             $sql = "DELETE FROM ulubione WHERE Id_uzytkownika=$user_id AND Id=$object_id";
             $query = $con->query($sql);
-
-            //update fav count column
-            $this->fav_count('-', $object_id);
         }
     }
 ?>
