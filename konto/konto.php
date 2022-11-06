@@ -11,12 +11,10 @@
 
         
         $category_account = "your-data";
-        /*
         if(!isset($_SESSION['user_id'])) {
             header("Location: index.php?strona=login");
         }
-        */
-        if(isset($_GET['category'])) {
+        else if(isset($_GET['category'])) {
             $category_account = $_GET['category'];
         }
 
