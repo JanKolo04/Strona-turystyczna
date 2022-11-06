@@ -18,7 +18,7 @@
             global $con;
 
             //get all routes from favorite where id_user is user id
-            $sql_fav = "SELECT Id, Id_trasy FROM ulubione WHERE Id_uzytkownika=$id_user AND Id_trasy!=NULL";
+            $sql_fav = "SELECT Id, Id_trasy FROM ulubione WHERE Id_uzytkownika=$id_user";
             $query_fav = $con->query($sql_fav);
 
             $array = [];
@@ -33,7 +33,6 @@
                     $i++;
                 }
             }
-
             //all routes from fav
             return $array;
         }
