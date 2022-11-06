@@ -18,7 +18,7 @@
             global $con;
 
             //get all objects from favorite where id_user is user id
-            $sql_fav = "SELECT Id, Id_obiektu FROM ulubione WHERE Id_uzytkownika=$id_user AND Id_obiektu!=NULL";
+            $sql_fav = "SELECT Id, Id_obiektu FROM ulubione WHERE Id_uzytkownika=$id_user";
             $query_fav = $con->query($sql_fav);
 
             $array = [];

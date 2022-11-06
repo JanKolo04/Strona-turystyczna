@@ -16,7 +16,7 @@
 		<form method="POST">
 			<?php 
 				//sql function
-				$sql = "SELECT Trasy.* FROM Ulubione INNER JOIN Trasy ON Ulubione.Id_obiektu=Trasy.Id WHERE Ulubione.id_uzytkownika=3;";
+				$sql = "SELECT Trasy.* FROM Ulubione INNER JOIN Trasy ON Ulubione.Id_trasy=Trasy.Id WHERE Ulubione.id_uzytkownika=3;";
 
 				$objects = new GetRoutes();
 				$objects->check_data_and_print($sql);
