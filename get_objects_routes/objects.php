@@ -113,8 +113,7 @@
 
         function insert_into_favorite($user_id, $object_id) {
             global $con;
-
-            //insert object into favortie
+            
             $sql_insert = "INSERT INTO ulubione(Id_uzytkownika, Id_trasy, Id_obiektu) VALUES($user_id, NULL, $object_id);";
             $query_insert = $con->query($sql_insert);
         

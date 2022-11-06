@@ -9,7 +9,9 @@
 <body>
 
     <?php 
-    
+        
+        include("get_objects_routes/objects.php");
+   
         include("get_objects_routes/index.php"); 
 
         if(isset($_POST['favorite-button'])) {
@@ -24,7 +26,6 @@
         
     
     ?>
-    
     
     <h1>Obiekty</h1>
     <div id='objectsMainHolder'>
