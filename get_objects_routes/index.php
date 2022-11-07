@@ -72,17 +72,22 @@
                     //link to img for fav_button
                     $link_to_img_for_fav_bt = "img/icon/$background";
                     
+                    //if media is null set no photo img
+                    $background_photo = "brak-zdjecia.png";
+                    if($row['Media'].'/main 1.jpeg' != "/main 1.jpeg") {
+                        $background_photo = "img/{$row['Media']}/main 1.jpeg";
+                    }
+                    
                     echo "
-                        <div class='workHolder'>
-                            <a href='$link_to_work'><img class='workImg' src='img/{$row['Media']}/main 1.jpeg'></a>
-                            <div class='workInfo'>
+                        <div class='objectsHolder'>
+                            <a href='$link_to_work'><img class='objectImg' src='$background_photo'></a>
+                            <div class='objectLocationHolder'>
                                 <p class='objectLocation'><img class='iconLocation' src='img/icon/bookmark.png'> {$row['trasa_nazwa']}</p>
                                 
-                                <div class='workNameFavoriteHolder'>
-                                    <div class='workNameHolder'>
-                                        <a class='workName' href='$link_to_work'><h4>{$row['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
+                                <div class='objectNameFavoriteHolder'>
+                                    <div class='objectNameHolder'>
+                                        <a class='objectName' href='$link_to_work'><h4>{$row['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
                                     </div>
-
                                     <div class='favoriteButtonHolder'>
                                         <button style='background-image: url($link_to_img_for_fav_bt);' type='submit' value='$value' name='$fav_button_name' class='favorite-button'></button>
                                     </div>

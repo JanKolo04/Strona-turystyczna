@@ -16,7 +16,7 @@
     flex-wrap: wrap;   
 }
 
-.workHolder {
+.objectsHolder {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -27,14 +27,14 @@
     transition: 0.5s background-color, 0.5s width;
 }
 
-.workHolder:hover {
+.objectsHolder:hover {
     margin: 20px 19px 19px 19px;
     border: 1px solid black;
     background-color: white;
     box-shadow: 10px 10px 5px #d9d9d9;
 }
 
-.workInfo {
+.objectLocationHolder {
     width: 300px;
     display: flex;
     justify-content: center;
@@ -42,13 +42,13 @@
     flex-direction: column;
 }
 
-.workImg {
+.objectImg {
     height: 200px;
     width: 300px;
     cursor: pointer;
 }
 
-.workImg:hover {
+.objectImg:hover {
     opacity: 50%;
 }
 
@@ -66,19 +66,19 @@
     transform: rotate(270deg);
 }
 
-.workNameFavoriteHolder {
+.objectNameFavoriteHolder {
     width: 100%;
     display: flex;
     flex-direction: row;  
 }
 
-.workNameHolder {
+.objectNameHolder {
     width: calc(100% - 40px);
     display: flex;
     justify-content: flex-start;
 }
 
-.workName {
+.objectName {
     margin: 0px;
     cursor: pointer;
     text-decoration: none;
@@ -89,7 +89,7 @@
     flex-direction: row;
 }
 
-.workName:hover {
+.objectName:hover {
     opacity: 50%;
 }
 
