@@ -11,8 +11,6 @@
     <?php 
         
         include("get_objects_routes/objects.php");
-   
-        include("get_objects_routes/index.php"); 
 
         if(isset($_POST['favorite-button'])) {
             check_if_login();
