@@ -11,6 +11,19 @@
 
         include("get_objects_routes/index.php");
 
+        function view_count() {
+            global $con;
+            //object id
+            $object_id = $_GET['obiekt'];
+
+            //update count view column
+            $sql = "UPDATE Obiekty SET Ilosc_wejsc=Ilosc_wejsc+1 WHERE Id=$object_id";
+            $query = $con->query($sql);
+        }
+
+        view_count();
+
+
         function object_data() {
             global $con, $source_photos, $file_count, $main_file;
 

@@ -71,7 +71,7 @@
                     $link_to_work = "index.php?strona=obiekty/obiekt&obiekt={$row['Id']}&trasa={$row['Id_trasa']}";
                     //link to img for fav_button
                     $link_to_img_for_fav_bt = "img/icon/$background";
-                    
+
                     //if media is null set no photo img
                     $background_photo = "brak-zdjecia.png";
                     if($row['Media'].'/main 1.jpeg' != "/main 1.jpeg") {
@@ -88,6 +88,7 @@
                                     <div class='objectNameHolder'>
                                         <a class='objectName' href='$link_to_work'><h4>{$row['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
                                     </div>
+
                                     <div class='favoriteButtonHolder'>
                                         <button style='background-image: url($link_to_img_for_fav_bt);' type='submit' value='$value' name='$fav_button_name' class='favorite-button'></button>
                                     </div>

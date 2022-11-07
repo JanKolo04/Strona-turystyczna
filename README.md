@@ -4,8 +4,7 @@ Strona z trasami i zabytkowymi obiektami w Szczecinie
 ## To do strona
 - [ ] Sprawidzić jak dodać mape z zaznaczonymi punktami do 
 - [ ] Znaleść na stornie obiektu zdjęcia które będą miały odpowiedni rozmiar
-- [ ] Dodać przycisk ulubione na trasy
-- [ ] Stworzyć strone z rejstracją
+- [ ] Dodać ilość polubień i wyświetleń w tabeli trasy
 
 ## To do Schemat
 - [x] Zrobić tabele `Ulubione` która będzie połączona relacją z tabelą `Uzytkownicy`
