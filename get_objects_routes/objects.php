@@ -18,7 +18,7 @@
             global $con;
 
             //get all objects from favorite where id_user is user id
-            $sql_fav = "SELECT Id, Id_obiektu FROM ulubione WHERE Id_uzytkownika=$id_user AND Id_obiektu!=NULL";
+            $sql_fav = "SELECT Id, Id_obiektu FROM ulubione WHERE Id_uzytkownika=$id_user";
             $query_fav = $con->query($sql_fav);
 
             $array = [];
@@ -71,16 +71,22 @@
                     $link_to_work = "index.php?strona=obiekty/obiekt&obiekt={$row['Id']}&trasa={$row['Id_trasa']}";
                     //link to img for fav_button
                     $link_to_img_for_fav_bt = "img/icon/$background";
+
+                    //if media is null set no photo img
+                    $background_photo = "brak-zdjecia.png";
+                    if($row['Media'].'/main 1.jpeg' != "/main 1.jpeg") {
+                        $background_photo = "img/{$row['Media']}/main 1.jpeg";
+                    }
                     
                     echo "
-                        <div class='workHolder'>
-                            <a href='$link_to_work'><img class='workImg' src='img/{$row['Media']}/main 1.jpeg'></a>
-                            <div class='workInfo'>
+                        <div class='objectsHolder'>
+                            <a href='$link_to_work'><img class='objectImg' src='$background_photo'></a>
+                            <div class='objectLocationHolder'>
                                 <p class='objectLocation'><img class='iconLocation' src='img/icon/bookmark.png'> {$row['trasa_nazwa']}</p>
                                 
-                                <div class='workNameFavoriteHolder'>
-                                    <div class='workNameHolder'>
-                                        <a class='workName' href='$link_to_work'><h4>{$row['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
+                                <div class='objectNameFavoriteHolder'>
+                                    <div class='objectNameHolder'>
+                                        <a class='objectName' href='$link_to_work'><h4>{$row['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
                                     </div>
 
                                     <div class='favoriteButtonHolder'>
