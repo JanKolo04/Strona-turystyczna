@@ -40,22 +40,13 @@ a {
     color: black;
 }
 
-.routesImg {
+.routeImg {
     width: 200px;
     height: 133px;
     cursor: pointer;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 17px;
 }
 
-.routesImg::before {
-    content: 'Brak zdjęcia';
-}
-
-.routesImg:hover {
+.routeImg:hover {
     opacity: 50%;
 }
 
