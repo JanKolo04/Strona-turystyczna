@@ -78,8 +78,8 @@
                             <div class='workInfo'>
                                 <p class='objectLocation'><img class='iconLocation' src='img/icon/bookmark.png'> {$row['trasa_nazwa']}</p>
                                 
-                                <div class='workNameFavoriteHolder'>
-                                    <div class='workNameHolder'>
+                                <div class='objectNameFavoriteHolder'>
+                                    <div class='objectNameHolder'>
                                         <a class='workName' href='$link_to_work'><h4>{$row['Nazwa']}</h4><img class='iconReadMore' src='img/icon/read-more.png'></a>
                                     </div>
 

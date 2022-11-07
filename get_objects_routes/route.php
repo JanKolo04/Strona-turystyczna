@@ -72,14 +72,14 @@
                     $link_to_img_for_fav_bt = "img/icon/$background";
 
                     //if media is null set no photo img
-                    $img = "../img/brak-zdjecia.png";
+                    $background = "background-color: #a6a6a6;";
                     if($row['Media'].'/main 1.jpeg' != "/main 1.jpeg") {
-                        $img = '../img'.$row['Media'].'/main 1.jpeg';
+                        $background = 'background-image: url(../img'.$row['Media'].'/main 1.jpeg)';
                     }
                     
                     echo "
                         <div class='routesHolder'>
-                            <a href='$link_to_routes'><img class='routesImg' src='img/$img'></a>
+                            <a href='$link_to_routes'><div class='routesImg' style='$background'></div></a>
 
                             <div class='routesInfo'>
                                 <div class='routesNameHolder'>

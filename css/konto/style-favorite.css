@@ -57,6 +57,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 0px;
+    font-size: 14px;
 }
 
 .iconLocation {
@@ -65,13 +66,13 @@
     transform: rotate(270deg);
 }
 
-.workNameFavoriteHolder {
+.objectNameFavoriteHolder {
     width: 100%;
     display: flex;
     flex-direction: row;  
 }
 
-.workNameHolder {
+.objectNameHolder {
     width: calc(100% - 40px);
     display: flex;
     justify-content: flex-start;
@@ -86,6 +87,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    font-size: 15px;
 }
 
 .workName:hover {
@@ -96,12 +98,13 @@
     width: 40px;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .favorite-button {
     border: none;
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
