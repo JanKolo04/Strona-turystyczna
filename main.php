@@ -11,7 +11,7 @@
 
     <?php
 
-        include("get_objects_routes/index.php");
+        include("get_objects_routes/objects.php");
         require_once("chart/index.php");
 
         //run funciton with saveing move
