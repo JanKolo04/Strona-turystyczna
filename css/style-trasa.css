@@ -115,3 +115,13 @@
     width: 20px;
     margin-left: 5px;
 }
+
+#objectsMainHolder {
+    flex-direction: column !important;
+}
+
+#objectsHolder > form {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}

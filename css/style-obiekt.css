@@ -317,3 +317,7 @@
     width: 20px;
     margin-left: 5px;
 }
+
+#objectsMainHolder {
+    flex-direction: column !important;
+}
