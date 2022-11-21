@@ -18,7 +18,7 @@
             <div id="login-data-holder">
                 <form method="POST">
                     <div id="inputs-holder">
-                        <input type="text" name="login" placeholder="Login" class="input">
+                        <input type="text" name="email" placeholder="Email" class="input">
                         <input type="password" name="password" placeholder="Hasło" class="input">
                     </div>
                     <div id="other-data-holder">
@@ -53,14 +53,15 @@
 
         class Login {
             function get_data() {
-                $_SESSION['login'] = $_POST['login'];
+                $_SESSION['login'] = $_POST['email'];
                 $_SESSION['password'] = $_POST['password'];
             }
 
             function search_user() {
                 global $con;
 
-                $sql = "SELECT * FROM users WHERE login='{$_SESSION['login']}'";
+                $this->get_data();
+                $sql = "SELECT * FROM Uzytkownicy WHERE Email='{$_SESSION['login']}'";
                 $query = $con->query($sql);
 
                 if($query->num_rows > 0) {
@@ -76,9 +77,8 @@
                 $row = $this->search_user();
 
                 if($row != false) {
-                    $this->get_data();
-                    if($row['password'] == $_SESSION['password']) {
-                        header("Location: main.php");
+                    if($row['Haslo'] == $_SESSION['password']) {
+                        header("Location: index.php");
                     }
                     else {
                         echo "Hasło nie poprawne";
