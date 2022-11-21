@@ -105,6 +105,13 @@
                     ";
                 }
             }
+            else {
+                echo "
+                    <tr>
+                        <td colspan='6'>Brak wyników</td>
+                    </tr>
+                ";
+            }
         }
 
 
