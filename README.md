@@ -11,3 +11,5 @@ Strona z trasami i zabytkowymi obiektami w Szczecinie
 - [x] Zrobić tabele `Ulubione` która będzie połączona relacją z tabelą `Uzytkownicy`
 - [x] Stworzyć metode dodawania tras i obiektów do ulubionych
 - [x] Wypisywanie polubionych tras i obiektów (na osobnych podstronach (rozwijane menu))
+
+
