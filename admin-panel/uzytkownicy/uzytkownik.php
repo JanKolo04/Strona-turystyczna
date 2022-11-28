@@ -20,6 +20,7 @@
         function user_data() {
             global $con;
 
+            //get all selected user data
             $sql = "SELECT * FROM Uzytkownicy WHERE id_uzytkownik={$_GET['id']}";
             $query = $con->query($sql);
 
@@ -32,7 +33,7 @@
         function update_data() {
             global $con;
             $hash = sha1($_POST['password']);
-
+            //update all user data
             $sql = "UPDATE Uzytkownicy SET Imie='{$_POST['name']}', Nazwisko='{$_POST['surname']}', Email='{$_POST['email']}', Haslo='$hash' WHERE id_uzytkownik={$_GET['id']}";
             $query = $con->query($sql);
         }
