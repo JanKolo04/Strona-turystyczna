@@ -100,7 +100,7 @@
                             <td>{$row['Imie']}</td>
                             <td>{$row['Nazwisko']}</td>
                             <td>{$row['Email']}</td>
-                            <td><a href='index.php?strona=uzytkownicy/uzytkownik?id={$row['id_uzytkownik']}'>Podgląd</a>
+                            <td><a href='index.php?strona=uzytkownicy/uzytkownik&id={$row['id_uzytkownik']}'>Podgląd</a>
                         </tr>
                     ";
                 }
