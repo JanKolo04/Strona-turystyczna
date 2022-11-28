@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style-trasy.css">
-    <script type="text/javascript" src="js/script-trasy.js"></script>
     <title>Trasy</title>
 </head>
 <body>
@@ -126,7 +125,7 @@
             else {
                 echo "
                     <tr>
-                        <td colspan='6'>Brak wyników</td>
+                        <td colspan='10'>Brak wyników</td>
                     </tr>
                 ";
             }
@@ -141,7 +140,7 @@
             <div id="search-holder">
                 <div id="search-header">
                     <div id="input-holder" class="search-holders">
-                        <input type="text" name="search-input" id='search-input' placeholder="Wyszukaj osobę...">
+                        <input type="text" name="search-input" id='search-input' placeholder="Wyszukaj trase...">
                     </div>
                     <div id="button-search-holder" class="search-holders">
                         <button id="search-button" name="search-button" type="submit">Szukaj</button>
@@ -161,7 +160,7 @@
                     <thead>
                         <th>
                         <th>Id</th>
-                        <th>Naza</th>
+                        <th>Nazwa</th>
                         <th>Poczatek</th>
                         <th>Koniec</th>
                         <th>Trudnosc</th>

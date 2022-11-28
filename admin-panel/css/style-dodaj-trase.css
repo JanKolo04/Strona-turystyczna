@@ -1,0 +1,103 @@
+#content-holder {
+    padding: 50px 0px;
+    width: 500px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 5px #bfbfbf;
+    border-radius: 6px;
+    margin: auto;
+    margin-top: 60px;
+    overflow: auto;
+    background-color: white;
+}
+
+#header {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+#header > h1 {
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+#header > p {
+    margin-top: 0px;
+    font-size: 15px;
+}
+
+#login-data-holder {
+    width: 100%;
+}
+
+#inputs-holder, #other-data-holder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input {
+    width: 80%;
+    margin: 10px 0px 10px 0px;
+    height: 30px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.input:focus {
+    -webkit-transition: 0.5s;
+    border-bottom: 1px solid black;
+}
+
+#hard-level {
+    padding: 20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#inputs-labels {
+    display: flex;
+    flex-direction: row;
+}
+
+#margin-radio {
+    margin: 0px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#category-select {
+    padding: 20px 0px 30px;
+}
+
+textarea {
+    margin: 10px 0px;
+    resize: none;
+    height: 100px;
+    width: 80%;
+}
+
+#other-data-holder {
+    padding-top: 20px;
+}
+
+#button-holder {
+    padding: 10px 0px 20px;
+}
+
+#button-holder > button {
+    padding: 5px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 120px;
+}

@@ -33,22 +33,31 @@
                     </div>
                 </a>
                 <a class='links-menu' href="index.php?strona=uzytkownicy/dodaj-uzytkownika">
-                    <div class='others-option'>
-                        <div class="hover" id="dodaj-uzytkownika">
+                    <div class='others-option' id="uzytkownicy-other">
+                        <div class="hover">
                             <p class="other-option">Dodaj użytkownika</p>
                         </div>
                     </div>
                 </a>
             </div>
             
-            <a class='links-menu' href="index.php?strona=trasy/trasy">
-                <div class='option'>
-                    <div class='hover' id='trasy'>
-                        <p class="main-option">Trasy</p>
+            <div class='holder-option'>
+                <a class='links-menu' href="index.php?strona=trasy/trasy">
+                    <div class='option'>
+                        <div class='hover' id='trasy'>
+                            <p class="main-option">Trasy</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-
+                </a>
+                <a class='links-menu' href="index.php?strona=trasy/dodaj-trase">
+                    <div class='others-option' id="trasy-other">
+                        <div class="hover">
+                            <p class="other-option">Dodaj trase</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
             <a class='links-menu' href="index.php?strona=architekci/architekci">
                 <div class='option'>
                     <div class='hover' id='architekci'>
@@ -92,21 +101,24 @@
 
             //split page
             let split_page = page.split("/");
+            console.log(split_page);
 
             //if page ins't main chnage color from $_GET page
-            if(page != "main" && (split_page[0] == "uzytkownicy")) {
-                //chnage color of menu option 
-                document.querySelector("#"+split_page[1]).style = "background-color: #666666;";
-                //set display block for others option if you have open parent tab
-                document.querySelector(".others-option").style = "display: block;";
+            if(page != "main" && (split_page[0] == "uzytkownicy" || split_page[0] == "trasy")) {
+                //if you are on under page of categories change color for under page
+                if(split_page[0] != split_page[1]) {
+                    console.log(split_page[0]);
+                    document.querySelector("#"+split_page[0]+"-other").style = "display: block; background-color: #666666;";
+                }
+                else {
+                    //chnage color of menu option 
+                    document.querySelector("#"+split_page[0]).style = "background-color: #666666;";
+                    //set display block for others option if you have open parent tab
+                    document.querySelector("#"+split_page[0]+"-other").style = "display: block;";
+                }
             }
             else if(page == "main") {
                 document.querySelector("#strona-glowna").style = "background-color: #666666;";
-            }
-            //if page is main change color for main id object
-            else {
-                //chnage color of menu option 
-                document.querySelector("#"+split_page[0]).style = "background-color: #666666;";
             }
         }
 
