@@ -12,7 +12,7 @@
         //user_data object
         $user = new user_data();
         //var with user data array
-        $get_user_data = $user->get_data_from_db(3);
+        $get_user_data = $user->get_data_from_db($_GET['id']);
 
         //if user click submit update data
         if(isset($_POST['update-user-data'])) {
@@ -57,10 +57,10 @@
 
         <div id="inputs-holder">
             <form method="POST">
-                <input class="input" type="text" name="name" value="<?php echo $get_user_data["Imie"] ?>">  
-                <input class="input" type="text" name="surname" value="<?php echo $get_user_data["Nazwisko"] ?>">
-                <input class="input" type="email" name="email" value="<?php echo $get_user_data["Email"] ?>">
-                <input class="input" id="password" type="password" name="password" value="<?php echo $get_user_data["Haslo"] ?>">
+                <input class="input" type="text" name="name" value="<?php echo $get_user_data["Imie"]; ?>">  
+                <input class="input" type="text" name="surname" value="<?php echo $get_user_data["Nazwisko"]; ?>">
+                <input class="input" type="email" name="email" value="<?php echo $get_user_data["Email"]; ?>">
+                <input class="input" id="password" type="password" name="password" value="<?php echo $_SESSION['password']; ?>">
 
                 <div id="other-data-holder">
                     <div id="show-password-holder">

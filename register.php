@@ -18,10 +18,10 @@
             <div id="login-data-holder">
                 <form method="POST">
                     <div id="inputs-holder">
-                        <input type="text" name="name" placeholder="Imie" class="input">
-                        <input type="text" name="surname" placeholder="Nazwisko" class="input">
-                        <input type="text" name="email" placeholder="Emial" class="input">
-                        <input type="password" name="password" placeholder="Hasło" class="input">
+                        <input type="text" name="name" placeholder="Imie" class="input" required>
+                        <input type="text" name="surname" placeholder="Nazwisko" class="input" required>
+                        <input type="email" name="email" placeholder="Emial" class="input" required>
+                        <input type="password" name="password" placeholder="Hasło" class="input" required>
                     </div>
                     <div id="other-data-holder">
                         <div id="button-holder">
@@ -45,7 +45,7 @@
                 "Name"=>$_POST['name'],
                 "Surname"=>$_POST['surname'],
                 "Email"=>$_POST['email'],
-                "Password"=>$_POST['password']
+                "Password"=>sha1($_POST['password'])
             ];
 
             return $new_user_array; //return array
@@ -66,7 +66,7 @@
                 $sql_insert = "INSERT INTO uzytkownicy(Imie, Nazwisko, Email, Haslo) VALUES('{$user_data['Name']}', '{$user_data['Surname']}', '{$user_data['Email']}', '{$user_data['Password']}');";
                 $query_insert = mysqli_query($con, $sql_insert);
                 //move into login page
-                header("Location: index.php?storna=login");
+                header("Location: index.php?strona=login");
             }
             else {
                 echo "<script>alert('Istnieje uzytkownik o tym Emailu');</script>";

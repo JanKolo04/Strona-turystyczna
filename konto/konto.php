@@ -11,11 +11,11 @@
 
         
         $category_account = "your-data";
-        /*
+        
         if(!isset($_SESSION['user_id'])) {
             header("Location: index.php?strona=login");
         }
-        */
+        
         if(isset($_GET['category'])) {
             $category_account = $_GET['category'];
         }
@@ -44,6 +44,8 @@
                     <a id="trasy" href="index.php?strona=konto/konto&category=trasy">Trasy</a>
 
                     <a id="history-of-purchased-trips" href="index.php?strona=konto/konto&category=history-of-purchased-trips">Historia kupionych wycieczek</a>
+
+                    <a href="index.php?strona=logout" id="logout">Wyloguj się</a>
                 </div>
             </div>
         </div>

@@ -59,6 +59,10 @@
     flex-direction: column;
 }
 
+#a-holder > #logout {
+    margin-top: 100px;
+}
+
 #a-holder > a {
     margin: 5px 0px 5px 20px;
     text-decoration: none;

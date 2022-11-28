@@ -8,6 +8,10 @@
 </head>
 <body>
 
+    <?php
+        session_start();
+    ?>
+
     <div id='baner'>
         <div id='logo-holder'>
             <a id='logo' href='index.php?strona=main'><h3>Szlakiem Szczecina</h3></a>
@@ -17,7 +21,14 @@
             <a class='link' href="index.php?strona=obiekty/obiekty">Obiekty</a>
             <a class='link' href="index.php?strona=architekci/architekci">Architekci</a>
 
-            <a id='account-link' href="index.php?strona=konto/konto">Moje konto</a>
+            <?php
+                if(isset($_SESSION['user_id'])) {
+                    echo "<a id='account-link' href='index.php?strona=konto/konto&id={$_SESSION['user_id']}'>Moje konto</a>";
+                }
+                else {
+                    echo "<a id='account-link' href='index.php?strona=konto/konto'>Moje konto</a>";
+                }
+            ?>
         </div>
     </div>
     <div id="margin-top-div" style="height: 70px; width: 100%;"></div>
@@ -27,9 +38,7 @@
     ?>
 
     <div id=pageContent>
-        <?php 
-            session_start();
-
+        <?php
             $strona = "main";
             if(isset($_GET['strona'])) {
                 $strona = $_GET['strona'];
@@ -51,7 +60,15 @@
                 <li><a class='link footer-menu-ele' href="index.php?strona=trasy/trasy">Trasy</a></li>
                 <li><a class='link footer-menu-ele' href="index.php?strona=obiekty/obiekty">Obiekty</a></li>
                 <li><a class='link footer-menu-ele' href="index.php?strona=architekci/architekci">Architekci</a></li>
-                <li><a class='link footer-menu-ele' href="index.php?strona=konto/konto">Moje konto</a></li>
+                <?php
+                    if(isset($_SESSION['user_id'])) {
+                        echo "<li><a class='link footer-menu-ele' href='index.php?strona=konto/konto&id={$_SESSION['user_id']}'>Moje konto</a></li>";                 
+                    }
+                    else {
+                        echo "<li><a class='link footer-menu-ele' href='index.php?strona=konto/konto'>Moje konto</a></li>";
+                    }
+                ?>
+
             </ul>
         </div>
 

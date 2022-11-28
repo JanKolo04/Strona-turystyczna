@@ -77,7 +77,8 @@
                 $row = $this->search_user();
 
                 if($row != false) {
-                    if($row['Haslo'] == $_SESSION['password']) {
+                    if($row['Haslo'] == sha1($_SESSION['password'])) {
+                        $_SESSION['user_id'] = $row['id_uzytkownik'];
                         header("Location: index.php");
                     }
                     else {
