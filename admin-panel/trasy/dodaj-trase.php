@@ -48,7 +48,7 @@
                 </div>
                 <div id="other-data-holder">
                     <div id="button-holder">
-                        <button type="submit" name="submit">Zatwierdź</button>
+                        <button type="submit" name="add_route">Zatwierdź</button>
                     </div>
                 </div>
             </form>
@@ -57,48 +57,31 @@
 
     <?php
 
-        if(isset($_POST['add_user'])) {
-            add_user();
+        if(isset($_POST['add_route'])) {
+            add_route();
         }
 
-        function get_data_from_form() {
-            //array with all user data from form
-            $new_user_array = [
-                "Name"=>$_POST['name'],
-                "Surname"=>$_POST['surname'],
-                "Email"=>$_POST['email'],
-                "Date_birth"=>$_POST['birth_date']
-            ];
-
-            return $new_user_array; //return array
-        }
-
-        function add_user() {
-            global $con, $alert;
-
-            $alert = ""; //alert
-
-            //get data
-            $user_data = get_data_from_form();
+        function add_route() {
+            global $con;
 
             //check for other user don't use same email
-            $sql_check = "SELECT * FROM uzytkownicy WHERE Email='{$user_data['Email']}'";
+            $sql_check = "SELECT * FROM Trasy WHERE Nazwa='{$_POST['name']}'";
             $query_check = mysqli_query($con, $sql_check);
 
             if($query_check->num_rows == 0) {
                 //add user
-                $sql_insert = "INSERT INTO uzytkownicy(Imie, Nazwisko, Email, Data_urodzenia) VALUES('{$user_data['Name']}', '{$user_data['Surname']}', '{$user_data['Email']}', '{$user_data['Date_birth']}');";
+                $sql_insert = "INSERT INTO Trasy(Nazwa, Poczatek, Koniec, Trudnosc, Opis, Informacje, Kategoria) VALUES('{$_POST['name']}', '{$_POST['beginning']}', '{$_POST['end']}', '{$_POST['level']}', '{$_POST['category']}', '{$_POST['description']}', '{$_POST['info']}');";
                 $query_insert = mysqli_query($con, $sql_insert);
 
                 if(!$query_insert) {
                     echo "<script>alert('Coś poszło nie tak');</script>";
                 }
                 else {
-                    echo "<script>alert('Dodano uzytkownika');</script>";
+                    echo "<script>alert('Dodano trase');</script>";
                 }
             }
             else {
-                echo "<script>alert('Istnieje uzytkownik o tym Emailu');</script>";
+                echo "<script>alert('Istnieje trasa o tej nazwie');</script>";
             }
         }
 

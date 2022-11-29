@@ -101,13 +101,11 @@
 
             //split page
             let split_page = page.split("/");
-            console.log(split_page);
 
             //if page ins't main chnage color from $_GET page
             if(page != "main" && (split_page[0] == "uzytkownicy" || split_page[0] == "trasy")) {
                 //if you are on under page of categories change color for under page
                 if(split_page[0] != split_page[1]) {
-                    console.log(split_page[0]);
                     document.querySelector("#"+split_page[0]+"-other").style = "display: block; background-color: #666666;";
                 }
                 else {
