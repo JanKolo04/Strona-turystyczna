@@ -31,7 +31,7 @@
         function update_data() {
             global $con;
             //update chnages 
-            $sql = "UPDATE Trasy SET Nazwa='{$_POST['name']}', Poczatek='{$_POST['begining']}', Koniec='{$_POST['end']}', Trudnosc='{$_POST['level']}', Opis='{$_POST['description']}', Informacje='{$_POST['info']}', Kategoria='{$_POST['category']}' WHERE Id={$_GET['id']}";
+            $sql = "UPDATE Trasy SET Nazwa='{$_POST['name']}', Poczatek='{$_POST['beginning']}', Koniec='{$_POST['end']}', Trudnosc='{$_POST['level']}', Opis='{$_POST['description']}', Informacje='{$_POST['info']}', Kategoria='{$_POST['category']}' WHERE Id={$_GET['id']}";
             $query = $con->query($sql);
         }
 
