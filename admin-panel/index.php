@@ -8,6 +8,16 @@
 </head>
 <body>
 
+    <?php
+        
+        session_start();
+        
+        if(!isset($_SESSION['login']) || $_SESSION['login'] != "Admin") {
+            header("Location: ../index.php");
+        }
+
+    ?>
+
     <div id='baner'>
         <div id='logo-holder'>
             <a id='logo' href='index.php?strona=main'><h3>Szlakiem Szczecina</h3>&nbsp<p id="logo-admin-panel">>> Panel Administratora</p></a>
