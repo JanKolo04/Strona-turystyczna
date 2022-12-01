@@ -79,6 +79,7 @@
                 if($row != false) {
                     if($row['Haslo'] == sha1($_SESSION['password'])) {
                         $_SESSION['user_id'] = $row['id_uzytkownik'];
+                        $_SESSION['login'] = $row['Imie'];
                         header("Location: index.php");
                     }
                     else {
