@@ -2,11 +2,11 @@
 
     //check which button to update favorite
     $favorite = new Favorite();
-    if(isset($_POST['favorite-button'])) {
-        $favorite->insert_into_favorite(3, $_POST['favorite-button']);
+    if(isset($_POST['favorite-button']) && isset($_SESSION['user_id'])) {
+        $favorite->insert_into_favorite($_SESSION['user_id'], $_POST['favorite-button']);
     }
-    else if(isset($_POST['unfavorite-button'])) {
-        $favorite->delete_from_favorite(3, $_POST['unfavorite-button']);
+    else if(isset($_POST['unfavorite-button']) && isset($_SESSION['user_id'])) {
+        $favorite->delete_from_favorite($_SESSION['user_id'], $_POST['unfavorite-button']);
     }
 
     class GetObjects {
@@ -114,15 +114,9 @@
         function insert_into_favorite($user_id, $object_id) {
             global $con;
 
-            //if dosent exist SESSION user_id
-            if(isset($_SESSION['user_id'])) {
-                //insert object into favortie
-                $sql = "INSERT INTO ulubione(Id_uzytkownika, Id_trasy, Id_obiektu) VALUES($user_id, NULL, $object_id);";
-                $query = $con->query($sql);
-            }
-            else {
-                header("Location: ../index.php");
-            }
+            //insert object into favortie
+            $sql = "INSERT INTO ulubione(Id_uzytkownika, Id_trasy, Id_obiektu) VALUES($user_id, NULL, $object_id);";
+            $query = $con->query($sql);
         }
 
         function delete_from_favorite($user_id, $object_id) {

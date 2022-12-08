@@ -9,6 +9,7 @@
 <body>
 
     <?php
+
         //user_data object
         $user = new user_data();
         //var with user data array
@@ -17,7 +18,7 @@
         //if user click submit update data
         if(isset($_POST['update-user-data'])) {
             $user->update_data();
-            header('Location: index.php?strona=konto/konto');
+            header("Location: index.php?strona=konto/konto&id={$_SESSION['user_id']}");
         }
 
         class user_data {

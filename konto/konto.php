@@ -37,7 +37,7 @@
             
             <div id="menu">
                 <div id="a-holder">
-                    <a id="your-data" href="index.php?strona=konto/konto&category=your-data">Twoje dane</a>
+                    <a id="your-data" href="index.php?strona=konto/konto&category=your-data&id=<?php echo $_SESSION['user_id'];?>">Twoje dane</a>
                     
                     <p id="favorite">Ulubione</p>
                     <a id="obiekty" href="index.php?strona=konto/konto&category=obiekty">Obiekty</a>

@@ -116,6 +116,9 @@
                 $sql = "INSERT INTO ulubione(Id_uzytkownika, Id_trasy, Id_obiektu) VALUES($user_id, $route_id, NULL);";
                 $query = $con->query($sql);
             }
+            else {
+                header("Location: ../index.php?strona=login");
+            }
         }
 
         function delete_from_favorite($user_id, $route_id) {
