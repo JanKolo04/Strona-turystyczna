@@ -44,8 +44,14 @@
             //get all objects
             $query_obiekt = mysqli_query($con, $sql_obiekt);
             
+            $user_id = 0;
+            //check isset SESSION id_user
+            if(isset($_SESSION['user_id'])) {
+                $user_id = $_SESSION['user_id'];
+            }
+
             //aray with objets id from favorite where id_user is your id
-            $id_array_objects_fav = $this->get_all_objects_from_fav(3);
+            $id_array_objects_fav = $this->get_all_objects_from_fav($user_id);
 
             //print objects
             $all_obejcts = [];
@@ -108,9 +114,15 @@
         function insert_into_favorite($user_id, $object_id) {
             global $con;
 
-            //insert object into favortie
-            $sql = "INSERT INTO ulubione(Id_uzytkownika, Id_trasy, Id_obiektu) VALUES($user_id, NULL, $object_id);";
-            $query = $con->query($sql);
+            //if dosent exist SESSION user_id
+            if(isset($_SESSION['user_id'])) {
+                //insert object into favortie
+                $sql = "INSERT INTO ulubione(Id_uzytkownika, Id_trasy, Id_obiektu) VALUES($user_id, NULL, $object_id);";
+                $query = $con->query($sql);
+            }
+            else {
+                header("Location: ../index.php");
+            }
         }
 
         function delete_from_favorite($user_id, $object_id) {

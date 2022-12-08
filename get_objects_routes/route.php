@@ -43,8 +43,14 @@
             //get all routes
             $query_route = mysqli_query($con, $sql_route);
             
+            $user_id = 0;
+            //check isset SESSION id_user
+            if(isset($_SESSION['user_id'])) {
+                $user_id = $_SESSION['user_id'];
+            }
+
             //aray with objets id from favorite where id_user is your id
-            $id_array_routes_fav = $this->get_all_routes_from_fav(3);
+            $id_array_routes_fav = $this->get_all_routes_from_fav($user_id);
 
             //print routes
             $all_obejcts = [];
@@ -104,9 +110,12 @@
         function insert_into_favorite($user_id, $route_id) {
             global $con;
 
-            //insert route into favortie
-            $sql = "INSERT INTO ulubione(Id_uzytkownika, Id_trasy, Id_obiektu) VALUES($user_id, $route_id, NULL);";
-            $query = $con->query($sql);
+            //if dosent exist SESSION user_id
+            if(isset($_SESSION['user_id'])) {
+                //insert route into favortie
+                $sql = "INSERT INTO ulubione(Id_uzytkownika, Id_trasy, Id_obiektu) VALUES($user_id, $route_id, NULL);";
+                $query = $con->query($sql);
+            }
         }
 
         function delete_from_favorite($user_id, $route_id) {
