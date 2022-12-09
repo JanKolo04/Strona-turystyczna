@@ -80,7 +80,12 @@
                     if($row['Haslo'] == sha1($_SESSION['password'])) {
                         $_SESSION['user_id'] = $row['id_uzytkownik'];
                         $_SESSION['login'] = $row['Imie'];
-                        header("Location: index.php");
+                        //check exists of SESSION var which has last opened page
+                        $page = "index.php";
+                        if(isset($_SESSION['return_page'])) {
+                            $page = $_SESSION['return_page'];
+                        }
+                        header("Location: ".$page);
                     }
                     else {
                         echo "Hasło nie poprawne";

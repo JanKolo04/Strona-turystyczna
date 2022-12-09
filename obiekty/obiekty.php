@@ -12,16 +12,11 @@
         
         include("get_objects_routes/objects.php");
 
-        if(isset($_POST['favorite-button'])) {
-            check_if_login();
+        if(isset($_POST['favorite-button']) && !isset($_SESSION['user_id'])) {
+            //set variable to save curent page link
+            $_SESSION['return_page'] = "index.php?strona=obiekty/obiekty";
+            header("Location: index.php?strona=login");
         }
-
-        function check_if_login() {
-            if(!isset($_SESSION['user_id'])) {
-                header("Location: index.php?strona=login");
-            }
-        }
-        
     
     ?>
     

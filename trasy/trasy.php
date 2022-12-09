@@ -8,7 +8,18 @@
 </head>
 <body>
 
-    <?php include("get_objects_routes/route.php"); ?>
+    <?php 
+        
+        include("get_objects_routes/route.php"); 
+
+        if(isset($_POST['favorite-button']) && !isset($_SESSION['user_id'])) {
+            //set variable to save curent page link
+            $_SESSION['return_page'] = "index.php?strona=trasy/trasy";
+            header("Location: index.php?strona=login");
+        }
+    
+    ?>
+
 
     <h1>Trasy</h1>
     <div id='routesMainHolder'>
