@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style-trasy.css">
-    <title>Trasy</title>
+    <title>Architekci</title>
 </head>
 <body>
 
@@ -69,7 +69,7 @@
             }
 
             function insert_like_function($i) {
-                $this->search_sql .= " (select {$this->columns[$i]} from Trasy where";
+                $this->search_sql .= " (select {$this->columns[$i]} from Architekci where";
                 for($y=0; $y<sizeof($this->split_input_data); $y++) {
                     //if data from explode isn't last add OR after like
                     if($y < sizeof($this->split_input_data) - 1) {

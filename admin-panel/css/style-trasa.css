@@ -1,7 +1,7 @@
 #content-holder {
-    padding: 50px 0px;
+    padding: 50px 50px;
     width: 500px;
-    height: 550px;
+    max-height: 550px;
     display: flex;
     flex-direction: column;
     box-shadow: 10px 10px 5px #bfbfbf;
