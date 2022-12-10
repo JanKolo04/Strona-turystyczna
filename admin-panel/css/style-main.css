@@ -139,24 +139,39 @@ li:last-child {
 }
 
 /* FAKE SELECT */
-
-summary.radios {
-	counter-reset: radios;
+summary.radios_moves {
+	counter-reset: radios_move;
 }
 
-summary.radios:before {
+summary.radios_register {
+	counter-reset: radios_register;
+}
+
+summary:before {
 	content: var(--selection);
 }
 
-input[type=radio] {
-	counter-increment: radios;
+.move_inputs[type=radio] {
+	counter-increment: radios_move;
 	appearance: none;
 	display: none;
 }
 
-input[type=radio]:checked {
+.inputs_register[type=radio] {
+	counter-increment: radios_register;
+	appearance: none;
+	display: none;
+}
+
+.move_inputs[type=radio]:checked {
 	display: inline;
-	--display: block;
+	--display_move: block;
+    margin-right: 10px;
+}
+
+.inputs_register[type=radio]:checked {
+	display: inline;
+	--display_register: block;
     margin-right: 10px;
 }
 
@@ -166,7 +181,7 @@ input[type=radio]:after {
 	font-size: 1rem;
 }
 
-ul.list {
+ul.list_register {
 	counter-reset: labels;
 }
 
@@ -177,9 +192,18 @@ ul.list {
 	justify-content: space-between;
 }
 
-#span-select {
-	--display: none;
-	display: var(--display);
+#span-select-move {
+	--display_move: none;
+	display: var(--display_move);
+	width: 1rem;
+	height: 1rem;
+	border: 1px solid #727272;
+	border-radius: 3px;
+}
+
+#span-select-register {
+	--display_register: none;
+	display: var(--display_register);
 	width: 1rem;
 	height: 1rem;
 	border: 1px solid #727272;
