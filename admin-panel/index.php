@@ -68,13 +68,22 @@
                 </a>
             </div>
             
-            <a class='links-menu' href="index.php?strona=architekci/architekci">
-                <div class='option'>
-                    <div class='hover' id='architekci'>
-                        <p class="main-option">Architekci</p>
+            <div class='holder-option'>
+                <a class='links-menu' href="index.php?strona=architekci/architekci">
+                    <div class='option'>
+                        <div class='hover' id='architekci'>
+                            <p class="main-option">Architekci</p>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+                <a class='links-menu' href="index.php?strona=architekci/dodaj-architekta">
+                    <div class='others-option' id="architekci-other">
+                        <div class="hover">
+                            <p class="other-option">Dodaj architekta</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
 
             <a class='links-menu' href="index.php?strona=obiekty/obiekty">
                 <div class='option'>
@@ -113,7 +122,7 @@
             let split_page = page.split("/");
 
             //if page ins't main chnage color from $_GET page
-            if(page != "main" && (split_page[0] == "uzytkownicy" || split_page[0] == "trasy")) {
+            if(page != "main" && (split_page[0] == "uzytkownicy" || split_page[0] == "trasy" || split_page[0] == "architekci" || split_page[0] == "obiekty")) {
                 //if you are on under page of categories change color for under page
                 if(split_page[0] != split_page[1]) {
                     document.querySelector("#"+split_page[0]+"-other").style = "display: block; background-color: #666666;";
