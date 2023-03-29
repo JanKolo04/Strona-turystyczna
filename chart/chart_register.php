@@ -15,7 +15,7 @@
             <div class="option-chart">
                 <div id="users-count-holder">
                     <div class="border-top"></div>
-                    
+                    wq
                     <label for="users-count">Ilość</label></br></br>
                     <span id="users-count"></span>
                 </div>

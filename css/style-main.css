@@ -88,7 +88,7 @@
     border-top: 1px solid #b3b3b3;
 }
 
-.data-best {
+.data-best, .data-best > form {
     display: flex;
     justify-content: center;
     align-items: center;

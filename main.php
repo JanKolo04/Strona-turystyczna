@@ -12,10 +12,10 @@
     <?php
 
         include("get_objects_routes/objects.php");
-        require_once("chart/index.php");
+        //require_once("chart/index.php");
 
         //run funciton with saveing move
-        save_move_on_page();
+        //save_move_on_page();
     
     ?>
 
@@ -74,13 +74,15 @@
         </div>
 
         <div class="data-best">
-            <?php
-                //sql function
-                $sql = "SELECT Obiekty.*, Trasy.Nazwa AS 'trasa_nazwa' FROM Obiekty INNER JOIN Trasy ON Trasy.Id=Obiekty.Id_trasa ORDER BY (Obiekty.Ilosc_wejsc) DESC LIMIT 3";
+            <form method="POST">
+                <?php
+                    //sql function
+                    $sql = "SELECT Obiekty.*, Trasy.Nazwa AS 'trasa_nazwa' FROM Obiekty INNER JOIN Trasy ON Trasy.Id=Obiekty.Id_trasa ORDER BY (Obiekty.Ilosc_wejsc) DESC LIMIT 3";
 
-                $print_objects = new GetObjects();
-                $print_objects->check_data_and_print($sql);
-            ?>
+                    $print_objects = new GetObjects();
+                    $print_objects->check_data_and_print($sql);
+                ?>
+            </form>
         </div>
     </div>
     
