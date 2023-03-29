@@ -137,7 +137,6 @@ li:last-child {
 	padding-bottom: 0;
 	border-bottom: none;
 }
-
 /* FAKE SELECT */
 summary.radios_moves {
 	counter-reset: radios_move;
